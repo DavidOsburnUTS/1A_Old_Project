@@ -131,7 +131,7 @@
             android:ems="10"
             android:fontFamily="sans-serif-condensed"
             android:hint="@string/editText_password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:singleLine="true"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
@@ -164,6 +164,7 @@
         android:layout_marginEnd="88dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/g7_logo" />
+        app:srcCompat="@drawable/g7_logo"
+        android:contentDescription="@string/todo" />
 
 </android.support.constraint.ConstraintLayout>
