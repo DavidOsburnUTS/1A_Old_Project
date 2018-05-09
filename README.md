@@ -11,3 +11,7 @@
 # -> git remote add origin https://github.com/mbarbar/studio-group7.git
 # //this pushes the the commit
 # -> git push origin master
+# (optional) if you don't want to merge files make your own branch
+# -> git push origin (branch-name)
+# example
+# -> git push origin andre
