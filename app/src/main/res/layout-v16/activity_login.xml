@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/oneup_logo"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/textView"
@@ -105,7 +105,7 @@
             android:ems="10"
             android:fontFamily="sans-serif-condensed"
             android:hint="@string/editText_email"
-            android:inputType="textPersonName"
+            android:inputType="textAutoCorrect|textEmailAddress|textPersonName"
             android:singleLine="true"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
