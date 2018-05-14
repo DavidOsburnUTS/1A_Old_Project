@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">SS1A_FitnessApp_Demo</string>
+    <string name="editText_email">EMAIL</string>
+    <string name="editText_password">PASSWORD</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_forgot_password">Forgot Password?</string>
+    <string name="btn_new_account">New? Register now!</string>
+    <string name="text_educational">AN EDUCATIONAL PROJECT</string>
+    <string name="error_invalid_email">Email is invalid</string>
+    <string name="error_invalid_password">Password is invalid</string>
+    <string name="error_email_required">Email is required</string>
+    <string name="error_password_required">Password is required</string>
+    <string name="error_suggest_reset">Too many attempts. Reset Password.</string>
+    <string name="hint_password_requirements">Must use at least one capital, number and special char</string>
+    <string name="btn_register">REGISTER</string>
+    <string name="editText_confirm_password">CONFIRM PASSWORD</string>
+    <string name="editText_name">NAME</string>
+    <string name="error_password_match">Password does not match</string>
+    <string name="title_activity_homepage">Homepage</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="welcomeTxt">Welcome!</string>
+    <string name="calorieBtn">CALORIE\nCOUNT</string>
+    <string name="cardioBtn">CARDIO\nTRAINING</string>
+    <string name="weightBtn">MUSCLE\nTRAINING</string>
+    <string name="profileBtn">PROFILE</string>
+    <string name="termsconditionTxt">By signing up, you agree to our Terms and that you\n
+        have read our 'Privacy Policy' and 'Content Policy'</string>
+    <string name="oldaccountBtn">Already have an account? Log in!</string>
+    <string name="title_activity_side_tab">SideTab</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+</resources>
