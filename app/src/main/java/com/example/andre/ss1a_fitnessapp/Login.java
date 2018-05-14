@@ -46,7 +46,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 validate(email.getText().toString(), password.getText().toString());
-            }g
+            }
         });
 
     }
