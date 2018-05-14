@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="25dp"
     tools:context=".CalorieCalc">
 
     <TableLayout
+        android:id="@+id/calorie_table_layout"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <TableRow>
+        <TableRow
+            android:layout_marginVertical="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -22,10 +24,12 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:hint="Enter age" />
         </TableRow>
 
-        <TableRow>
+        <TableRow
+            android:layout_marginVertical="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -50,7 +54,8 @@
             </RadioGroup>
         </TableRow>
 
-        <TableRow>
+        <TableRow
+            android:layout_marginVertical="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,10 +63,12 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:hint="Enter height"/>
         </TableRow>
 
-        <TableRow>
+        <TableRow
+            android:layout_marginVertical="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,9 +76,11 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:hint="Enter weight"/>
         </TableRow>
-        <TableRow>
+        <TableRow
+            android:layout_marginVertical="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,13 +94,15 @@
             </Spinner>
         </TableRow>
 
-            <Button
-                android:id="@+id/calculateBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Calculate"/>
-
     </TableLayout>
+
+    <Button
+        android:id="@+id/calculateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="30dp"
+        android:text="Calculate"
+        android:layout_below="@id/calorie_table_layout"/>
 
 </RelativeLayout>
