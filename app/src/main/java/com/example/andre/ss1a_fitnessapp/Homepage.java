@@ -56,4 +56,16 @@ public class Homepage extends AppCompatActivity {
 
     }
 
+    public void homeOnClick(View view) {
+        switch(view.getId()) {
+            case R.id.calorieBtn:
+                Intent calorieIntent = new Intent(Homepage.this, CalorieCalc.class);
+                startActivity(calorieIntent);
+                break;
+            case R.id.profileBtn:
+                Intent profileIntent = new Intent(Homepage.this, Profile.class);
+                startActivity(profileIntent);
+                break;
+        }
+    }
 }
