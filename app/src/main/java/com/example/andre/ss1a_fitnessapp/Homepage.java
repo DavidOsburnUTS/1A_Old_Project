@@ -46,14 +46,6 @@ public class Homepage extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Button calorieBtn = (Button) findViewById(R.id.calorieBtn);
-        calorieBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent startIntent = new Intent(Homepage.this, CalorieCalc.class);
-                startActivity(startIntent);
-            }
-        });
-
     }
 
     public void homeOnClick(View view) {
