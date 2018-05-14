@@ -1,10 +1,9 @@
 # studio-group7
 # tutor: mbarbar
 # students: dosburn, ephung, apagala, jwang, rmarte
-# /////////////////////////////////////////////////////////
-# ///..........hello students learning GitHub...........///
-# ///.....................How to git....................///
-# /////////////////////////////////////////////////////////
+#
+# Hello, Students learning GitHub!
+# How to git
 # 
 # // SET UP
 # //this initizatises the repository in your android studio 
