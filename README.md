@@ -15,6 +15,11 @@
 # -> git push origin (branch-name)
 # example
 # -> git push origin andre
-# //
-# how to clone git repo
+# // how to clone git repo
 # -> git clone
+# // how to pull
+# -> git pull <remote> <branch>
+# // example
+# -> git pull origin master
+# // pulling from from my remote and pushing to a branch named andre
+# -> git pull ss1a andre
