@@ -131,7 +131,7 @@
             android:ems="10"
             android:fontFamily="sans-serif-condensed"
             android:hint="@string/editText_password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:singleLine="true"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
