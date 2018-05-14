@@ -15,3 +15,6 @@
 # -> git push origin (branch-name)
 # example
 # -> git push origin andre
+# //
+# how to clone git repo
+# -> git clone
