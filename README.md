@@ -18,7 +18,7 @@
 # // how to clone git repo
 # -> git clone
 # // how to pull
-# -> git pull <remote> <branch>
+# -> git pull remote branch
 # // example
 # -> git pull origin master
 # // pulling from from my remote and pushing to a branch named andre
