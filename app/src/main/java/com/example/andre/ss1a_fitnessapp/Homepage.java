@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 public class Homepage extends AppCompatActivity {
 
+    //random comment
+
     private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
