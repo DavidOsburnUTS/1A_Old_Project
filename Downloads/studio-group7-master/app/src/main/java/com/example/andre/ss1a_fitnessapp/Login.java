@@ -57,7 +57,7 @@ public class Login extends AppCompatActivity {
             startActivity(startIntent);
         }
         else {
-            result.setText("Email and/or password is invalid");
+            result.setText("Your email and/or password is invalid");
         }
     }
 }
