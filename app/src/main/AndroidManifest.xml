@@ -30,8 +30,10 @@
             android:name=".SideTab"
             android:label="@string/title_activity_side_tab"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CalorieCalc"
-            android:exported="true"/>
+        <activity
+            android:name=".CalorieCalc"
+            android:exported="true" />
+        <activity android:name=".Profile"></activity>
     </application>
 
 </manifest>

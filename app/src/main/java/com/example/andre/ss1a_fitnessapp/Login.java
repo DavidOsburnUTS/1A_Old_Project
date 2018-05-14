@@ -52,7 +52,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void validate(String userEmail, String userPassword) {
-        if((userEmail.equals("admin@uts.edu.au")) && (userPassword.equals("123"))) {
+        if((userEmail.equals("123")) && (userPassword.equals("123"))) {
             Intent startIntent = new Intent(Login.this, Homepage.class);
             startActivity(startIntent);
         }
