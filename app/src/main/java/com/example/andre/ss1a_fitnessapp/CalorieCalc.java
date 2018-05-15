@@ -26,8 +26,6 @@ public class CalorieCalc extends AppCompatActivity {
         Button calculateBtn = (Button) findViewById(R.id.calculateBtn);
         final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.genderRadioBtn);
         final Spinner activityLvlSpin = (Spinner) findViewById(R.id.activitylevel_spinner);
-        int genderId = radioGroup.getCheckedRadioButtonId();
-        final RadioButton radioButton = (RadioButton) findViewById(genderId);
 
         ageEt = (EditText) findViewById(R.id.ageEditText);
         heightEt = (EditText) findViewById(R.id.heightEditText);
@@ -38,14 +36,20 @@ public class CalorieCalc extends AppCompatActivity {
         calculateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int age = Integer.parseInt(ageEt.toString());
-                double height = Double.parseDouble(heightEt.toString());
-                double weight = Double.parseDouble(weightEt.toString());
-                String gender = (String) radioButton.getText();
 
-                calculate(age, height, weight, gender);
+                int age = Integer.parseInt(ageEt.getText().toString());
+                double height = Double.parseDouble(heightEt.getText().toString());
+                double weight = Double.parseDouble(weightEt.getText().toString());
+                int genderId = radioGroup.getCheckedRadioButtonId();
+                RadioButton radioButton = (RadioButton) findViewById(genderId);
+                String gender = radioButton.getText().toString();
+                double activityLvl = 1.2;
+
+                calculate(age, height, weight, gender, activityLvl);
             }
         });
+
+
 
         activityLvlSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -67,16 +71,17 @@ public class CalorieCalc extends AppCompatActivity {
         // exercise seven days a week and also have a physically demanding job, multiply by 1.9.
     }
 
-    private void calculate(int age, double height, double weight, String gender) {
+    private void calculate(int age, double height, double weight, String gender, double activityLvl) {
         double result = 0;
-        if(gender == "Male") {
-            result = 10 * weight * 6.25 * height - 5 * age + 5;
-        } else if(gender == "Female") {
-            result = 10 * weight * 6.25 * height - 5 * age - 161;
+
+        if(gender.equals("Male")) {
+            result = 10 * weight * 6.25 * height - 5 * age + 5 * activityLvl;
+        } else if(gender.equals("Female")) {
+            result = 10 * weight * 6.25 * height - 5 * age - 161 * activityLvl;
         }
 
         if(result != 0) {
-            calcResult.setText(Double.toString(result));
+            calcResult.setText(Double.toString(result) + " calories");
         } else {
             calcResult.setText("Invalid details");
         }
