@@ -18,7 +18,7 @@
     <string name="error_password_match">Password does not match</string>
     <string name="title_activity_homepage">Homepage</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_start_run">Start Run</string>
     <string name="title_notifications">Notifications</string>
     <string name="welcomeTxt">Welcome!</string>
     <string name="calorieBtn">CALORIE\nCOUNT</string>

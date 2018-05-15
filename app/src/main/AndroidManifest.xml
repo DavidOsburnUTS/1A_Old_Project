@@ -35,7 +35,8 @@
             android:exported="true" />
         <activity android:name=".Profile" />
         <activity android:name=".CardioTraining" />
-        <activity android:name=".WeightTraining"></activity>
+        <activity android:name=".WeightTraining" />
+        <activity android:name=".StartRunActivity"></activity>
     </application>
 
 </manifest>
