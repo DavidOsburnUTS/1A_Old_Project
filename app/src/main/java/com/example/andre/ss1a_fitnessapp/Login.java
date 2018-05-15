@@ -22,6 +22,7 @@ public class Login extends AppCompatActivity {
 
         Button login_btn = (Button) findViewById(R.id.login_btn);
         Button forgot_password_btn = (Button) findViewById(R.id.forgot_password_btn);
+
 //===============================================================================================
 // DEMO
 // Attempt to launch the register activity within the app

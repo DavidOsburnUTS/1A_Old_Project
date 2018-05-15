@@ -16,6 +16,7 @@ public class Homepage extends AppCompatActivity {
 
     private TextView mTextMessage;
 
+    //Bottom Navigation View
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -46,6 +47,9 @@ public class Homepage extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Button calorieBtn = (Button) findViewById(R.id.calorieBtn);
+        Button profileBtn = (Button) findViewById(R.id.profileBtn);
+        Button cardioBtn = (Button) findViewById(R.id.cardioBtn);
+        Button muscleBtn = (Button) findViewById(R.id.muscleBtn);
     }
 
     public void homeOnClick(View view) {
