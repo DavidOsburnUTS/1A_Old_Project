@@ -5,4 +5,5 @@ package com.example.andre.ss1a_fitnessapp;
  */
 
 public class LoginFunction {
+    int x = 0;
 }
