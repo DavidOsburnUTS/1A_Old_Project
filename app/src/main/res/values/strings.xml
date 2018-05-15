@@ -23,7 +23,7 @@
     <string name="welcomeTxt">Welcome!</string>
     <string name="calorieBtn">CALORIE\nCOUNT</string>
     <string name="cardioBtn">CARDIO\nTRAINING</string>
-    <string name="weightBtn">MUSCLE\nTRAINING</string>
+    <string name="weightBtn">WEIGHT\nTRAINING</string>
     <string name="profileBtn">PROFILE</string>
     <string name="termsconditionTxt">By signing up, you agree to our Terms and that you\n
         have read our 'Privacy Policy' and 'Content Policy'</string>
