@@ -8,67 +8,83 @@
 
     <TableLayout
         android:id="@+id/calorie_table_layout"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_centerVertical="true">
 
-        <TableRow
-            android:layout_marginVertical="10dp">
+        <TableRow android:layout_marginVertical="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Name: " />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Full Name"/>
+                android:layout_weight="1"
+                android:text="Full Name" />
         </TableRow>
 
-        <TableRow
-            android:layout_marginVertical="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Height(cm): "/>
+        <TableRow android:layout_marginVertical="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="100"/>
+                android:layout_weight="1"
+                android:text="Height(cm): " />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="100" />
         </TableRow>
 
-        <TableRow
-            android:layout_marginVertical="10dp">
+        <TableRow android:layout_marginVertical="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gender: "
-                android:layout_gravity="center_vertical"/>
+                android:layout_width="125dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="Gender: " />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Male"
-                android:layout_gravity="center_vertical"/>
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="Male" />
 
         </TableRow>
 
-        <TableRow
-            android:layout_marginVertical="10dp">
+        <TableRow android:layout_marginVertical="10dp">
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Weight(kg): "/>
+                android:layout_weight="1"
+                android:text="Weight(kg): " />
+
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="TESTING"/>
+                android:layout_weight="1"
+                android:text="TESTING" />
         </TableRow>
 
     </TableLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="138dp"
+        android:layout_height="132dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
 </RelativeLayout>
