@@ -50,7 +50,7 @@ public class Homepage extends AppCompatActivity {
         Button calorieBtn = (Button) findViewById(R.id.calorieBtn);
         Button profileBtn = (Button) findViewById(R.id.profileBtn);
         Button cardioBtn = (Button) findViewById(R.id.cardioBtn);
-        Button muscleBtn = (Button) findViewById(R.id.muscleBtn);
+        Button weightTrainingBtn = (Button) findViewById(R.id.weightTrainingBtn);
     }
 
     public void homeOnClick(View view) {
@@ -64,7 +64,7 @@ public class Homepage extends AppCompatActivity {
                 startActivity(profileIntent);
                 break;
             case R.id.cardioBtn:
-                Intent cardioIntent = new Intent(Homepage.this, Cardio.class);
+                Intent cardioIntent = new Intent(Homepage.this, CardioTraining.class);
                 startActivity(cardioIntent);
                 break;
             case R.id.weightTrainingBtn:

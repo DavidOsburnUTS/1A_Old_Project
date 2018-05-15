@@ -33,7 +33,9 @@
         <activity
             android:name=".CalorieCalc"
             android:exported="true" />
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".Profile" />
+        <activity android:name=".CardioTraining" />
+        <activity android:name=".WeightTraining"></activity>
     </application>
 
 </manifest>
