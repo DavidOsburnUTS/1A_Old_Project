@@ -58,6 +58,14 @@ public class Homepage extends AppCompatActivity {
                 Intent profileIntent = new Intent(Homepage.this, Profile.class);
                 startActivity(profileIntent);
                 break;
+            case R.id.cardioBtn:
+                Intent cardioIntent = new Intent(Homepage.this, Cardio.class);
+                startActivity(cardioIntent);
+                break;
+            case R.id.muscleBtn:
+                Intent muscleIntent = new Intent(Homepage.this, Muscle.class);
+                startActivity(muscleIntent);
+                break;
         }
     }
 }
