@@ -22,6 +22,7 @@
                 android:text="Age: " />
 
             <EditText
+                android:id="@+id/ageEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -38,16 +39,19 @@
                 android:layout_gravity="center_vertical"/>
 
             <RadioGroup
+                android:id="@+id/genderRadioBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/maleBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male" />
 
                 <RadioButton
+                    android:id="@+id/femaleBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female" />
@@ -60,7 +64,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Height(cm): "/>
+
             <EditText
+                android:id="@+id/heightEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
@@ -73,7 +79,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Weight(kg): "/>
+
             <EditText
+                android:id="@+id/weightEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
@@ -94,6 +102,11 @@
             </Spinner>
         </TableRow>
 
+
+        <TableRow>
+            <TextView
+                android:id="@+id/calcResultTv"/>
+        </TableRow>
     </TableLayout>
 
     <Button
@@ -104,5 +117,4 @@
         android:layout_marginVertical="30dp"
         android:text="Calculate"
         android:layout_below="@id/calorie_table_layout"/>
-
 </RelativeLayout>

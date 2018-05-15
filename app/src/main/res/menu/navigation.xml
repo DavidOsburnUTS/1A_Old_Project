@@ -8,8 +8,13 @@
 
     <item
         android:id="@+id/navigation_dashboard"
+<<<<<<< HEAD
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_run" />
+=======
+        android:icon="@drawable/start_run_24dp"
+        android:title="@string/title_start_run"/>
+>>>>>>> 032486d734e0af653bdf4447a36c77c0cc21f020
 
     <item
         android:id="@+id/navigation_notifications"
