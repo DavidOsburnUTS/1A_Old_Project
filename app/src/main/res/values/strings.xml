@@ -18,11 +18,8 @@
     <string name="error_password_match">Password does not match</string>
     <string name="title_activity_homepage">Homepage</string>
     <string name="title_home">Home</string>
-<<<<<<< HEAD
-=======
     <string name="title_start_run">Start Run</string>
     <string name="title_notifications">Notifications</string>
->>>>>>> 032486d734e0af653bdf4447a36c77c0cc21f020
     <string name="welcomeTxt">Welcome!</string>
     <string name="calorieBtn">CALORIE\nCOUNT</string>
     <string name="cardioBtn">CARDIO\nTRAINING</string>
