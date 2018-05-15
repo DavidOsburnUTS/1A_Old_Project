@@ -20,7 +20,7 @@
             android:textAllCaps="true"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:padding="20dp"
+            android:padding="10dp"
             tools:text="Welcome back Andre!" />
 
         <LinearLayout
@@ -72,7 +72,7 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/carlorieBtn"
+            android:id="@+id/calorieBtn"
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:layout_weight="0.5"
@@ -80,7 +80,7 @@
             android:layout_margin="3dp"
             android:fontFamily="sans-serif-condensed"
             android:onClick="homeOnClick"
-            android:text="@string/profileBtn"
+            android:text="@string/calorieBtn"
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
             android:textStyle="bold" />
