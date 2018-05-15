@@ -20,9 +20,11 @@
                 android:text="Age: " />
 
             <EditText
+                android:id="@+id/ageEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter age" />
+                android:hint="Enter age"
+                android:inputType="number" />
         </TableRow>
 
         <TableRow>
@@ -34,16 +36,19 @@
                 android:layout_gravity="center_vertical"/>
 
             <RadioGroup
+                android:id="@+id/genderRadioBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/maleBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male" />
 
                 <RadioButton
+                    android:id="@+id/femaleBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Female" />
@@ -55,10 +60,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Height(cm): "/>
+
             <EditText
+                android:id="@+id/heightEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter height"/>
+                android:hint="Enter height"
+                android:inputType="number" />
         </TableRow>
 
         <TableRow>
@@ -66,10 +74,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Weight(kg): "/>
+
             <EditText
+                android:id="@+id/weightEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter weight"/>
+                android:hint="Enter weight"
+                android:inputType="number" />
         </TableRow>
         <TableRow>
             <TextView
@@ -91,7 +102,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Calculate"/>
+        <TableRow>
+            <TextView
+                android:id="@+id/calcResultTv"/>
+        </TableRow>
 
     </TableLayout>
+
 
 </RelativeLayout>
