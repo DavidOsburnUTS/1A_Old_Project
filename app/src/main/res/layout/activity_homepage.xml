@@ -20,13 +20,14 @@
         app:menu="@menu/navigation" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/weightTrainingBtn"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_marginBottom="40dp"
         android:layout_marginEnd="16dp"
         android:background="@color/colorAccent"
         android:fontFamily="sans-serif-condensed"
+        android:onClick="homeOnClick"
         android:text="@string/weightBtn"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
@@ -35,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/cardioBtn"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_marginBottom="40dp"
@@ -50,7 +51,8 @@
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="homeOnClick"/>
 
     <Button
         android:id="@+id/calorieBtn"
@@ -68,10 +70,11 @@
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:onClick="homeOnClick"/>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/profileBtn"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_marginEnd="8dp"
@@ -86,7 +89,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:onClick="homeOnClick"/>
 
     <TextView
         android:id="@+id/textView3"

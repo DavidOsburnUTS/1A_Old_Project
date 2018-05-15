@@ -22,6 +22,7 @@ public class Login extends AppCompatActivity {
 
         Button login_btn = (Button) findViewById(R.id.login_btn);
         Button forgot_password_btn = (Button) findViewById(R.id.forgot_password_btn);
+
 //===============================================================================================
 // DEMO
 // Attempt to launch the register activity within the app
@@ -52,7 +53,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void validate(String userEmail, String userPassword) {
-        if((userEmail.equals("admin@uts.edu.au")) && (userPassword.equals("123"))) {
+        if((userEmail.equals("")) && (userPassword.equals(""))) {
             Intent startIntent = new Intent(Login.this, Homepage.class);
             startActivity(startIntent);
         }

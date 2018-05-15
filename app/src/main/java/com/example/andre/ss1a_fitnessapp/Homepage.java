@@ -13,9 +13,11 @@ import android.widget.TextView;
 public class Homepage extends AppCompatActivity {
 
     //random comment
+    // david can you see this?
 
     private TextView mTextMessage;
 
+    //Bottom Navigation View
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -26,7 +28,9 @@ public class Homepage extends AppCompatActivity {
                     mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    mTextMessage.setText(R.string.title_start_run);
+                    Intent startRunIntent = new Intent(Homepage.this, StartRunActivity.class);
+                    startActivity(startRunIntent);
                     return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
@@ -46,14 +50,29 @@ public class Homepage extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Button calorieBtn = (Button) findViewById(R.id.calorieBtn);
-        calorieBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent startIntent = new Intent(Homepage.this, CalorieCalc.class);
-                startActivity(startIntent);
-            }
-        });
-
+        Button profileBtn = (Button) findViewById(R.id.profileBtn);
+        Button cardioBtn = (Button) findViewById(R.id.cardioBtn);
+        Button weightTrainingBtn = (Button) findViewById(R.id.weightTrainingBtn);
     }
 
+    public void homeOnClick(View view) {
+        switch(view.getId()) {
+            case R.id.calorieBtn:
+                Intent calorieIntent = new Intent(Homepage.this, CalorieCalc.class);
+                startActivity(calorieIntent);
+                break;
+            case R.id.profileBtn:
+                Intent profileIntent = new Intent(Homepage.this, Profile.class);
+                startActivity(profileIntent);
+                break;
+            case R.id.cardioBtn:
+                Intent cardioIntent = new Intent(Homepage.this, CardioTraining.class);
+                startActivity(cardioIntent);
+                break;
+            case R.id.weightTrainingBtn:
+                Intent weightTrainingIntent = new Intent(Homepage.this, WeightTraining.class);
+                startActivity(weightTrainingIntent);
+                break;
+        }
+    }
 }
