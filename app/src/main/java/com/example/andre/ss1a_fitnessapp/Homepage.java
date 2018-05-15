@@ -67,7 +67,7 @@ public class Homepage extends AppCompatActivity {
                 Intent cardioIntent = new Intent(Homepage.this, Cardio.class);
                 startActivity(cardioIntent);
                 break;
-            case R.id.muscleBtn:
+            case R.id.weightTrainingBtn:
                 Intent weightTrainingIntent = new Intent(Homepage.this, WeightTraining.class);
                 startActivity(weightTrainingIntent);
                 break;
