@@ -31,11 +31,21 @@ public class Login extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(Login.this, Register.class);
-                startActivity(startIntent);
+                Intent RegisterIntent = new Intent(Login.this, Register.class);
+                startActivity(RegisterIntent);
             }
         });
 // ===============================================================================================
+
+        Button forgotPasswrodBtn = (Button) findViewById(R.id.forgot_password_btn);
+
+        forgot_password_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ForgotPasswordIntent = new Intent(Login.this, ForgotPasswordActivity.class);
+                startActivity(ForgotPasswordIntent);
+            }
+        });
 
 // Testing login
         email = (EditText) findViewById(R.id.emailEditText);

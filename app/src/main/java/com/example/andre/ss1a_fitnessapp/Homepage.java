@@ -25,18 +25,17 @@ public class Homepage extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
+                    //mTextMessage.setText(R.string.title_home);
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_start_run);
-                    Intent startRunIntent = new Intent(Homepage.this, StartRunActivity.class);
-                    startActivity(startRunIntent);
-                    return true;
+                    //mTextMessage.setText(R.string.title_start_run);
+                    //Intent startRunIntent = new Intent(Homepage.this, Run.class);
+                    //startActivity(startRunIntent);
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
+                    //mTextMessage.setText(R.string.title_settings);
+                    //Intent startSettingsInt nt = new Intent(Homepage.this, Settings.class);
+                    //startActivity(startSettingsIntent);
             }
-            return false;
+            return true;
         }
     };
 

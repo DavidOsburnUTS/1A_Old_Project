@@ -36,7 +36,9 @@
         <activity android:name=".Profile" />
         <activity android:name=".CardioTraining" />
         <activity android:name=".WeightTraining" />
-        <activity android:name=".StartRunActivity"></activity>
+        <activity android:name=".Run" />
+        <activity android:name=".Settings" />
+        <activity android:name=".ForgotPasswordActivity"></activity>
     </application>
 
 </manifest>

@@ -39,7 +39,6 @@
         android:layout_height="46dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
         android:background="@color/colorPrimary"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/btn_login"
@@ -47,9 +46,11 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultTv" />
+        app:layout_constraintTop_toBottomOf="@+id/resultTv"
+
+        />
 
     <Button
         android:id="@+id/forgot_password_btn"
@@ -57,7 +58,7 @@
         android:layout_height="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:background="@android:color/transparent"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/btn_forgot_password"
@@ -146,15 +147,19 @@
         android:id="@+id/registerBtn"
         android:layout_width="222dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/btn_new_account"
         android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgot_password_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/forgot_password_btn"
+        app:layout_constraintVertical_bias="0.024" />
 
     <ImageView
         android:id="@+id/imageView2"
