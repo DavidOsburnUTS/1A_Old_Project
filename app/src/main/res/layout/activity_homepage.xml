@@ -80,7 +80,7 @@
             android:background="@color/colorAccent"
             android:fontFamily="sans-serif-condensed"
             android:onClick="homeOnClick"
-            android:text="@string/calorieBtn"
+            android:text="@string/title_calorieBtn"
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
             android:textStyle="bold" />
