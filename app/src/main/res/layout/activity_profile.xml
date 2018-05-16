@@ -6,68 +6,109 @@
     android:layout_height="match_parent"
     tools:context=".Profile">
 
+    <RelativeLayout
+        android:id="@+id/profile_header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView3"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="Andre Pagala"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"/>
+
+    </RelativeLayout>
+
     <TableLayout
-        android:id="@+id/calorie_table_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/profile_header_layout"
+        android:layout_margin="20dp">
 
         <TableRow
-            android:layout_marginVertical="10dp">
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name: " />
+                android:text="Age: "
+                android:textSize="25sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Full Name"/>
+                android:text="20"
+                android:textSize="25sp"/>
+
         </TableRow>
 
         <TableRow
-            android:layout_marginVertical="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Height(cm): "/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="100"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_marginVertical="10dp">
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gender: "
-                android:layout_gravity="center_vertical"/>
+                android:textSize="25sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Male"
-                android:layout_gravity="center_vertical"/>
+                android:textSize="25sp"/>
 
         </TableRow>
 
         <TableRow
-            android:layout_marginVertical="10dp">
+            android:layout_marginTop="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weight(kg): "/>
+                android:text="Height: "
+                android:textSize="25sp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TESTING"/>
+                android:text="180 cm"
+                android:textSize="25sp"/>
+
         </TableRow>
+
+        <TableRow
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight: "
+                android:textSize="25sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20000 kg"
+                android:textSize="25sp"/>
+
+        </TableRow>
+
 
     </TableLayout>
 
