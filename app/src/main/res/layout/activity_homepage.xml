@@ -72,12 +72,12 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/carlorieBtn"
+            android:id="@+id/calorieBtn"
             android:layout_width="145dp"
             android:layout_height="145dp"
+            android:layout_margin="3dp"
             android:layout_weight="0.5"
             android:background="@color/colorAccent"
-            android:layout_margin="3dp"
             android:fontFamily="sans-serif-condensed"
             android:onClick="homeOnClick"
             android:text="@string/calorieBtn"
