@@ -26,7 +26,9 @@ public class Homepage extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     //mTextMessage.setText(R.string.title_home);
-                case R.id.navigation_dashboard:
+                case R.id.navigation_run:
+                    Intent runIntent = new Intent(Homepage.this, Run.class);
+                    startActivity(runIntent);
                     //mTextMessage.setText(R.string.title_start_run);
                     //Intent startRunIntent = new Intent(Homepage.this, Run.class);
                     //startActivity(startRunIntent);
