@@ -63,7 +63,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
         if(!password.equals(check)){
-            editText4.setError("Passwords dont match");
+            editText4.setError("Passwords don't match");
             editText4.requestFocus();
             return;
         }
