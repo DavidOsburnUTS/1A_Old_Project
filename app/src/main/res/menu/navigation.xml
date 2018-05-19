@@ -8,11 +8,7 @@
         android:title="@string/title_home" />
 
     <item
-<<<<<<< HEAD
         android:id="@+id/navigation_start_run"
-=======
-        android:id="@+id/navigation_run"
->>>>>>> 74626ba8b672f988e6550a9e0ada7992f318f06e
         android:icon="@drawable/start_run_24dp"
         android:title="@string/title_start_run" />
     <item

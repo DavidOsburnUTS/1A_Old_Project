@@ -31,10 +31,7 @@
         android:textColor="@android:color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-<<<<<<< HEAD
         app:layout_constraintStart_toStartOf="parent" />'
-=======
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/login_btn"

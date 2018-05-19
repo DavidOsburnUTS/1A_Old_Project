@@ -29,11 +29,9 @@ public class Settings extends AppCompatActivity {
                     Intent startHomepageIntent = new Intent(Settings.this, Homepage.class);
                     startActivity(startHomepageIntent);
                     return true;
-<<<<<<< HEAD
                 case R.id.navigation_start_run:
-=======
-                case R.id.navigation_run:
->>>>>>> 74626ba8b672f988e6550a9e0ada7992f318f06e
+                    return true;
+                case R.id.navigation_settings:
                     mTextMessage.setText(R.string.title_start_run);
                     Intent runIntent = new Intent(Settings.this, Run.class);
                     startActivity(runIntent);

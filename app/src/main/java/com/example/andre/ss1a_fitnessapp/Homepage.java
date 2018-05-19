@@ -20,8 +20,6 @@ public class Homepage extends AppCompatActivity {
 
     private TextView mTextMessage;
 
-
-<<<<<<< HEAD
     //private HomeFragment homeFragment;
     //private StartRunFragment startRunFragment;
     //private SettingsFragment settingsFragment;
