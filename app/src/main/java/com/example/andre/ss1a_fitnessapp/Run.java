@@ -30,7 +30,7 @@ public class Run extends AppCompatActivity {
                     Intent startHomepageIntent = new Intent(Run.this, Homepage.class);
                     startActivity(startHomepageIntent);
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.navigation_settings:
                     mTextMessage.setText(R.string.title_settings);
                     Intent startSettingsIntent = new Intent(Run.this, Settings.class);
                     startActivity(startSettingsIntent);

@@ -40,6 +40,8 @@
     <string name="activitylevel_prompt">Choose activity level</string>
     <string name="reset_password_btn">Reset Password</string>
     <string name="reset_password_Tv">Forgot your password? Enter a valid email address to reset</string>
+    <string name="back">BACK</string>
+    <string name="next">NEXT</string>
     <string-array name="activitylevel_arrays">
         <item>Sedentary (Little to no exercise)</item>
         <item>Light (1&#8211;3 days of exercise)</item>

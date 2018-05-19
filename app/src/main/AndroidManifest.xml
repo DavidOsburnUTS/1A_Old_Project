@@ -38,7 +38,8 @@
         <activity android:name=".WeightTraining" />
         <activity android:name=".Run" />
         <activity android:name=".Settings" />
-        <activity android:name=".ForgotPasswordActivity"></activity>
+        <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".GettingStartedActivity"></activity>
     </application>
 
 </manifest>

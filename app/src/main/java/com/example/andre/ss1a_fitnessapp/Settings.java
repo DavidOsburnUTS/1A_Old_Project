@@ -29,7 +29,7 @@ public class Settings extends AppCompatActivity {
                     Intent startHomepageIntent = new Intent(Settings.this, Homepage.class);
                     startActivity(startHomepageIntent);
                     return true;
-                case R.id.navigation_dashboard:
+                case R.id.navigation_start_run:
                     mTextMessage.setText(R.string.title_start_run);
                     Intent startRunIntent = new Intent(Settings.this, Run.class);
                     startActivity(startRunIntent);

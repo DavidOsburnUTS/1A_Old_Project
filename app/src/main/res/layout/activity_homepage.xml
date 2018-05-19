@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="10dp"
     tools:context="com.example.andre.ss1a_fitnessapp.Homepage"
     tools:layout_editor_absoluteY="81dp">
 
@@ -29,6 +28,9 @@
             android:layout_centerHorizontal="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:weightSum="1"
             android:orientation="horizontal" >
 
@@ -64,12 +66,15 @@
 
     <LinearLayout
         android:id="@+id/second_row_layout"
-        android:layout_below="@id/first_row_layout"
-        android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:orientation="horizontal" >
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@id/first_row_layout"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
         <Button
             android:id="@+id/calorieBtn"
@@ -89,8 +94,8 @@
             android:id="@+id/profileBtn"
             android:layout_width="145dp"
             android:layout_height="145dp"
-            android:layout_weight="0.5"
             android:layout_margin="3dp"
+            android:layout_weight="0.5"
             android:background="@color/colorAccent"
             android:fontFamily="sans-serif-condensed"
             android:onClick="homeOnClick"
@@ -106,17 +111,27 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/navigation"
+        android:layout_above="@id/mainNav"
         android:text="Progressbar placeholder"
         android:layout_marginBottom="10dp"/>
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+        android:id="@+id/mainNav"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/navigation"
-        android:layout_alignParentBottom="true"
         tools:layout_editor_absoluteY="546dp" />
+
+    <FrameLayout
+        android:id="@+id/main_frame"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/second_row_layout">
+
+    </FrameLayout>
 
 </RelativeLayout>
