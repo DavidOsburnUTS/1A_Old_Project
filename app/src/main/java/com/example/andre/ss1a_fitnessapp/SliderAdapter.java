@@ -39,7 +39,7 @@ public class SliderAdapter extends PagerAdapter{
             "Thank you for downloading 1UP Fitness App.\n\n" +
                     "This short guide will help you how to use our user friendly fitness app",
             "By selecting Weight or Cardio on the homepage, you can browse through our wide array of exercise videos.",
-            "Our calorie calculator can you help you gain the dream weight you always wanted.\n\n" +
+            "Our calorie calculator can you help you achieve the dream weight you always wanted.\n\n" +
                     "We can show you the amount calorie you need daily.",
             "Edit your profile so friends can see you.\n\n" +
                     "You can show off your fitness goals and achievement with friends."
