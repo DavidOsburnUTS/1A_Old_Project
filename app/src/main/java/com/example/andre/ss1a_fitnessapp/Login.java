@@ -2,26 +2,44 @@ package com.example.andre.ss1a_fitnessapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class Login extends AppCompatActivity {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
-    private EditText email;
-    private EditText password;
+import java.nio.channels.Channels;
+
+public class Login extends AppCompatActivity implements View.OnClickListener {
+
+    FirebaseAuth mAuth;
+
+    private EditText emailEditText;
+    private EditText passwordEditText;
     private TextView result;
     private Button login;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button login_btn = (Button) findViewById(R.id.login_btn);
-        Button forgot_password_btn = (Button) findViewById(R.id.forgot_password_btn);
+        emailEditText = (EditText) findViewById(R.id.emailEditText);
+        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
+
+        mAuth = FirebaseAuth.getInstance();
+
+         findViewById(R.id.login_btn).setOnClickListener(this);
+         findViewById(R.id.forgot_password_btn).setOnClickListener(this);
 
 //===============================================================================================
 // DEMO
@@ -39,36 +57,60 @@ public class Login extends AppCompatActivity {
 
         Button forgotPasswrodBtn = (Button) findViewById(R.id.forgot_password_btn);
 
-        forgot_password_btn.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.forgot_password_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent ForgotPasswordIntent = new Intent(Login.this, ForgotPasswordActivity.class);
                 startActivity(ForgotPasswordIntent);
             }
         });
-
-// Testing login
-        email = (EditText) findViewById(R.id.emailEditText);
-        password = (EditText) findViewById(R.id.passwordEditText);
-        result = (TextView) findViewById(R.id.resultTv);
-        login = (Button) findViewById(R.id.login_btn);
-
-        login_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validate(email.getText().toString(), password.getText().toString());
-            }
-        });
-
     }
 
-    private void validate(String userEmail, String userPassword) {
-        if((userEmail.equals("")) && (userPassword.equals(""))) {
-            Intent startIntent = new Intent(Login.this, GettingStartedActivity.class);
-            startActivity(startIntent);
+    private void userLogin(){
+        String email = emailEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+
+        if(email.isEmpty()){
+            emailEditText.setError("Email is required");
+            emailEditText.requestFocus();
+            return;
         }
-        else {
-            result.setText("Email and/or password is invalid");
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){   // THIS METHOD CHECKS IF ITS A REAL EMAIL
+            emailEditText.setError("Please enter a valid enail");
+            emailEditText.requestFocus();
+            return;
+        }
+        if(password.isEmpty()){
+            passwordEditText.setError("Password is required");
+            passwordEditText.requestFocus();
+            return;
+        }
+        if(password.length()< 6){
+            passwordEditText.setError("Minimum characters for a password is 6");
+            passwordEditText.requestFocus();
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Intent intent = new Intent(Login.this, Homepage.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.login_btn:
+                userLogin();
+                break;
         }
     }
 }
