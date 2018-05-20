@@ -24,8 +24,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private EditText emailEditText;
     private EditText passwordEditText;
-    private TextView result;
-    private Button login;
+    //private TextView result;
+    //private Button login;
 
 
     @Override
@@ -39,10 +39,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         mAuth = FirebaseAuth.getInstance();
 
          findViewById(R.id.login_btn).setOnClickListener(this);
-         findViewById(R.id.forgot_password_btn).setOnClickListener(this);
+         findViewById(R.id.loginForgotPasswordBtn).setOnClickListener(this);
 
-//===============================================================================================
-// DEMO
+//=================================================================================================
 // Attempt to launch the register activity within the app
         Button registerBtn = (Button) findViewById(R.id.registerBtn);
 
@@ -53,11 +52,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 startActivity(RegisterIntent);
             }
         });
-// ===============================================================================================
+//=================================================================================================
 
-        Button forgotPasswrodBtn = (Button) findViewById(R.id.forgot_password_btn);
+        Button forgetPasswordBtn = (Button) findViewById(R.id.loginForgotPasswordBtn);
 
-        findViewById(R.id.forgot_password_btn).setOnClickListener(new View.OnClickListener() {
+        forgetPasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent ForgotPasswordIntent = new Intent(Login.this, ForgotPasswordActivity.class);
@@ -65,7 +64,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
         });
     }
-
+//=================================================================================================
+// If user is registered, user can login to the app using appropriate text
     private void userLogin(){
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
@@ -95,7 +95,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent intent = new Intent(Login.this, Homepage.class);
+                    Intent intent = new Intent(Login.this, GettingStartedActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }else{

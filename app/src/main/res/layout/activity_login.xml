@@ -108,7 +108,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/forgot_password_btn"
+            android:id="@+id/loginForgotPasswordBtn"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:background="@android:color/transparent"
