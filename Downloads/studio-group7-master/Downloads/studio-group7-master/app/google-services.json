@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "196590444808",
+    "firebase_url": "https://upfitnessapp.firebaseio.com",
+    "project_id": "upfitnessapp",
+    "storage_bucket": "upfitnessapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196590444808:android:ab71cb549e902c62",
+        "android_client_info": {
+          "package_name": "com.example.andre.ss1a_fitnessapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196590444808-vtj7fkj48h8vt0bn3l3ahrh1d0kapoq2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

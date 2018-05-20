@@ -33,6 +33,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.button).setOnClickListener(this);
+        findViewById(R.id.button6).setOnClickListener(this);
 
     }
 
@@ -73,11 +74,13 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(getApplicationContext(),"You've Successfully Registered", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Register.this, Login.class));
                 }
             }
         });
 
     }
+
 
     @Override
     public void onClick(View view) {
@@ -86,6 +89,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 registerUser();
                 break;
             case R.id.button6:
-                startActivity(new Intent(this, Login.class)); }
+                startActivity(new Intent(this, Login.class));
+        }
+
     }
 }

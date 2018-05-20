@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LoginRegister2.iml" filepath="$PROJECT_DIR$/.idea/modules/LoginRegister2.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/SS1A_FitnessApp.iml" filepath="$PROJECT_DIR$/SS1A_FitnessApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/studio-group7-master.iml" filepath="$PROJECT_DIR$/studio-group7-master.iml" />
+>>>>>>> 07412061903bd643fa5ff1fc83df9f557c02968a
+    </modules>
+  </component>
+</project>
