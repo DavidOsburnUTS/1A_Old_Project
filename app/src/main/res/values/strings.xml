@@ -39,7 +39,7 @@
     <string name="title_run">Run</string>
     <string name="activitylevel_prompt">Choose activity level</string>
     <string name="reset_password_btn">Reset Password</string>
-    <string name="reset_password_Tv">Forgot your password? Enter a valid email address to reset</string>
+    <string name="reset_password_Tv">Forgot your password?\nEnter a valid email address to reset</string>
     <string name="back">BACK</string>
     <string name="next">NEXT</string>
     <string-array name="activitylevel_arrays">

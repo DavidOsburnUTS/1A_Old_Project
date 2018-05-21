@@ -50,7 +50,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){   // THIS METHOD CHECKS IF ITS A REAL EMAIL
-            editText2.setError("Please enter a valid enail");
+            editText2.setError("Please enter a valid email");
             editText2.requestFocus();
             return;
         }
@@ -70,7 +70,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(email,password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
