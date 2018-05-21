@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -195,28 +196,6 @@ public class TrackRun extends FragmentActivity
         }
         updateLocationUI();
     }
-
-    //Bottom Navigation View
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    Intent startHomepageIntent = new Intent(TrackRun.this, Homepage.class);
-                    startActivity(startHomepageIntent);
-                    return true;
-                case R.id.navigation_settings:
-                    mTextMessage.setText(R.string.title_settings);
-                    Intent startSettingsIntent = new Intent(TrackRun.this, Settings.class);
-                    startActivity(startSettingsIntent);
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
