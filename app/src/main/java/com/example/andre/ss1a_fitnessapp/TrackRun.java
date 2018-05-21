@@ -1,19 +1,18 @@
 package com.example.andre.ss1a_fitnessapp;
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
+import android.app.Fragment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
+import android.view.ViewGroup;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -33,12 +32,11 @@ import com.google.android.gms.tasks.Task;
 import java.text.BreakIterator;
 
 public class TrackRun extends FragmentActivity
-        implements OnMapReadyCallback, LocationListener,
+        implements OnMapReadyCallback, LocationListener, View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
-    private TextView mTextMessage;
 
     private boolean running;
     private boolean mLocationPermission;
@@ -54,7 +52,7 @@ public class TrackRun extends FragmentActivity
     private static final String TAG = TrackRun.class.getSimpleName();
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
-
+/*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +70,49 @@ public class TrackRun extends FragmentActivity
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
     }
+*/
 
+    public TrackRun() {
+        // Required empty public constructor
+    }
+
+    //@Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.activity_track_run, container, false);
+
+        view.findViewById(R.id.trackRunPauseBtn).setOnClickListener(this);
+        view.findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
+        view.findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
+
+        if(savedInstanceState != null) {
+            mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
+            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
+        }
+
+        setContentView(R.layout.activity_track_run);
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.trackRunPauseBtn:
+                break;
+            case R.id.trackRunStartBtn:
+                break;
+            case R.id.trackRunStopBtn:
+                break;
+        }
+    }
     /**
      * Saves the state of the map when the activity is paused.
      */

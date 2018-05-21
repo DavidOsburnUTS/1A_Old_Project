@@ -3,6 +3,7 @@ package com.example.andre.ss1a_fitnessapp;
 import android.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -16,6 +17,7 @@ public class HomepageActivity extends AppCompatActivity {
     private FrameLayout mMainFrame;
 
     private HomeFragment homeFragment;
+    //private TrackRun trackRun;
     private RunFragment runFragment;
     private SettingsFragment settingsFragment;
 
@@ -28,6 +30,7 @@ public class HomepageActivity extends AppCompatActivity {
         mMainNav = (BottomNavigationView) findViewById(R.id.main_nav);
 
         homeFragment = new HomeFragment();
+        //trackRun = new TrackRun();
         runFragment = new RunFragment();
         settingsFragment = new SettingsFragment();
 
@@ -43,6 +46,7 @@ public class HomepageActivity extends AppCompatActivity {
                         return true;
                     case R.id.navigation_start_run:
                         mMainNav.setItemBackgroundResource(R.color.colorGray);
+                        //setFragment(trackRun);
                         setFragment(runFragment);
                         return true;
                     case R.id.navigation_settings:

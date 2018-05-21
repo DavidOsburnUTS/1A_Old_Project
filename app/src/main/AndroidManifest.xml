@@ -43,10 +43,8 @@
         <activity android:name=".Run" />
         <activity android:name=".Settings" />
         <activity android:name=".ForgotPasswordActivity" />
-<<<<<<< HEAD
         <activity android:name=".GettingStartedActivity" />
         <activity android:name=".Home"></activity>
-=======
         <activity android:name=".GettingStartedActivity"></activity>
         <activity android:name=".TrackRun"
             android:exported="true"/>
@@ -55,7 +53,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
->>>>>>> 4fcaa0a74c65d3153e7b8d318b2826956dc2dc63
     </application>
 
 </manifest>
