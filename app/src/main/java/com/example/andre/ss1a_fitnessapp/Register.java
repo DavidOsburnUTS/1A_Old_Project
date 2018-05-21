@@ -13,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
 
@@ -75,6 +76,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 if(task.isSuccessful()){
                     Toast.makeText(getApplicationContext(),"You've Successfully Registered", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Register.this, Login.class));
+                }else{
+                    if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                    Toast.makeText(getApplicationContext(), "You've already registered mate", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
