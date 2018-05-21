@@ -23,6 +23,15 @@ public class WeightTraining extends YouTubeBaseActivity implements YouTubePlayer
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weight_training);
 
+        final Spinner activity = findViewById(R.id.bodyPart_spinner);
+
+        final String[] bodyPart = new String[]{
+                "Chest", "Back", "Biceps", "Triceps", "Legs"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, bodyPart);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        activity.setAdapter(adapter);
 
         /** Initializing YouTube Player View **/
         YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);
