@@ -6,38 +6,38 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
-public class Settings extends AppCompatActivity {
+import com.google.firebase.auth.FirebaseAuth;
 
-    private TextView mTextMessage;
+public class Settings extends AppCompatActivity implements View.OnClickListener {
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-    }
-    //Bottom Navigation View
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    Intent startHomepageIntent = new Intent(Settings.this, Homepage.class);
-                    startActivity(startHomepageIntent);
-                    return true;
-                case R.id.navigation_start_run:
-                    return true;
-                case R.id.navigation_settings:
-                    mTextMessage.setText(R.string.title_start_run);
-                    Intent runIntent = new Intent(Settings.this, Run.class);
-                    startActivity(runIntent);
-                    return true;
-            }
-            return false;
+        findViewById(R.id.logoutSettingFragmentBtn).setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
+
+    }
+
+    public void logoutUser() {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(this, Login.class));
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.logoutSettingFragmentBtn:
+                logoutUser();
+                break;
         }
-    };
+
+    }
 }
