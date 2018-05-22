@@ -1,7 +1,6 @@
 package com.example.andre.ss1a_fitnessapp;
 
 import android.content.Intent;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,7 +49,7 @@ public class GettingStartedActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (mCurrentPage == 3) {
-                    Intent startIntent = new Intent(GettingStartedActivity.this, Homepage.class);
+                    Intent startIntent = new Intent(GettingStartedActivity.this, HomepageActivity.class);
                     startActivity(startIntent);
                 }
 

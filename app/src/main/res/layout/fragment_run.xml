@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Settings">
+    tools:context=".RunFragment">
 
     <Button
-        android:id="@+id/logoutSettingFragmentBtn"
+        android:id="@+id/startRunFragmentBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="LOGOUT"
+        android:text="START RUN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="165dp" />

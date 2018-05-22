@@ -7,15 +7,16 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.view.View;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -31,14 +32,11 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-import java.text.BreakIterator;
-
-public class TrackRun extends FragmentActivity
-        implements OnMapReadyCallback, LocationListener,
+public class TrackRunActivity extends FragmentActivity
+        implements OnMapReadyCallback, LocationListener, View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
@@ -90,13 +88,46 @@ public class TrackRun extends FragmentActivity
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
     private static final int DEFAULT_ZOOM = 15;
-    private static final String TAG = TrackRun.class.getSimpleName();
+    private static final String TAG = TrackRunActivity.class.getSimpleName();
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
-
+///*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_track_run);
+
+        findViewById(R.id.trackRunPauseBtn).setOnClickListener(this);
+        findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
+        findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
+
+        if(savedInstanceState != null) {
+            mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
+            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
+        }
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+    }
+//*/
+/*
+    public TrackRunActivity() {
+        // Required empty public constructor
+    }
+
+    //@Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.activity_track_run, container, false);
+
+        view.findViewById(R.id.trackRunPauseBtn).setOnClickListener(this);
+        view.findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
+        view.findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
 
         startBtn = findViewById(R.id.startBtn);
         pauseBtn = findViewById(R.id.pauseBtn);
@@ -121,9 +152,21 @@ public class TrackRun extends FragmentActivity
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         mSettingsClient = LocationServices.getSettingsClient(this);
 
-
+        return view;
     }
+    */
 
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.trackRunPauseBtn:
+                break;
+            case R.id.trackRunStartBtn:
+                break;
+            case R.id.trackRunStopBtn:
+                break;
+        }
+    }
     /**
      * Saves the state of the map when the activity is paused.
      */
@@ -271,12 +314,12 @@ public class TrackRun extends FragmentActivity
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     mTextMessage.setText(R.string.title_home);
-                    Intent startHomepageIntent = new Intent(TrackRun.this, Homepage.class);
+                    Intent startHomepageIntent = new Intent(TrackRunActivity.this, HomepageActivity.class);
                     startActivity(startHomepageIntent);
                     return true;
                 case R.id.navigation_settings:
                     mTextMessage.setText(R.string.title_settings);
-                    Intent startSettingsIntent = new Intent(TrackRun.this, Settings.class);
+                    Intent startSettingsIntent = new Intent(TrackRunActivity.this, Settings.class);
                     startActivity(startSettingsIntent);
                     return true;
             }
