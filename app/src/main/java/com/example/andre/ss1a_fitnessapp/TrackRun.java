@@ -12,13 +12,19 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -37,15 +43,49 @@ public class TrackRun extends FragmentActivity
         GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
+    private Button startBtn;
+    private Button pauseBtn;
+    private Button stopBtn;
     private TextView mTextMessage;
 
     private boolean running;
     private boolean mLocationPermission;
+    private Boolean mRequestingLocationUpdates;
 
     private CameraPosition mCameraPosition;
     private Location mLastKnownLocation;
-
+    private Location mCurrentLocation;
+    private String mLastUpdateTime;
     private FusedLocationProviderClient mFusedLocationProviderClient;
+
+    //The desired interval for location updates. Inexact. Updates may be more or less frequent.
+    private static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
+
+    /**
+     * The fastest rate for active location updates. Exact. Updates will never be more frequent
+     * than this value.
+     */
+    private static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
+            UPDATE_INTERVAL_IN_MILLISECONDS / 2;
+
+    //Provides access to the Location Settings API.
+    private SettingsClient mSettingsClient;
+
+    //Stores parameters for requests to the FusedLocationProviderApi.
+    private LocationRequest mLocationRequest;
+
+    /**
+     * Stores the types of location services the client is interested in using. Used for checking
+     * settings to determine if the device has optimal location settings.
+     */
+    private LocationSettingsRequest mLocationSettingsRequest;
+
+    //Callback for Location events.
+    private LocationCallback mLocationCallback;
+
+    // Keys for storing activity state in the Bundle.
+    private final static String KEY_REQUESTING_LOCATION_UPDATES = "requesting-location-updates";
+    private final static String KEY_LAST_UPDATED_TIME_STRING = "last-updated-time-string";
 
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
@@ -58,6 +98,13 @@ public class TrackRun extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        startBtn = findViewById(R.id.startBtn);
+        pauseBtn = findViewById(R.id.pauseBtn);
+        stopBtn = findViewById(R.id.stopBtn);
+
+        mRequestingLocationUpdates = false;
+        mLastUpdateTime = "";
+
         if(savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
             mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
@@ -69,7 +116,12 @@ public class TrackRun extends FragmentActivity
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+
+      //  updateValuesFromBundle(savedInstanceState);
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        mSettingsClient = LocationServices.getSettingsClient(this);
+
+
     }
 
     /**
@@ -195,6 +247,20 @@ public class TrackRun extends FragmentActivity
         }
         updateLocationUI();
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        if (mRequestingLocationUpdates) {
+//            startLocationUpdates();
+//        }
+//    }
+
+//    private void startLocationUpdates() {
+//        mFusedLocationClient.requestLocationUpdates(mLocationRequest,
+//                mLocationCallback,
+//                null /* Looper */);
+//    }
 
     //Bottom Navigation View
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
