@@ -1,5 +1,6 @@
 package com.example.andre.ss1a_fitnessapp;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -17,12 +18,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.view.View;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.SettingsClient;
@@ -49,6 +52,8 @@ public class TrackRunActivity extends FragmentActivity
     private boolean running;
     private boolean mLocationPermission;
     private Boolean mRequestingLocationUpdates;
+    private LocationRequest mLocationRequest;
+    private LocationCallback mLocationCallback;
 
     private CameraPosition mCameraPosition;
     private Location mLastKnownLocation;
@@ -56,42 +61,14 @@ public class TrackRunActivity extends FragmentActivity
     private String mLastUpdateTime;
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
-    //The desired interval for location updates. Inexact. Updates may be more or less frequent.
-    private static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
-
-    /**
-     * The fastest rate for active location updates. Exact. Updates will never be more frequent
-     * than this value.
-     */
-    private static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
-            UPDATE_INTERVAL_IN_MILLISECONDS / 2;
-
-    //Provides access to the Location Settings API.
-    private SettingsClient mSettingsClient;
-
-    //Stores parameters for requests to the FusedLocationProviderApi.
-    private LocationRequest mLocationRequest;
-
-    /**
-     * Stores the types of location services the client is interested in using. Used for checking
-     * settings to determine if the device has optimal location settings.
-     */
-    private LocationSettingsRequest mLocationSettingsRequest;
-
-    //Callback for Location events.
-    private LocationCallback mLocationCallback;
-
-    // Keys for storing activity state in the Bundle.
-    private final static String KEY_REQUESTING_LOCATION_UPDATES = "requesting-location-updates";
-    private final static String KEY_LAST_UPDATED_TIME_STRING = "last-updated-time-string";
-
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
-    private static final int DEFAULT_ZOOM = 15;
+    private static final int DEFAULT_ZOOM = 17;
     private static final String TAG = TrackRunActivity.class.getSimpleName();
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
-///*
+
+    ///*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,7 +78,7 @@ public class TrackRunActivity extends FragmentActivity
         findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
 
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
             mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
@@ -112,61 +89,38 @@ public class TrackRunActivity extends FragmentActivity
         mapFragment.getMapAsync(this);
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        mLocationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                if (locationResult == null) {
+                    return;
+                }
+                for (Location location : locationResult.getLocations()) {
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                            new LatLng(location.getLatitude(),
+                                    location.getLongitude()), DEFAULT_ZOOM));
+                }
+            }
+
+            ;
+        };
+
     }
-//*/
-/*
-    public TrackRunActivity() {
-        // Required empty public constructor
-    }
-
-    //@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_track_run, container, false);
-
-        view.findViewById(R.id.trackRunPauseBtn).setOnClickListener(this);
-        view.findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
-        view.findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
-
-        startBtn = findViewById(R.id.startBtn);
-        pauseBtn = findViewById(R.id.pauseBtn);
-        stopBtn = findViewById(R.id.stopBtn);
-
-        mRequestingLocationUpdates = false;
-        mLastUpdateTime = "";
-
-        if(savedInstanceState != null) {
-            mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
-        }
-
-        setContentView(R.layout.activity_track_run);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-
-
-      //  updateValuesFromBundle(savedInstanceState);
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        mSettingsClient = LocationServices.getSettingsClient(this);
-
-        return view;
-    }
-    */
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.trackRunPauseBtn:
                 break;
             case R.id.trackRunStartBtn:
+                startLocationUpdates();
                 break;
             case R.id.trackRunStopBtn:
                 break;
         }
     }
+
     /**
      * Saves the state of the map when the activity is paused.
      */
@@ -217,6 +171,7 @@ public class TrackRunActivity extends FragmentActivity
                         if (task.isSuccessful()) {
                             // Set the map's camera position to the current location of the device.
                             mLastKnownLocation = task.getResult();
+                            mCurrentLocation = mLastKnownLocation;
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(mLastKnownLocation.getLatitude(),
                                             mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
@@ -230,7 +185,7 @@ public class TrackRunActivity extends FragmentActivity
                     }
                 });
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
@@ -249,7 +204,7 @@ public class TrackRunActivity extends FragmentActivity
                 mLastKnownLocation = null;
                 getLocationPermission();
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
@@ -271,6 +226,7 @@ public class TrackRunActivity extends FragmentActivity
         }
     }
 
+
     /**
      * Handles the result of the request for location permissions.
      */
@@ -291,19 +247,22 @@ public class TrackRunActivity extends FragmentActivity
         updateLocationUI();
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        if (mRequestingLocationUpdates) {
-//            startLocationUpdates();
-//        }
-//    }
-
-//    private void startLocationUpdates() {
-//        mFusedLocationClient.requestLocationUpdates(mLocationRequest,
-//                mLocationCallback,
-//                null /* Looper */);
-//    }
+    private void startLocationUpdates() {
+        createLocationRequest();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mFusedLocationProviderClient.requestLocationUpdates(mLocationRequest,
+                mLocationCallback,
+                null /* Looper */);
+    }
 
     //Bottom Navigation View
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -341,6 +300,13 @@ public class TrackRunActivity extends FragmentActivity
 
     @Override
     public void onLocationChanged(Location location) {
+    }
+
+    private void createLocationRequest() {
+        mLocationRequest = new LocationRequest();
+        mLocationRequest.setInterval(10000);
+        mLocationRequest.setFastestInterval(5000);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 }
 
