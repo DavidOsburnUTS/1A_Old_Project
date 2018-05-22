@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -43,13 +43,16 @@
         <activity android:name=".Settings" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".GettingStartedActivity" />
-        <activity android:name=".Home"/>
-        <activity android:name=".TrackRunActivity"
-            android:exported="true"/>
+        <activity android:name=".Home" />
+        <activity
+            android:name=".TrackRunActivity"
+            android:exported="true" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity android:name=".Progress"></activity>
     </application>
 
 </manifest>
