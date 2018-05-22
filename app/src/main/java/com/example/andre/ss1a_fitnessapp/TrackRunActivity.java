@@ -1,7 +1,9 @@
 package com.example.andre.ss1a_fitnessapp;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,12 +19,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.view.View;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.SettingsClient;
@@ -32,23 +36,34 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import java.util.ArrayList;
 
 public class TrackRunActivity extends FragmentActivity
         implements OnMapReadyCallback, LocationListener, View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
+        GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnPolylineClickListener,
+        GoogleMap.OnPolygonClickListener {
 
     private GoogleMap mMap;
     private Button startBtn;
     private Button pauseBtn;
     private Button stopBtn;
     private TextView mTextMessage;
-
+    private ArrayList<LatLng> routePoints;
+    Polyline line; //added
+    private boolean isDraw;
     private boolean running;
     private boolean mLocationPermission;
-    private Boolean mRequestingLocationUpdates;
+    private boolean mRequestingLocationUpdates;
+    private LocationRequest mLocationRequest;
+    private LocationCallback mLocationCallback;
 
     private CameraPosition mCameraPosition;
     private Location mLastKnownLocation;
@@ -58,21 +73,22 @@ public class TrackRunActivity extends FragmentActivity
 
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
-    private static final int DEFAULT_ZOOM = 15;
+    private static final int DEFAULT_ZOOM = 18;
     private static final String TAG = TrackRunActivity.class.getSimpleName();
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
-    ///*
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track_run);
 
+        routePoints = new ArrayList<LatLng>();
         findViewById(R.id.trackRunPauseBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
 
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
             mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
@@ -84,19 +100,41 @@ public class TrackRunActivity extends FragmentActivity
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
+        mLocationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                if (locationResult == null) {
+                    return;
+                }
+                for (Location location : locationResult.getLocations()) {
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                            new LatLng(location.getLatitude(),
+                                    location.getLongitude()), DEFAULT_ZOOM));
+                    onLocationChanged(location);
+                }
+            }
+
+        };
+
     }
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.trackRunPauseBtn:
+                isDraw = false;
+                stopLocationUpdates();
                 break;
             case R.id.trackRunStartBtn:
+                isDraw = true;
+                startLocationUpdates();
                 break;
             case R.id.trackRunStopBtn:
+                isDraw = false;
                 break;
         }
     }
+
     /**
      * Saves the state of the map when the activity is paused.
      */
@@ -147,6 +185,7 @@ public class TrackRunActivity extends FragmentActivity
                         if (task.isSuccessful()) {
                             // Set the map's camera position to the current location of the device.
                             mLastKnownLocation = task.getResult();
+                            mCurrentLocation = mLastKnownLocation;
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(mLastKnownLocation.getLatitude(),
                                             mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
@@ -160,7 +199,7 @@ public class TrackRunActivity extends FragmentActivity
                     }
                 });
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
@@ -179,14 +218,14 @@ public class TrackRunActivity extends FragmentActivity
                 mLastKnownLocation = null;
                 getLocationPermission();
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
 
     private void getLocationPermission() {
         /*
-         * Request location permission, so that we can get the location of the
+         * Request location permission, so that we can get the location of th
          * device. The result of the permission request is handled by a callback,
          * onRequestPermissionsResult.
          */
@@ -221,41 +260,28 @@ public class TrackRunActivity extends FragmentActivity
         updateLocationUI();
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        if (mRequestingLocationUpdates) {
-//            startLocationUpdates();
-//        }
-//    }
-
-//    private void startLocationUpdates() {
-//        mFusedLocationClient.requestLocationUpdates(mLocationRequest,
-//                mLocationCallback,
-//                null /* Looper */);
-//    }
-
-    //Bottom Navigation View
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    Intent startHomepageIntent = new Intent(TrackRunActivity.this, HomepageActivity.class);
-                    startActivity(startHomepageIntent);
-                    return true;
-                case R.id.navigation_settings:
-                    mTextMessage.setText(R.string.title_settings);
-                    Intent startSettingsIntent = new Intent(TrackRunActivity.this, Settings.class);
-                    startActivity(startSettingsIntent);
-                    return true;
-            }
-            return false;
+    private void startLocationUpdates() {
+        createLocationRequest();
+        //drop marker with coordinate
+        //current location = coordinate;
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
         }
-    };
+        mFusedLocationProviderClient.requestLocationUpdates(mLocationRequest,
+                mLocationCallback,
+                null /* Looper */);
+    }
+
+    private void stopLocationUpdates() {
+        mFusedLocationProviderClient.removeLocationUpdates(mLocationCallback);
+    }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
@@ -271,5 +297,45 @@ public class TrackRunActivity extends FragmentActivity
 
     @Override
     public void onLocationChanged(Location location) {
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+        LatLng latLng = new LatLng(latitude, longitude); //you already have this
+
+        routePoints.add(latLng); //added
+
+        redrawLine();
+    }
+
+    private void redrawLine(){
+
+        mMap.clear();  //clears all Markers and Polylines
+        if(isDraw) {
+            PolylineOptions options = new PolylineOptions().width(10).color(Color.BLUE).geodesic(true);
+            for (int i = 0; i < routePoints.size(); i++) {
+                LatLng point = routePoints.get(i);
+                options.add(point);
+            }
+            line = mMap.addPolyline(options); //add Polyline
+        }
+
+        mMap.addMarker(new MarkerOptions().position(routePoints.get(0))); //add Marker in current position
+
+    }
+
+    private void createLocationRequest() {
+        mLocationRequest = new LocationRequest();
+        mLocationRequest.setInterval(5000);
+        mLocationRequest.setFastestInterval(2500);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+    }
+
+    @Override
+    public void onPolygonClick(Polygon polygon) {
+
+    }
+
+    @Override
+    public void onPolylineClick(Polyline polyline) {
+
     }
 }

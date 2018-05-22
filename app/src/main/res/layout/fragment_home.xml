@@ -95,13 +95,32 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/progressBar"
-        android:layout_width="250dp"
+    <LinearLayout
+        android:id="@+id/progresslayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="85dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="93dp"
-        android:text="Progressbar placeholder" />
+        android:orientation="vertical"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/progressBar"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:text="Progress"
+            android:textSize="17sp"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+
+    </LinearLayout>
 
 </RelativeLayout>
