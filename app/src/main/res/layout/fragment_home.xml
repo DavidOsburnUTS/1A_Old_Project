@@ -16,8 +16,7 @@
         android:text="@string/welcomeTxt"
         android:textAllCaps="true"
         android:textSize="30sp"
-        android:textStyle="bold"
-        tools:text="Welcome back Andre!" />
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/first_row_layout"
@@ -94,14 +93,5 @@
             android:textStyle="bold" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/progressBar"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="93dp"
-        android:text="Progressbar placeholder" />
 
 </RelativeLayout>

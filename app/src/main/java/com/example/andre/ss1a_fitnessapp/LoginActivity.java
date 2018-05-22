@@ -8,7 +8,6 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,9 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.nio.channels.Channels;
-
-public class Login extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     FirebaseAuth mAuth;
 
@@ -48,7 +45,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent RegisterIntent = new Intent(Login.this, Register.class);
+                Intent RegisterIntent = new Intent(LoginActivity.this, Register.class);
                 startActivity(RegisterIntent);
             }
         });
@@ -59,7 +56,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         forgetPasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ForgotPasswordIntent = new Intent(Login.this, ForgotPasswordActivity.class);
+                Intent ForgotPasswordIntent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
                 startActivity(ForgotPasswordIntent);
             }
         });
@@ -76,7 +73,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             return;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){   // THIS METHOD CHECKS IF ITS A REAL EMAIL
-            emailEditText.setError("Please enter a valid enail");
+            emailEditText.setError("Please enter a valid email");
             emailEditText.requestFocus();
             return;
         }
@@ -95,7 +92,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent intent = new Intent(Login.this, GettingStartedActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, GettingStartedActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }else{

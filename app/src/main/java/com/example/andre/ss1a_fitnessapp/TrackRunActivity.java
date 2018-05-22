@@ -305,28 +305,6 @@ public class TrackRunActivity extends FragmentActivity
 //                null /* Looper */);
 //    }
 
-    //Bottom Navigation View
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    Intent startHomepageIntent = new Intent(TrackRunActivity.this, HomepageActivity.class);
-                    startActivity(startHomepageIntent);
-                    return true;
-                case R.id.navigation_settings:
-                    mTextMessage.setText(R.string.title_settings);
-                    Intent startSettingsIntent = new Intent(TrackRunActivity.this, Settings.class);
-                    startActivity(startSettingsIntent);
-                    return true;
-            }
-            return false;
-        }
-    };
-
     @Override
     public void onConnected(@Nullable Bundle bundle) {
     }

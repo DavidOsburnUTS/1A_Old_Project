@@ -6,14 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".SettingsFragment">
 
-    <Button
-        android:id="@+id/logoutSettingFragmentBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="LOGOUT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="165dp" />
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logoutSettingFragmentBtn"
+            android:layout_centerHorizontal="true"
+            android:text="EDIT PROFILE" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button3"
+            android:layout_centerHorizontal="true"
+            android:text="MY BUDDY" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button2"
+            android:layout_centerHorizontal="true"
+            android:text="VIEW FRIENDS" />
+
+        <Button
+            android:id="@+id/logoutSettingFragmentBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="LOGOUT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="165dp" />
+    </LinearLayout>
 </RelativeLayout>

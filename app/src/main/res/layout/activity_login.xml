@@ -4,45 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.andre.ss1a_fitnessapp.Login">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="432dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/oneup_logo" />
-    </FrameLayout>
+    tools:context="com.example.andre.ss1a_fitnessapp.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="417dp"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:gravity="center"
         android:orientation="vertical">
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/oneup_logo" />
+        </FrameLayout>
+
         <LinearLayout
             android:id="@+id/linearLayout_login_details"
             android:layout_width="match_parent"
             android:layout_height="124dp"
-            android:layout_marginTop="24dp"
             android:backgroundTint="@color/colorPrimary"
             android:gravity="center"
             android:orientation="vertical"
@@ -125,7 +120,8 @@
             android:layout_margin="10dp"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/btn_new_account"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/g7_logoIv"

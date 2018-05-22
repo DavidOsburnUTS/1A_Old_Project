@@ -13,7 +13,7 @@ import com.google.android.youtube.player.YouTubePlayer.PlayerStateChangeListener
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-public class WeightTraining extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
+public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
     public static final String API_KEY = "AIzaSyCs3huB6L9Qymep9aZ9po5JryI5bm4Ty9A";
     public static final String VIDEO_ID = "PlJ6K2fVUi0";

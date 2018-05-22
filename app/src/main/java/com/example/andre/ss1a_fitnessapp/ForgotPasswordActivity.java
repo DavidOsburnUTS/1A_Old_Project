@@ -53,7 +53,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(),"You've successfully reset your password", Toast.LENGTH_SHORT).show();
-                            //startActivity(new Intent(ForgotPasswordActivity.this, Login.class));
+                            //startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
                         }
                     }
                 });

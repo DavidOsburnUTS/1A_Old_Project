@@ -11,7 +11,7 @@ import com.google.android.youtube.player.YouTubePlayer.PlayerStateChangeListener
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 
-public class CardioTraining extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
+public class CardioTrainingActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
     public static final String API_KEY = "AIzaSyCs3huB6L9Qymep9aZ9po5JryI5bm4Ty9A";
     public static final String VIDEO_ID = "qWy_aOlB45Y";

@@ -38,7 +38,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     public void logoutUser() {
         FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getActivity(), Login.class));
+        startActivity(new Intent(getActivity(), LoginActivity.class));
     }
 
     @Override

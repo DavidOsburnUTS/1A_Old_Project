@@ -4,57 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalorieCalculatorActivity">
+    tools:context=".EditProfileActivity">
 
     <RelativeLayout
-        android:id="@+id/headbar_calorie_counter"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_alignParentTop="true"
         android:background="@color/colorAccent">
 
         <Button
-            android:id="@+id/calorieCalcBackBtn"
+            android:id="@+id/editProfileExitBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
-            android:text="BACK" />
+            android:text="EXIT" />
+
+        <Button
+            android:id="@+id/editProfileDoneBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:text="DONE" />
 
         <TextView
-            android:id="@+id/title_heading_calorie_calc"
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="CALCORIE COUNTER"
+            android:text="EDIT PROFILE"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/calorie_calc_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/headbar_calorie_counter"
-        android:background="@drawable/calorie_title"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/calcResultTv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:textSize="24sp" />
-
     </RelativeLayout>
 
     <TableLayout
         android:id="@+id/calorie_table_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/calorie_calc_relative_layout"
         android:layout_centerInParent="true">
 
         <TableRow android:layout_marginVertical="10dp">
@@ -151,18 +139,10 @@
                 android:text="Activity Level: " />
 
             <Spinner
-                android:id="@+id/activity_level_spinner"
+                android:id="@+id/activitylevel_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
     </TableLayout>
-
-    <Button
-        android:id="@+id/calculateBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="54dp"
-        android:layout_below="@+id/calorie_table_layout"
-        android:layout_centerHorizontal="true"
-        android:text="Calculate" />
 
 </RelativeLayout>

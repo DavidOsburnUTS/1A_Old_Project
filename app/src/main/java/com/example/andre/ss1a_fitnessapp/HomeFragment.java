@@ -44,19 +44,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener
     public void onClick(View view) {
         switch(view.getId()) {
             case R.id.calorieBtn:
-                Intent calorieIntent = new Intent(getActivity(), CalorieCalc.class);
+                Intent calorieIntent = new Intent(getActivity(), CalorieCalculatorActivity.class);
                 startActivity(calorieIntent);
                 break;
             case R.id.profileBtn:
-                Intent profileIntent = new Intent(getActivity(), Profile.class);
+                Intent profileIntent = new Intent(getActivity(), ProfileActivity.class);
                 startActivity(profileIntent);
                 break;
             case R.id.cardioBtn:
-                Intent cardioIntent = new Intent(getActivity(), CardioTraining.class);
+                Intent cardioIntent = new Intent(getActivity(), CardioTrainingActivity.class);
                 startActivity(cardioIntent);
                 break;
             case R.id.weightTrainingBtn:
-                Intent weightTrainingIntent = new Intent(getActivity(), WeightTraining.class);
+                Intent weightTrainingIntent = new Intent(getActivity(), WeightTrainingActivity.class);
                 startActivity(weightTrainingIntent);
                 break;
         }
