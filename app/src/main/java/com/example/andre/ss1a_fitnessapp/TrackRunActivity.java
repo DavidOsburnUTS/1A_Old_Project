@@ -211,7 +211,7 @@ public class TrackRunActivity extends FragmentActivity
 
     private void getLocationPermission() {
         /*
-         * Request location permission, so that we can get the location of the
+         * Request location permission, so that we can get the location of th
          * device. The result of the permission request is handled by a callback,
          * onRequestPermissionsResult.
          */
