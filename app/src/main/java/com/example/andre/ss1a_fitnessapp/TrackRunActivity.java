@@ -4,15 +4,13 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.app.Fragment;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -25,13 +23,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-import java.text.BreakIterator;
-
-public class TrackRun extends FragmentActivity
+public class TrackRunActivity extends FragmentActivity
         implements OnMapReadyCallback, LocationListener, View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
@@ -49,20 +44,24 @@ public class TrackRun extends FragmentActivity
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
     private static final int DEFAULT_ZOOM = 15;
-    private static final String TAG = TrackRun.class.getSimpleName();
+    private static final String TAG = TrackRunActivity.class.getSimpleName();
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
-/*
+///*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_track_run);
+
+        findViewById(R.id.trackRunPauseBtn).setOnClickListener(this);
+        findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
+        findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
 
         if(savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
             mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
 
-        setContentView(R.layout.activity_track_run);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -70,9 +69,9 @@ public class TrackRun extends FragmentActivity
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
     }
-*/
-
-    public TrackRun() {
+//*/
+/*
+    public TrackRunActivity() {
         // Required empty public constructor
     }
 
@@ -101,6 +100,7 @@ public class TrackRun extends FragmentActivity
 
         return view;
     }
+    */
 
     @Override
     public void onClick(View view) {

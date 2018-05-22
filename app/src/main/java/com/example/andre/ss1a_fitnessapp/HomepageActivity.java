@@ -1,6 +1,7 @@
 package com.example.andre.ss1a_fitnessapp;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentActivity;
@@ -46,8 +47,9 @@ public class HomepageActivity extends AppCompatActivity {
                         return true;
                     case R.id.navigation_start_run:
                         mMainNav.setItemBackgroundResource(R.color.colorGray);
-                        //setFragment(trackRun);
                         setFragment(runFragment);
+                        //Intent startRunIntent = new Intent(this, TrackRun.class);
+                        //startActivity(startRunIntent);
                         return true;
                     case R.id.navigation_settings:
                         setFragment(settingsFragment);

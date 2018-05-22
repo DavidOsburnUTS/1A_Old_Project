@@ -40,13 +40,11 @@
         <activity android:name=".Profile" />
         <activity android:name=".CardioTraining" />
         <activity android:name=".WeightTraining" />
-        <activity android:name=".Run" />
         <activity android:name=".Settings" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".GettingStartedActivity" />
-        <activity android:name=".Home"></activity>
-        <activity android:name=".GettingStartedActivity"></activity>
-        <activity android:name=".TrackRun"
+        <activity android:name=".Home"/>
+        <activity android:name=".TrackRunActivity"
             android:exported="true"/>
 
         <meta-data

@@ -28,7 +28,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
+
         view.findViewById(R.id.logoutSettingFragmentBtn).setOnClickListener(this);
+
         mAuth = FirebaseAuth.getInstance();
         // Inflate the layout for this fragment
         return view;
