@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 
 /**
@@ -20,6 +21,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener
     private Button button2;
     private Button button3;
     private Button button4;
+    private ProgressBar progressBar;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -35,7 +37,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener
         view.findViewById(R.id.profileBtn).setOnClickListener(this);
         view.findViewById(R.id.cardioBtn).setOnClickListener(this);
         view.findViewById(R.id.weightTrainingBtn).setOnClickListener(this);
+        view.findViewById(R.id.progresslayout).setOnClickListener(this);
+        progressBar = view.findViewById(R.id.progressBar);
 
+        progressBar.setProgress(50);
         //return inflater.inflate(R.layout.fragment_home, container, false);
         return view;
     }
@@ -58,6 +63,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener
             case R.id.weightTrainingBtn:
                 Intent weightTrainingIntent = new Intent(getActivity(), WeightTrainingActivity.class);
                 startActivity(weightTrainingIntent);
+                break;
+            case R.id.progresslayout:
+                Intent progressIntent = new Intent(getActivity(), Progress.class);
+                startActivity(progressIntent);
                 break;
         }
     }

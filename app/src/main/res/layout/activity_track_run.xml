@@ -7,6 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".TrackRunActivity">
 
+    <TextView
+        android:id="@+id/distanceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/map"
+        android:layout_centerHorizontal="true"
+        android:text="Distance"
+        android:layout_marginBottom="20dp"
+        android:textSize="20sp"/>
+
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
