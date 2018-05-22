@@ -55,11 +55,11 @@ public class TrackRunActivity extends FragmentActivity
     private Button startBtn;
     private Button pauseBtn;
     private Button stopBtn;
-    private TextView mTextMessage;
+    private TextView distance;
     private ArrayList<LatLng> routePoints;
-    Polyline line; //added
+    Polyline line;
+
     private boolean isDraw;
-    private boolean running;
     private boolean mLocationPermission;
     private boolean mRequestingLocationUpdates;
     private LocationRequest mLocationRequest;
@@ -84,6 +84,7 @@ public class TrackRunActivity extends FragmentActivity
         setContentView(R.layout.activity_track_run);
 
         routePoints = new ArrayList<LatLng>();
+        distance = findViewById(R.id.distanceTv);
         findViewById(R.id.trackRunPauseBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
