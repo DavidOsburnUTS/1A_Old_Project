@@ -56,42 +56,13 @@ public class TrackRunActivity extends FragmentActivity
     private String mLastUpdateTime;
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
-    //The desired interval for location updates. Inexact. Updates may be more or less frequent.
-    private static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
-
-    /**
-     * The fastest rate for active location updates. Exact. Updates will never be more frequent
-     * than this value.
-     */
-    private static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
-            UPDATE_INTERVAL_IN_MILLISECONDS / 2;
-
-    //Provides access to the Location Settings API.
-    private SettingsClient mSettingsClient;
-
-    //Stores parameters for requests to the FusedLocationProviderApi.
-    private LocationRequest mLocationRequest;
-
-    /**
-     * Stores the types of location services the client is interested in using. Used for checking
-     * settings to determine if the device has optimal location settings.
-     */
-    private LocationSettingsRequest mLocationSettingsRequest;
-
-    //Callback for Location events.
-    private LocationCallback mLocationCallback;
-
-    // Keys for storing activity state in the Bundle.
-    private final static String KEY_REQUESTING_LOCATION_UPDATES = "requesting-location-updates";
-    private final static String KEY_LAST_UPDATED_TIME_STRING = "last-updated-time-string";
-
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
     private static final int DEFAULT_ZOOM = 15;
     private static final String TAG = TrackRunActivity.class.getSimpleName();
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
-///*
+    ///*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,49 +83,8 @@ public class TrackRunActivity extends FragmentActivity
         mapFragment.getMapAsync(this);
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
     }
-//*/
-/*
-    public TrackRunActivity() {
-        // Required empty public constructor
-    }
-
-    //@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_track_run, container, false);
-
-        view.findViewById(R.id.trackRunPauseBtn).setOnClickListener(this);
-        view.findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
-        view.findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
-
-        startBtn = findViewById(R.id.startBtn);
-        pauseBtn = findViewById(R.id.pauseBtn);
-        stopBtn = findViewById(R.id.stopBtn);
-
-        mRequestingLocationUpdates = false;
-        mLastUpdateTime = "";
-
-        if(savedInstanceState != null) {
-            mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
-        }
-
-        setContentView(R.layout.activity_track_run);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-
-
-      //  updateValuesFromBundle(savedInstanceState);
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        mSettingsClient = LocationServices.getSettingsClient(this);
-
-        return view;
-    }
-    */
 
     @Override
     public void onClick(View view) {
@@ -343,4 +273,3 @@ public class TrackRunActivity extends FragmentActivity
     public void onLocationChanged(Location location) {
     }
 }
-

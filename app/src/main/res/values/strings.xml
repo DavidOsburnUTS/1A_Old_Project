@@ -42,15 +42,13 @@
     <string name="reset_password_Tv">Forgot your password?\nEnter a valid email address to reset</string>
     <string name="back">BACK</string>
     <string name="next">NEXT</string>
-    <string-array name="activitylevel_arrays">
-        <item>Sedentary (Little to no exercise)</item>
-        <item>Light (1&#8211;3 days of exercise)</item>
-        <item>Moderate (3&#8211;5 days of exercise)</item>
-        <item>Very Active (6&#8211;7 days of exercise)</item>
-        <item>Extra Active (7 days/physically demanding job)</item>
-    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="permission_rationale">Location permission is needed for core functionality</string>
+    <string name="permission_denied_explanation">Permission was denied, but is needed for core
+        functionality.</string>
+    <string name="settings">Settings</string>
 
 </resources>
