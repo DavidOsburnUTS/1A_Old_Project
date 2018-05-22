@@ -55,8 +55,9 @@ public class TrackRunActivity extends FragmentActivity
     private Button startBtn;
     private Button pauseBtn;
     private Button stopBtn;
-    private TextView distance;
+    private TextView distanceTv;
     private ArrayList<LatLng> routePoints;
+    private float distance = 0;
     Polyline line;
 
     private boolean isDraw;
@@ -84,7 +85,7 @@ public class TrackRunActivity extends FragmentActivity
         setContentView(R.layout.activity_track_run);
 
         routePoints = new ArrayList<LatLng>();
-        distance = findViewById(R.id.distanceTv);
+        distanceTv = findViewById(R.id.distanceTv);
         findViewById(R.id.trackRunPauseBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
@@ -313,6 +314,24 @@ public class TrackRunActivity extends FragmentActivity
         if(isDraw) {
             PolylineOptions options = new PolylineOptions().width(15).color(Color.BLUE).geodesic(true);
             for (int i = 0; i < routePoints.size(); i++) {
+                if(i > 0) {
+                    LatLng prev = routePoints.get(i-1);
+                    LatLng curr = routePoints.get(i);
+
+                    Location prevLocation = new Location("prevLocation");
+                    prevLocation.setLatitude(prev.latitude);
+                    prevLocation.setLongitude(prev.longitude);
+
+                    Location currLocation = new Location("currLocation");
+                    currLocation.setLatitude(curr.latitude);
+                    currLocation.setLongitude(curr.longitude);
+
+                    float dis = prevLocation.distanceTo(currLocation);
+
+                    distance += dis;
+                    String s = String.valueOf(distance);
+                    distanceTv.setText(s);
+                }
                 LatLng point = routePoints.get(i);
                 options.add(point);
             }
@@ -325,18 +344,16 @@ public class TrackRunActivity extends FragmentActivity
 
     private void createLocationRequest() {
         mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(5000);
-        mLocationRequest.setFastestInterval(2500);
+        mLocationRequest.setInterval(6000);
+        mLocationRequest.setFastestInterval(3000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 
     @Override
     public void onPolygonClick(Polygon polygon) {
-
     }
 
     @Override
     public void onPolylineClick(Polyline polyline) {
-
     }
 }
