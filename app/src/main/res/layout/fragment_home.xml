@@ -94,8 +94,6 @@
 
     </LinearLayout>
 
-<<<<<<< HEAD
-=======
     <LinearLayout
         android:id="@+id/progresslayout"
         android:layout_width="wrap_content"
@@ -124,5 +122,4 @@
 
     </LinearLayout>
 
->>>>>>> 9b8f03cfd7071a54d6a5035b4576d55e9f60b773
 </RelativeLayout>

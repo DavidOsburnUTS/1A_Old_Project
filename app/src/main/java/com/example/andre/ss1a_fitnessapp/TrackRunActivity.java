@@ -262,7 +262,6 @@ public class TrackRunActivity extends FragmentActivity
         updateLocationUI();
     }
 
-<<<<<<< HEAD
 //    @Override
 //    protected void onResume() {
 //        super.onResume();
@@ -276,7 +275,6 @@ public class TrackRunActivity extends FragmentActivity
 //                mLocationCallback,
 //                null /* Looper */);
 //    }
-=======
     private void startLocationUpdates() {
         createLocationRequest();
         //drop marker with coordinate
@@ -299,7 +297,6 @@ public class TrackRunActivity extends FragmentActivity
     private void stopLocationUpdates() {
         mFusedLocationProviderClient.removeLocationUpdates(mLocationCallback);
     }
->>>>>>> 9b8f03cfd7071a54d6a5035b4576d55e9f60b773
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {

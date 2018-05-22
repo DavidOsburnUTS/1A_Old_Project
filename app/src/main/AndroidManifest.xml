@@ -42,10 +42,6 @@
         <activity android:name=".WeightTrainingActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".GettingStartedActivity" />
-<<<<<<< HEAD
-=======
-        <activity android:name=".Home" />
->>>>>>> 9b8f03cfd7071a54d6a5035b4576d55e9f60b773
         <activity
             android:name=".TrackRunActivity"
             android:exported="true" />
@@ -54,11 +50,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-<<<<<<< HEAD
         <activity android:name=".EditProfileActivity"></activity>
-=======
         <activity android:name=".Progress"></activity>
->>>>>>> 9b8f03cfd7071a54d6a5035b4576d55e9f60b773
     </application>
 
 </manifest>
