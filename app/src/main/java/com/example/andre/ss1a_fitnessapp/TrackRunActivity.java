@@ -133,6 +133,7 @@ public class TrackRunActivity extends FragmentActivity
                 runTimerCm.stop();
                 pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
                 stopLocationUpdates();
+                line.setColor(Color.GRAY);
                 break;
             case R.id.trackRunStartBtn:
                 isDraw = true;
@@ -142,6 +143,7 @@ public class TrackRunActivity extends FragmentActivity
                 break;
             case R.id.trackRunStopBtn:
                 isDraw = false;
+                line.setColor(Color.RED);
                 break;
         }
     }
@@ -334,7 +336,7 @@ public class TrackRunActivity extends FragmentActivity
 
         mMap.clear();  //clears all Markers and Polylines
         if(isDraw) {
-            PolylineOptions options = new PolylineOptions().width(15).color(Color.BLUE).geodesic(true);
+            PolylineOptions options = new PolylineOptions().width(15).color(Color.GREEN).geodesic(true);
             for (int i = 0; i < routePoints.size(); i++) {
                 if(i > 0) {
                     LatLng prev = routePoints.get(i-1);
