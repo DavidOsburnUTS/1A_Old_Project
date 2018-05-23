@@ -21,6 +21,8 @@ public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTu
 
     public static final String API_KEY = "AIzaSyCs3huB6L9Qymep9aZ9po5JryI5bm4Ty9A";
     public static String VIDEO_ID = "PlJ6K2fVUi0";
+    public YouTubePlayer mYoutubePlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +41,14 @@ public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTu
         activity.setAdapter(adapter);
 
         /** Initializing YouTube Player View **/
-        YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);
+        final YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);
         youTubePlayerView.initialize(API_KEY, this);
 
-        final int bodyPartID = activity.getSelectedItemPosition();
 
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int bodyPartID = activity.getSelectedItemPosition();
                 playVideo(bodyPartID);
 
             }
@@ -54,20 +56,32 @@ public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTu
 
     }
 
-    //Still working this part out sorry :/
     private void playVideo(int bodyPart){
             if (bodyPart == 0) {
                 VIDEO_ID = "PlJ6K2fVUi0";
+                mYoutubePlayer.loadVideo(VIDEO_ID);
 
 
             } else if (bodyPart == 1) {
                 VIDEO_ID = "lA7dbOmxs5I";
+                mYoutubePlayer.loadVideo(VIDEO_ID);
 
 
             } else if (bodyPart == 2) {
                 VIDEO_ID = "Zb-K7YAzAZM";
+                mYoutubePlayer.loadVideo(VIDEO_ID);
+
+            } else if (bodyPart == 3) {
+                VIDEO_ID = "cC-4ivDxb50";
+                mYoutubePlayer.loadVideo(VIDEO_ID);
 
             }
+            else if (bodyPart == 4) {
+                VIDEO_ID = "1b-rXCJbGTs";
+                mYoutubePlayer.loadVideo(VIDEO_ID);
+
+            }
+
     }
 
     @Override
@@ -83,8 +97,9 @@ public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTu
 
         /** Start buffering **/
         if (!wasRestored) {
-            player.cueVideo(VIDEO_ID);
+            player.loadVideo(VIDEO_ID);
         }
+        mYoutubePlayer = player;
     }
 
     private PlaybackEventListener playbackEventListener = new PlaybackEventListener() {
