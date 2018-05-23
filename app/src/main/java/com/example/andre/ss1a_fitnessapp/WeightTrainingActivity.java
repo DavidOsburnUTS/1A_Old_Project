@@ -1,7 +1,10 @@
 package com.example.andre.ss1a_fitnessapp;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -13,10 +16,11 @@ import com.google.android.youtube.player.YouTubePlayer.PlayerStateChangeListener
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+
 public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
     public static final String API_KEY = "AIzaSyCs3huB6L9Qymep9aZ9po5JryI5bm4Ty9A";
-    public static final String VIDEO_ID = "PlJ6K2fVUi0";
+    public static String VIDEO_ID = "PlJ6K2fVUi0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,7 @@ public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTu
         setContentView(R.layout.activity_weight_training);
 
         final Spinner activity = findViewById(R.id.bodyPart_spinner);
+        Button playButton = findViewById(R.id.playBtn);
 
         final String[] bodyPart = new String[]{
                 "Chest", "Back", "Biceps", "Triceps", "Legs"};
@@ -37,7 +42,32 @@ public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTu
         YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);
         youTubePlayerView.initialize(API_KEY, this);
 
+        final int bodyPartID = activity.getSelectedItemPosition();
 
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playVideo(bodyPartID);
+
+            }
+        });
+
+    }
+
+    //Still working this part out sorry :/
+    private void playVideo(int bodyPart){
+            if (bodyPart == 0) {
+                VIDEO_ID = "PlJ6K2fVUi0";
+
+
+            } else if (bodyPart == 1) {
+                VIDEO_ID = "lA7dbOmxs5I";
+
+
+            } else if (bodyPart == 2) {
+                VIDEO_ID = "Zb-K7YAzAZM";
+
+            }
     }
 
     @Override
