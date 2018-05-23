@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -17,6 +18,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
 import android.view.View;
 
@@ -59,6 +61,7 @@ public class TrackRunActivity extends FragmentActivity
     private ArrayList<LatLng> routePoints;
     private float distance = 0;
     Polyline line;
+    private Chronometer runTimerCm;
 
     private boolean isDraw;
     private boolean mLocationPermission;
@@ -78,6 +81,7 @@ public class TrackRunActivity extends FragmentActivity
     private static final String TAG = TrackRunActivity.class.getSimpleName();
     private final LatLng mDefaultLocation = new LatLng(-33.8523341, 151.2106085);
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private long pauseOffset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +93,7 @@ public class TrackRunActivity extends FragmentActivity
         findViewById(R.id.trackRunPauseBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
+        runTimerCm = (Chronometer)findViewById(R.id.run_timer);
 
         if (savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
@@ -125,10 +130,14 @@ public class TrackRunActivity extends FragmentActivity
         switch (view.getId()) {
             case R.id.trackRunPauseBtn:
                 isDraw = false;
+                runTimerCm.stop();
+                pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
                 stopLocationUpdates();
                 break;
             case R.id.trackRunStartBtn:
                 isDraw = true;
+                runTimerCm.setBase(SystemClock.elapsedRealtime() - pauseOffset);
+                runTimerCm.start();
                 startLocationUpdates();
                 break;
             case R.id.trackRunStopBtn:
@@ -342,8 +351,9 @@ public class TrackRunActivity extends FragmentActivity
                     float dis = prevLocation.distanceTo(currLocation);
 
                     distance += dis;
-                    String s = String.valueOf(distance);
-                    distanceTv.setText(s);
+                    float dist = distance/1000;
+                    String s = String.format("%.02f", dist);
+                    distanceTv.setText("Distance: " + s + " km");
                 }
                 LatLng point = routePoints.get(i);
                 options.add(point);
@@ -357,8 +367,8 @@ public class TrackRunActivity extends FragmentActivity
 
     private void createLocationRequest() {
         mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(6000);
-        mLocationRequest.setFastestInterval(3000);
+        mLocationRequest.setInterval(10000);
+        mLocationRequest.setFastestInterval(7000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 

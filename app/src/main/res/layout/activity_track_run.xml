@@ -8,6 +8,24 @@
     tools:context=".TrackRunActivity">
 
     <TextView
+        android:id="@+id/timeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Time: "
+        android:textSize="15sp"
+        android:layout_above="@id/run_timer"/>
+
+    <Chronometer
+        android:id="@+id/run_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textSize="20sp"
+        android:layout_above="@id/distanceTv"/>
+
+    <TextView
         android:id="@+id/distanceTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

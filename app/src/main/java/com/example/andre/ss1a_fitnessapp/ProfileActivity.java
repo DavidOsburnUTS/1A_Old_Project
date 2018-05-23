@@ -20,7 +20,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.profileBackBtn:
-                startActivity(new Intent(this, HomepageActivity.class));
+                finish();
                 break;
             case R.id.profileEditBtn:
                 startActivity(new Intent(this, EditProfileActivity.class));

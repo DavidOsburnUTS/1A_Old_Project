@@ -21,10 +21,10 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         switch(view.getId()){
             case R.id.editProfileDoneBtn:
                 //Add method with FireBase that grabs info from table and uses setMethod()
-                startActivity(new Intent(this, ProfileActivity.class));
+                finish();
                 break;
             case R.id.editProfileExitBtn:
-                startActivity(new Intent(this, ProfileActivity.class));
+                finish();
                 break;
         }
     }
