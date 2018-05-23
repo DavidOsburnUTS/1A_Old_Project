@@ -36,6 +36,7 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
         calcResult = findViewById(R.id.calcResultTv);
 
         Button calculateBtn = findViewById(R.id.calculateBtn);
+        Button backBtn = findViewById(R.id.calorieCalcBackBtn);
 
         final String[] Level = new String[]{
                 "Sedentary (Little to no exercise)", "Light (1-3 days)", "Moderate (3-5 days)",
@@ -71,6 +72,13 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
                     int goalId = goal.getSelectedItemPosition();
                     calculate(age, height, weight, gender, activityId, goalId);
                 }
+            }
+        });
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

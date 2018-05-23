@@ -49,6 +49,7 @@ public class GettingStartedActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (mCurrentPage == 3) {
+                    finish();
                     Intent startIntent = new Intent(GettingStartedActivity.this, HomepageActivity.class);
                     startActivity(startIntent);
                 }

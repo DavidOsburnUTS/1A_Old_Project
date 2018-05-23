@@ -31,6 +31,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
         mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.resetPasswordBtn).setOnClickListener(this);
+        findViewById(R.id.forgotPasswordExitBtn).setOnClickListener(this);
     }
 
     private void resetPassword() {
@@ -65,6 +66,8 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
             case R.id.resetPasswordBtn:
                 resetPassword();
                 break;
+            case R.id.forgotPasswordExitBtn:
+                finish();
         }
     }
 }
