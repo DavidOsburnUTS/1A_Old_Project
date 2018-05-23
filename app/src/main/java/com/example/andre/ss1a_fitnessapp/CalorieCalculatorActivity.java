@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.webkit.WebView;
 
 public class CalorieCalculatorActivity extends AppCompatActivity {
 
@@ -20,6 +22,7 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
     private EditText heightEt;
     private EditText weightEt;
     private TextView calcResult;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
 
         Button calculateBtn = findViewById(R.id.calculateBtn);
         Button backBtn = findViewById(R.id.calorieCalcBackBtn);
+
 
         final String[] Level = new String[]{
                 "Sedentary (Little to no exercise)", "Light (1-3 days)", "Moderate (3-5 days)",
