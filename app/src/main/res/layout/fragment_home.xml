@@ -14,6 +14,7 @@
         android:fontFamily="sans-serif-condensed"
         android:padding="25dp"
         android:text="@string/welcomeTxt"
+        android:textColor="#FFFFFF"
         android:textAllCaps="true"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -107,6 +108,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
             android:layout_above="@id/progressBar"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="5dp"

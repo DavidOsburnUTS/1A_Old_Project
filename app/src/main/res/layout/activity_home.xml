@@ -17,7 +17,7 @@
         android:textAllCaps="true"
         android:textSize="30sp"
         android:textStyle="bold"
-        tools:text="Welcome back Andre!" />
+        tools:text="Welcome back!" />
 
     <LinearLayout
         android:id="@+id/first_row_layout"
