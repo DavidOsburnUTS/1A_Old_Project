@@ -41,10 +41,12 @@
             android:layout_below="@+id/logoutSettingFragmentBtn"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="0dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:fontFamily="sans-serif-condensed"
             android:text="EDIT PROFILE"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/button4"
@@ -53,9 +55,12 @@
             android:layout_below="@+id/button3"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:fontFamily="sans-serif-condensed"
             android:text="MY BUDDY"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/button3"
@@ -64,9 +69,12 @@
             android:layout_below="@+id/button2"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:fontFamily="sans-serif-condensed"
             android:text="VIEW FRIENDS"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/logoutSettingFragmentBtn"
@@ -74,13 +82,16 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginBottom="0dp"
+            android:layout_marginLeft="10dp"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
             android:text="LOGOUT"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="165dp" />
+            tools:layout_editor_absoluteY="165dp"
+            android:layout_marginRight="10dp" />
 
     </LinearLayout>
 
@@ -90,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="59dp"
+        android:layout_marginBottom="64dp"
         android:gravity="center"
         android:text="@string/disclaimer" />
 
