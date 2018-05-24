@@ -92,6 +92,15 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
+        <CheckBox
+            android:id="@+id/rememberMe_checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="REMEMBER ME"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold" />
+
         <Button
             android:id="@+id/loginForgotPasswordBtn"
             android:layout_width="wrap_content"
