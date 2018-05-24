@@ -76,7 +76,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(getApplicationContext(),"You've Successfully Registered", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Register.this, LoginActivity.class));
+                    startActivity(new Intent(Register.this, GettingStartedActivity.class));
                 }else{
                     if(task.getException() instanceof FirebaseAuthUserCollisionException){
                     Toast.makeText(getApplicationContext(), "You've already registered mate", Toast.LENGTH_SHORT).show();

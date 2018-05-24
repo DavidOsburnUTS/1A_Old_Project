@@ -96,6 +96,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+
                     if(isFirstRun) {
 
                         getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
@@ -104,15 +105,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Intent intent = new Intent(LoginActivity.this, GettingStartedActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
-
-                        finish();
                     }
                     else {
                         Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                         startActivity(intent);
-                        finish();
                     }
-                    //finish();
                 }else{
                     Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                 }
