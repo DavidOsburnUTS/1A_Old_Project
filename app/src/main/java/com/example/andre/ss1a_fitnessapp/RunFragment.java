@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import java.util.TimerTask;
 
 
 /**
@@ -37,7 +38,10 @@ public class RunFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_run, container, false);
 
+        //Buttons
         view.findViewById(R.id.startRunFragmentBtn).setOnClickListener(this);
+
+        //ViewPager
         mSlideViewPager = (ViewPager) view.findViewById(R.id.slideViewPagerRun);
         mDotLayout = (LinearLayout) view.findViewById(R.id.dotRunLayout);
 
@@ -47,9 +51,37 @@ public class RunFragment extends Fragment implements View.OnClickListener {
 
         addDotsIndicator(0);
         mSlideViewPager.addOnPageChangeListener(viewListener);
+
+        java.util.Timer timer = new java.util.Timer();
+        timer.scheduleAtFixedRate(new MyTimerTask(), 2000,4000);
         return view;
 
     }
+
+
+    public class MyTimerTask extends TimerTask {
+
+        @Override
+        public void run() {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if(mSlideViewPager.getCurrentItem() == 0) {
+                        mSlideViewPager.setCurrentItem(1);
+                    }
+                    else if(mSlideViewPager.getCurrentItem() == 1) {
+                        mSlideViewPager.setCurrentItem(2);
+                    }
+                    else if(mSlideViewPager.getCurrentItem() == 2) {
+                        mSlideViewPager.setCurrentItem(3);
+                    }
+                    else if(mSlideViewPager.getCurrentItem() == 3) {
+                        mSlideViewPager.setCurrentItem(0);
+                    }
+                }
+            });
+         }
+     }
 
     @Override
     public void onClick(View view) {
@@ -82,7 +114,6 @@ public class RunFragment extends Fragment implements View.OnClickListener {
     ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
         }
         @Override
         public void onPageSelected(int position) {
@@ -92,4 +123,5 @@ public class RunFragment extends Fragment implements View.OnClickListener {
         public void onPageScrollStateChanged(int state) {
         }
     };
+
 }

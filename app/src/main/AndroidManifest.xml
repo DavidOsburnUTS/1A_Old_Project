@@ -20,12 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Register">
-        </activity>
+        <activity android:name=".Register"></activity>
         <activity
             android:name=".HomepageActivity"
-            android:label="@string/title_activity_homepage"
-            android:exported="true"/>
+            android:exported="true"
+            android:label="@string/title_activity_homepage" />
         <activity
             android:name=".SideTab"
             android:label="@string/title_activity_side_tab"
@@ -37,8 +36,8 @@
         <activity android:name=".CardioTrainingActivity" />
         <activity android:name=".WeightTrainingActivity" />
         <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".FoodRecommendationActivity"/>
-        <activity android:name=".FitnessBlenderActivity"/>
+        <activity android:name=".FoodRecommendationActivity" />
+        <activity android:name=".FitnessBlenderActivity" />
         <activity android:name=".GettingStartedActivity" />
         <activity
             android:name=".TrackRunActivity"
@@ -48,8 +47,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".EditProfileActivity"></activity>
-        <activity android:name=".Progress"></activity>
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".Progress" />
+        <activity android:name=".HomeSliderAdapter"></activity>
     </application>
 
 </manifest>

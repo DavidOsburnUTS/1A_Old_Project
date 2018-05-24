@@ -22,6 +22,7 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
     private EditText heightEt;
     private EditText weightEt;
     private TextView calcResult;
+    private TextView calcResultTxt;
 
 
     @Override
@@ -37,6 +38,7 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
         heightEt = findViewById(R.id.heightEditText);
         weightEt = findViewById(R.id.weightEditText);
         calcResult = findViewById(R.id.calcResultTv);
+        calcResultTxt = findViewById(R.id.calcResultTxtTv);
 
         Button calculateBtn = findViewById(R.id.calculateBtn);
         Button backBtn = findViewById(R.id.calorieCalcBackBtn);
@@ -127,11 +129,14 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
 
         if(result > 0) {
             if (goalId == 0) {
-                calcResult.setText(String.format("%.0f", result) + " calories/day to maintain weight");
+                calcResult.setText(String.format("%.0f", result));
+                calcResultTxt.setText(" calories/day to maintain weight");
             } else if (goalId == 1) {
-                calcResult.setText(String.format("%.0f", result - 500) + " calories/day to lose 0.5kg/week");
+                calcResult.setText(String.format("%.0f", result - 500));
+                calcResultTxt.setText( " calories/day to lose 0.5kg/week");
             } else if (goalId == 2) {
-                calcResult.setText(String.format("%.0f", result + 500) + " calories/day to gain 0.5kg/week");
+                calcResult.setText(String.format("%.0f", result + 500));
+                calcResultTxt.setText(" calories/day to gain 0.5kg/week");
             }
         } else {
             calcResult.setText("Invalid details");

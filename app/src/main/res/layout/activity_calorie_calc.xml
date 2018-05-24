@@ -37,10 +37,12 @@
 
     <RelativeLayout
         android:id="@+id/calorie_calc_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@+id/headbar_calorie_counter"
-        android:background="@drawable/calorie_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cookies"
         android:gravity="center">
 
         <TextView
@@ -50,7 +52,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-condensed"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -62,7 +64,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/calorie_calc_relative_layout"
         android:layout_centerInParent="true"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/login_border"
         android:gravity="center_vertical|center_horizontal|center"
         android:padding="20dp">
@@ -229,6 +234,18 @@
         android:layout_below="@+id/calculateBtn"
         android:layout_centerHorizontal="true"
         android:text="Food Recommendations" />
+
+    <TextView
+        android:id="@+id/calcResultTxtTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calorie_calc_relative_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/colorBlack" />
 
 
 </RelativeLayout>
