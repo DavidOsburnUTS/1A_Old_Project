@@ -14,11 +14,11 @@
 
         <Button
             android:id="@+id/editProfileExitBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
-            android:text="EXIT" />
+            android:background="?attr/actionModeCloseDrawable" />
 
         <Button
             android:id="@+id/editProfileDoneBtn"
@@ -41,11 +41,17 @@
 
     <TableLayout
         android:id="@+id/calorie_table_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="74dp"
+        android:background="@drawable/register_background"
+        android:gravity="center"
+        android:padding="20dp">
 
-        <TableRow android:layout_marginVertical="10dp">
+        <TableRow>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -56,11 +62,13 @@
                 android:id="@+id/ageEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
                 android:hint="Enter age"
                 android:inputType="number" />
         </TableRow>
 
-        <TableRow android:layout_marginVertical="10dp">
+        <TableRow>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -76,19 +84,22 @@
 
                 <RadioButton
                     android:id="@+id/maleBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="44dp"
+                    android:layout_weight="0.5"
+                    android:padding="10dp"
                     android:text="Male" />
 
                 <RadioButton
                     android:id="@+id/femaleBtn"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="44dp"
+                    android:layout_weight="0.5"
+                    android:padding="10dp"
                     android:text="Female" />
             </RadioGroup>
         </TableRow>
 
-        <TableRow android:layout_marginVertical="10dp">
+        <TableRow>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -97,13 +108,14 @@
 
             <EditText
                 android:id="@+id/heightEditText"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
                 android:hint="Enter height"
                 android:inputType="numberDecimal" />
         </TableRow>
 
-        <TableRow android:layout_marginVertical="10dp">
+        <TableRow>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -114,35 +126,12 @@
                 android:id="@+id/weightEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
                 android:hint="Enter weight"
                 android:inputType="numberDecimal" />
         </TableRow>
 
-        <TableRow android:layout_marginVertical="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Goal: " />
-
-            <Spinner
-                android:id="@+id/goal_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </TableRow>
-
-        <TableRow android:layout_marginVertical="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Activity Level: " />
-
-            <Spinner
-                android:id="@+id/activitylevel_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </TableRow>
     </TableLayout>
 
 </RelativeLayout>

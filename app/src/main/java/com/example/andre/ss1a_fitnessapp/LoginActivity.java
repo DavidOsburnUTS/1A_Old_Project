@@ -100,28 +100,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
-                    //finish();
-
                     if(isFirstRun) {
-                        Intent GettingStartedActivityIntent = new Intent(LoginActivity.this, GettingStartedActivity.class);
-                        GettingStartedActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(GettingStartedActivityIntent);
-
                         getSharedPreferences("PREF", MODE_PRIVATE).edit()
                                 .putBoolean("isFirstRun", false).commit();
 
-                        finish();
+                        Intent GettingStartedActivityIntent = new Intent(LoginActivity.this, GettingStartedActivity.class);
+                        GettingStartedActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(GettingStartedActivityIntent);
                     }
                     else {
                         Intent HomepageIntent = new Intent(LoginActivity.this, HomepageActivity.class);
                         startActivity(HomepageIntent);
                     }
-                }else{
+
+                } else {
                     Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
 
     @Override
     public void onClick(View view) {
