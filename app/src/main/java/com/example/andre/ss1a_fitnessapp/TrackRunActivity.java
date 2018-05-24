@@ -59,7 +59,6 @@ public class TrackRunActivity extends FragmentActivity
     private Button stopBtn;
     private TextView distanceTv;
     private ArrayList<LatLng> routePoints;
-    private float distance = 0;
     Polyline line;
     private Chronometer runTimerCm;
 
@@ -326,8 +325,9 @@ public class TrackRunActivity extends FragmentActivity
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
         LatLng latLng = new LatLng(latitude, longitude); //you already have this
-
-        routePoints.add(latLng); //added
+        if(isDraw) {
+            routePoints.add(latLng); //added
+        }
 
         redrawLine();
     }
@@ -336,6 +336,7 @@ public class TrackRunActivity extends FragmentActivity
 
         mMap.clear();  //clears all Markers and Polylines
         if(isDraw) {
+            float distance = 0;
             PolylineOptions options = new PolylineOptions().width(15).color(Color.GREEN).geodesic(true);
             for (int i = 0; i < routePoints.size(); i++) {
                 if(i > 0) {
