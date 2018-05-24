@@ -41,6 +41,7 @@
         <activity android:name=".CardioTrainingActivity" />
         <activity android:name=".WeightTrainingActivity" />
         <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".FoodRecommendationActivity"/>
         <activity android:name=".GettingStartedActivity" />
         <activity
             android:name=".TrackRunActivity"
