@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText emailEditText;
     private EditText passwordEditText;
+    private boolean isFirstRun;
     //private TextView result;
     //private Button login;
 
@@ -37,6 +38,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
          findViewById(R.id.login_btn).setOnClickListener(this);
          findViewById(R.id.loginForgotPasswordBtn).setOnClickListener(this);
+
+        isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .getBoolean("isFirstRun", true);
+
 
 //=================================================================================================
 // Attempt to launch the register activity within the app
@@ -92,10 +97,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent intent = new Intent(LoginActivity.this, GettingStartedActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    finish();
+                    if(isFirstRun) {
+                        Intent intent = new Intent(LoginActivity.this, GettingStartedActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+
+                        getSharedPreferences("PREF", MODE_PRIVATE).edit()
+                                .putBoolean("isFirstRun", false).commit();
+
+                        finish();
+                    }
+                    else {
+                        Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+                        startActivity(intent);
+                    }
                 }else{
                     Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                 }

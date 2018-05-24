@@ -71,7 +71,8 @@ public class TrackRunActivity extends FragmentActivity
     private CameraPosition mCameraPosition;
     private Location mLastKnownLocation;
     private Location mCurrentLocation;
-    private String mLastUpdateTime;
+    private LatLng currentLatLng;
+    private LatLng lastLatLng;
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
     private static final String KEY_CAMERA_POSITION = "camera_position";
@@ -197,6 +198,8 @@ public class TrackRunActivity extends FragmentActivity
                         if (task.isSuccessful()) {
                             // Set the map's camera position to the current location of the device.
                             mLastKnownLocation = task.getResult();
+                            currentLatLng = new LatLng(mLastKnownLocation.getLatitude(),
+                                    mLastKnownLocation.getLongitude());
                             mCurrentLocation = mLastKnownLocation;
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(mLastKnownLocation.getLatitude(),
@@ -322,9 +325,14 @@ public class TrackRunActivity extends FragmentActivity
 
     @Override
     public void onLocationChanged(Location location) {
+        lastLatLng = currentLatLng;
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
         LatLng latLng = new LatLng(latitude, longitude); //you already have this
+        currentLatLng = latLng;
+        PolylineOptions line = new PolylineOptions().width(15).color(Color.GREEN).geodesic(true).add(
+                lastLatLng, currentLatLng);
+        mMap.addPolyline(line);
         if(isDraw) {
             routePoints.add(latLng); //added
         }
