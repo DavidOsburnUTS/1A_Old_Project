@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="CALCORIE COUNTER"
+            android:text="CALORIE COUNTER"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
     </RelativeLayout>
