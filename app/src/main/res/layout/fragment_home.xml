@@ -11,12 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:fontFamily="sans-serif-condensed"
-        android:padding="25dp"
         android:text="@string/welcomeTxt"
-        android:textColor="@color/colorPrimary"
         android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -24,17 +23,17 @@
         android:id="@+id/first_row_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView3"
-        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/second_row_layout"
+        android:layout_alignParentStart="true"
         android:orientation="horizontal"
         android:weightSum="1">
 
         <Button
             android:id="@+id/weightTrainingBtn"
-            android:layout_width="145dp"
-            android:layout_height="145dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
             android:layout_weight="0.5"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/weight_80"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/weightBtn"
             android:textColor="@android:color/background_light"
@@ -43,11 +42,11 @@
 
         <Button
             android:id="@+id/cardioBtn"
-            android:layout_width="145dp"
-            android:layout_height="145dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
             android:layout_margin="0dp"
             android:layout_weight="0.5"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/cardio_80"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/cardioBtn"
             android:textColor="@android:color/background_light"
@@ -60,17 +59,18 @@
         android:id="@+id/second_row_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/first_row_layout"
-        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/progresslayout"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal"
         android:weightSum="1">
 
         <Button
             android:id="@+id/calorieBtn"
-            android:layout_width="145dp"
-            android:layout_height="145dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
             android:layout_weight="0.5"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/calorie_80"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/title_calorieBtn"
             android:textColor="@android:color/background_light"
@@ -79,10 +79,10 @@
 
         <Button
             android:id="@+id/profileBtn"
-            android:layout_width="145dp"
-            android:layout_height="145dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
             android:layout_weight="0.5"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/profile_80"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/profileBtn"
             android:textColor="@android:color/background_light"
@@ -130,5 +130,12 @@
         android:layout_alignParentRight="true">
 
     </FrameLayout>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="-10dp" />
 
 </RelativeLayout>
