@@ -91,7 +91,7 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
                     int activityId = activity.getSelectedItemPosition();
                     int goalId = goal.getSelectedItemPosition();
                     calculate(age, height, weight, gender, activityId, goalId);
-                    Toast.makeText(getApplication().getBaseContext(), "Successbfully calculated", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication().getBaseContext(), "Successfully calculated", Toast.LENGTH_SHORT).show();
                 }
             }
         });

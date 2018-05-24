@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name=".HomepageActivity"
-            android:label="@string/title_activity_homepage" />
+            android:label="@string/title_activity_homepage"
+            android:exported="true"/>
         <activity
             android:name=".SideTab"
             android:label="@string/title_activity_side_tab"
