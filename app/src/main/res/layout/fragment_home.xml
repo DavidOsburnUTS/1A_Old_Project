@@ -15,11 +15,7 @@
         android:fontFamily="sans-serif-condensed"
         android:padding="25dp"
         android:text="@string/welcomeTxt"
-<<<<<<< HEAD
         android:textColor="@color/colorPrimary"
-=======
-        android:textColor="#FFFFFF"
->>>>>>> 78c72b8a10ccf7e77a36f72984287a0a110436f3
         android:textAllCaps="true"
         android:textSize="30sp"
         android:textStyle="bold" />

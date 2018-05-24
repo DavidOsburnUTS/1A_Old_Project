@@ -42,10 +42,6 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
         Button backBtn = findViewById(R.id.calorieCalcBackBtn);
         Button foodBtn = findViewById(R.id.foodBtn);
 
-
-        RadioButton maleBtn = (RadioButton) findViewById(R.id.maleBtn);
-        maleBtn.setChecked(true);
-
         final String[] Level = new String[]{
                 "Sedentary (Little to no exercise)", "Light (1-3 days)", "Moderate (3-5 days)",
                 "Very Active (6-7 days)", "Extra Active (7 days/physically demanding job)"};
@@ -62,29 +58,29 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         goal.setAdapter(adapter1);
 
+        RadioButton maleBtn = (RadioButton) findViewById(R.id.maleBtn);
+        maleBtn.setChecked(true);
+
         calculateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                /*if(ageEt.equals("") || heightEt.equals("") || weightEt.equals("") || radioGroup.getCheckedRadioButtonId() == -1) {
+                if(ageEt.getText().toString().trim().length() <= 0) {
+                    ageEt.setError("Age is missing");
+                    //Toast.makeText(getApplication().getBaseContext(), "Age is missing", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(heightEt.getText().toString().trim().length() <= 0) {
+                    heightEt.setError("Height is missing");
+                    return;
+                }
+                if(weightEt.getText().toString().trim().length() <= 0) {
+                    weightEt.setError("Weight is missing");
+                    return;
+                }
+                //if(ageEt.equals("") || heightEt.equals("") || weightEt.equals("") || !(radioGroup.getCheckedRadioButtonId() == -1)) {
+                /*if(ageEt.equals("") || heightEt.equals("") || weightEt.equals("")) {
                     Toast.makeText(getApplication().getBaseContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 }*/
-
-                if(ageEt.equals("")) {
-                    ageEt.setError("Age is missing");
-                    ageEt.requestFocus();
-                    return;
-                }
-                if(ageEt.equals("")) {
-                    ageEt.setError("Age is missing");
-                    ageEt.requestFocus();
-                    return;
-                }
-                if(ageEt.equals("")) {
-                    ageEt.setError("Age is missing");
-                    ageEt.requestFocus();
-                    return;
-                }
                 else {
                     int age = Integer.parseInt(ageEt.getText().toString());
                     double height = Double.parseDouble(heightEt.getText().toString());
@@ -95,6 +91,7 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
                     int activityId = activity.getSelectedItemPosition();
                     int goalId = goal.getSelectedItemPosition();
                     calculate(age, height, weight, gender, activityId, goalId);
+                    Toast.makeText(getApplication().getBaseContext(), "Successbfully calculated", Toast.LENGTH_SHORT).show();
                 }
             }
         });
