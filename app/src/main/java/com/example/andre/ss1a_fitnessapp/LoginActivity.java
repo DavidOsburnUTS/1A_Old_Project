@@ -42,7 +42,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("isFirstRun", true);
 
-
 //=================================================================================================
 // Attempt to launch the register activity within the app
         Button registerBtn = (Button) findViewById(R.id.registerBtn);
@@ -104,13 +103,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         getSharedPreferences("PREF", MODE_PRIVATE).edit()
                                 .putBoolean("isFirstRun", false).commit();
 
-                        Intent GettingStartedActivityIntent = new Intent(LoginActivity.this, GettingStartedActivity.class);
-                        GettingStartedActivityIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(GettingStartedActivityIntent);
+                        Intent gettingStartedIntent = new Intent(LoginActivity.this, GettingStartedActivity.class);
+                        gettingStartedIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(gettingStartedIntent);
                     }
                     else {
-                        Intent HomepageIntent = new Intent(LoginActivity.this, HomepageActivity.class);
-                        startActivity(HomepageIntent);
+                        Intent homePageIntent = new Intent(LoginActivity.this, HomepageActivity.class);
+                        startActivity(homePageIntent);
                     }
 
                 } else {
