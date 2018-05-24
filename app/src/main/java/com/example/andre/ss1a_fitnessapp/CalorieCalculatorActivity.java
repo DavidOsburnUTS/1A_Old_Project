@@ -84,7 +84,7 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
         foodBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), FoodRecommendationActivity.class);
+                Intent intent = new Intent (CalorieCalculatorActivity.this, FoodRecommendationActivity.class);
                 startActivity(intent);
             }
         });
