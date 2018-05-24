@@ -1,5 +1,6 @@
 package com.example.andre.ss1a_fitnessapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,7 +21,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
     public static final String API_KEY = "AIzaSyCs3huB6L9Qymep9aZ9po5JryI5bm4Ty9A";
-    public static String VIDEO_ID = "PlJ6K2fVUi0";
+    public static String VIDEO_ID = "Bi1IRzJIoAo";
     public YouTubePlayer mYoutubePlayer;
 
 
@@ -31,9 +32,10 @@ public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTu
 
         final Spinner activity = findViewById(R.id.bodyPart_spinner);
         Button playButton = findViewById(R.id.playBtn);
+        Button moreVideosBtn = findViewById(R.id.moreVideosBtn);
 
         final String[] bodyPart = new String[]{
-                "Chest", "Back", "Biceps", "Triceps", "Legs"};
+                "Chest", "Back", "Biceps and triceps", "Abs", "Legs"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, bodyPart);
@@ -54,30 +56,38 @@ public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTu
             }
         });
 
+        moreVideosBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (WeightTrainingActivity.this, FitnessBlenderActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void playVideo(int bodyPart){
             if (bodyPart == 0) {
-                VIDEO_ID = "PlJ6K2fVUi0";
+                VIDEO_ID = "Bi1IRzJIoAo";
                 mYoutubePlayer.loadVideo(VIDEO_ID);
 
 
             } else if (bodyPart == 1) {
-                VIDEO_ID = "lA7dbOmxs5I";
+                VIDEO_ID = "p1GERX3lf3Y";
                 mYoutubePlayer.loadVideo(VIDEO_ID);
 
 
             } else if (bodyPart == 2) {
-                VIDEO_ID = "Zb-K7YAzAZM";
+                VIDEO_ID = "KqZG-vlcYhg";
                 mYoutubePlayer.loadVideo(VIDEO_ID);
 
             } else if (bodyPart == 3) {
-                VIDEO_ID = "cC-4ivDxb50";
+                VIDEO_ID = "1919eTCoESo";
                 mYoutubePlayer.loadVideo(VIDEO_ID);
 
             }
             else if (bodyPart == 4) {
-                VIDEO_ID = "1b-rXCJbGTs";
+                VIDEO_ID = "E4tiWhsQhQg";
                 mYoutubePlayer.loadVideo(VIDEO_ID);
 
             }

@@ -62,4 +62,12 @@
 
     </TableLayout>
 
+    <Button
+        android:id="@+id/moreVideosBtn"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/playBtn"
+        android:layout_height="54dp"
+        android:text="More workouts" />
+
 </LinearLayout>
