@@ -21,11 +21,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".HomepageActivity"
@@ -41,6 +36,7 @@
         <activity android:name=".CardioTrainingActivity" />
         <activity android:name=".WeightTrainingActivity" />
         <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".FoodRecommendationActivity"/>
         <activity android:name=".GettingStartedActivity" />
         <activity
             android:name=".TrackRunActivity"

@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".Home">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
         android:fontFamily="sans-serif-condensed"
         android:padding="25dp"
         android:text="@string/welcomeTxt"
-<<<<<<< HEAD
-        android:textColor="@color/colorPrimary"
-=======
-        android:textColor="#FFFFFF"
->>>>>>> 78c72b8a10ccf7e77a36f72984287a0a110436f3
         android:textAllCaps="true"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:text="Welcome back!" />
 
     <LinearLayout
         android:id="@+id/first_row_layout"
@@ -31,15 +26,18 @@
         android:layout_below="@id/textView3"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
+        android:padding="0dp"
         android:weightSum="1">
 
         <Button
             android:id="@+id/weightTrainingBtn"
             android:layout_width="145dp"
             android:layout_height="145dp"
+            android:layout_margin="0dp"
             android:layout_weight="0.5"
             android:background="@color/colorPrimary"
             android:fontFamily="sans-serif-condensed"
+            android:onClick="homeOnClick"
             android:text="@string/weightBtn"
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
@@ -51,8 +49,9 @@
             android:layout_height="145dp"
             android:layout_margin="0dp"
             android:layout_weight="0.5"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorAccent"
             android:fontFamily="sans-serif-condensed"
+            android:onClick="homeOnClick"
             android:text="@string/cardioBtn"
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
@@ -67,15 +66,18 @@
         android:layout_below="@id/first_row_layout"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
+        android:padding="0dp"
         android:weightSum="1">
 
         <Button
             android:id="@+id/calorieBtn"
             android:layout_width="145dp"
             android:layout_height="145dp"
+            android:layout_margin="0dp"
             android:layout_weight="0.5"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorAccent"
             android:fontFamily="sans-serif-condensed"
+            android:onClick="homeOnClick"
             android:text="@string/title_calorieBtn"
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
@@ -85,6 +87,7 @@
             android:id="@+id/profileBtn"
             android:layout_width="145dp"
             android:layout_height="145dp"
+            android:layout_margin="0dp"
             android:layout_weight="0.5"
             android:background="@color/colorPrimary"
             android:fontFamily="sans-serif-condensed"
@@ -95,44 +98,5 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/progresslayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="75dp"
-        android:clickable="true"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:layout_above="@id/progressBar"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="5dp"
-            android:text="Progress"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="17sp" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" />
-
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true">
-
-    </FrameLayout>
 
 </RelativeLayout>

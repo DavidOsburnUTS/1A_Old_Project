@@ -22,8 +22,8 @@ public class SliderAdapter extends PagerAdapter{
 
     public int[] slide_images = {
             R.drawable.oneup_main,
-            R.drawable.eat,
             R.drawable.track,
+            R.drawable.eat,
             R.drawable.profile
     };
 

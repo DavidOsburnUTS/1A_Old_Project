@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.webkit.WebView;
 
 public class CalorieCalculatorActivity extends AppCompatActivity {
 
@@ -20,6 +22,7 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
     private EditText heightEt;
     private EditText weightEt;
     private TextView calcResult;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,8 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
 
         Button calculateBtn = findViewById(R.id.calculateBtn);
         Button backBtn = findViewById(R.id.calorieCalcBackBtn);
+        Button foodBtn = findViewById(R.id.foodBtn);
+
 
         RadioButton maleBtn = (RadioButton) findViewById(R.id.maleBtn);
         maleBtn.setChecked(true);
@@ -93,6 +98,16 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //DAVID's attempt at switching activities
+        foodBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (CalorieCalculatorActivity.this, FoodRecommendationActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

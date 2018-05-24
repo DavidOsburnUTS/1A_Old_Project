@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener
         view.findViewById(R.id.progresslayout).setOnClickListener(this);
         progressBar = view.findViewById(R.id.progressBar);
 
-        progressBar.setProgress(50);
+        progressBar.setProgress(75);
         //return inflater.inflate(R.layout.fragment_home, container, false);
         return view;
     }

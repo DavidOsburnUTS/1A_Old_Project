@@ -30,7 +30,7 @@
             android:layout_centerInParent="true"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
-            android:text="CALCORIE COUNTER"
+            android:text="CALORIE COUNTER"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
     </RelativeLayout>
@@ -209,5 +209,14 @@
         android:fontFamily="sans-serif-condensed"
         android:textSize="18sp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/foodBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
+        android:layout_below="@+id/calculateBtn"
+        android:layout_centerHorizontal="true"
+        android:text="Food Recommendations" />
+
 
 </RelativeLayout>
