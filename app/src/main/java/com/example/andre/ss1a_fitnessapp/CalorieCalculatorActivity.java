@@ -38,6 +38,9 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
         Button calculateBtn = findViewById(R.id.calculateBtn);
         Button backBtn = findViewById(R.id.calorieCalcBackBtn);
 
+        RadioButton maleBtn = (RadioButton) findViewById(R.id.maleBtn);
+        maleBtn.setChecked(true);
+
         final String[] Level = new String[]{
                 "Sedentary (Little to no exercise)", "Light (1-3 days)", "Moderate (3-5 days)",
                 "Very Active (6-7 days)", "Extra Active (7 days/physically demanding job)"};
@@ -58,8 +61,24 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(ageEt.equals("") || heightEt.equals("") || weightEt.equals("") || radioGroup.getCheckedRadioButtonId() == -1) {
+                /*if(ageEt.equals("") || heightEt.equals("") || weightEt.equals("") || radioGroup.getCheckedRadioButtonId() == -1) {
                     Toast.makeText(getApplication().getBaseContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                }*/
+
+                if(ageEt.equals("")) {
+                    ageEt.setError("Age is missing");
+                    ageEt.requestFocus();
+                    return;
+                }
+                if(ageEt.equals("")) {
+                    ageEt.setError("Age is missing");
+                    ageEt.requestFocus();
+                    return;
+                }
+                if(ageEt.equals("")) {
+                    ageEt.setError("Age is missing");
+                    ageEt.requestFocus();
+                    return;
                 }
                 else {
                     int age = Integer.parseInt(ageEt.getText().toString());

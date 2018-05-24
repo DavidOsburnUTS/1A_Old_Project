@@ -25,8 +25,8 @@
     <string name="cardioBtn">CARDIO\nTRAINING</string>
     <string name="weightBtn">WEIGHT\nTRAINING</string>
     <string name="profileBtn">PROFILE</string>
-    <string name="termsconditionTxt">By signing up, you agree to our Terms and that you\n
-        have read our 'Privacy Policy' and 'Content Policy'</string>
+    <string name="termsconditionTxt">By signing up, you agree to our Terms and that you
+        have read our Privacy Policy and Content Policy</string>
     <string name="oldaccountBtn">Already have an account? Log in!</string>
     <string name="title_activity_side_tab">SideTab</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
