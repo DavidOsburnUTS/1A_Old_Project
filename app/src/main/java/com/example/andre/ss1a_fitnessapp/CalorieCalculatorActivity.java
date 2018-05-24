@@ -40,6 +40,7 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
 
         Button calculateBtn = findViewById(R.id.calculateBtn);
         Button backBtn = findViewById(R.id.calorieCalcBackBtn);
+        Button foodBtn = findViewById(R.id.foodBtn);
 
 
         final String[] Level = new String[]{
@@ -78,6 +79,16 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //DAVID's attempt at switching activities
+        foodBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getApplicationContext(), FoodRecommendationActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
