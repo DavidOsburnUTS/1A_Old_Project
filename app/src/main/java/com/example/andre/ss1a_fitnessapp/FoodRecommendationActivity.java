@@ -22,8 +22,18 @@ public class FoodRecommendationActivity extends AppCompatActivity {
 
         //Webview for Nutritionix
         wv = (WebView) findViewById(R.id.webView);
-        wv.setWebViewClient(new WebViewClient());
+        wv.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onPageFinished(WebView view, String url) {
+
+                super.onPageFinished(view, url);
+                findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+
+            }
+        });
         wv.getSettings().setJavaScriptEnabled(true);
         wv.loadUrl(URL);
+
+
     }
 }
