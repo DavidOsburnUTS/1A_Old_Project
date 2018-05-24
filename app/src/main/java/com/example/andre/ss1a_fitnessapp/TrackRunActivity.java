@@ -93,6 +93,7 @@ public class TrackRunActivity extends FragmentActivity
         findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
         runTimerCm = (Chronometer)findViewById(R.id.run_timer);
+        findViewById(R.id.runBackBtn).setOnClickListener(this);
 
         if (savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
@@ -144,6 +145,8 @@ public class TrackRunActivity extends FragmentActivity
                 isDraw = false;
                 line.setColor(Color.RED);
                 break;
+            case R.id.runBackBtn:
+                finish();
         }
     }
 

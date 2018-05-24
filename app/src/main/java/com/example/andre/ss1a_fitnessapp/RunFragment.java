@@ -75,7 +75,7 @@ public class RunFragment extends Fragment implements View.OnClickListener {
         }
 
         if (mDots.length > 0) {
-            mDots[position].setTextColor(getResources().getColor(R.color.colorWhite));
+            mDots[position].setTextColor(getResources().getColor(R.color.colorPrimary));
         }
     }
 

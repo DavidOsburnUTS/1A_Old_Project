@@ -43,7 +43,7 @@ public class HomepageActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        //mMainNav.setItemBackgroundResource(R.color.colorPrimary);
+                        mMainNav.setItemBackgroundResource(R.color.colorPrimary);
                         setFragment(homeFragment);
                         return true;
                     case R.id.navigation_start_run:
