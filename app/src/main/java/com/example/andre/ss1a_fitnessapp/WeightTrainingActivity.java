@@ -33,6 +33,7 @@ public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTu
         final Spinner activity = findViewById(R.id.bodyPart_spinner);
         Button playButton = findViewById(R.id.playBtn);
         Button moreVideosBtn = findViewById(R.id.moreVideosBtn);
+        Button weightTrainingBackBtn = findViewById(R.id.weightTrainingBackBtn);
 
         final String[] bodyPart = new String[]{
                 "Chest", "Back", "Biceps and triceps", "Abs", "Legs"};
@@ -61,6 +62,13 @@ public class WeightTrainingActivity extends YouTubeBaseActivity implements YouTu
             public void onClick(View v) {
                 Intent intent = new Intent (WeightTrainingActivity.this, FitnessBlenderActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        weightTrainingBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

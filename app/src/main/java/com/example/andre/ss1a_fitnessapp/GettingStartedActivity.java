@@ -127,8 +127,7 @@ public class GettingStartedActivity extends AppCompatActivity {
 
                 mNextBtn.setText("Next");
                 mBackBtn.setText("Back");
-        }
-
+            }
         }
 
         @Override

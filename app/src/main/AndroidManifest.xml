@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name=".HomepageActivity"
-            android:label="@string/title_activity_homepage" />
+            android:label="@string/title_activity_homepage"
+            android:exported="true"/>
         <activity
             android:name=".SideTab"
             android:label="@string/title_activity_side_tab"
@@ -38,6 +39,7 @@
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".FoodRecommendationActivity"/>
         <activity android:name=".FitnessBlenderActivity"/>
+        <activity android:name=".StepCounterActivity"/>
         <activity android:name=".GettingStartedActivity" />
         <activity
             android:name=".TrackRunActivity"

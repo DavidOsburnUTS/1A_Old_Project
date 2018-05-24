@@ -36,24 +36,25 @@ public class HomepageActivity extends AppCompatActivity {
         settingsFragment = new SettingsFragment();
 
         setFragment(homeFragment);
+        mMainNav.setItemBackgroundResource(R.color.colorPrimary);
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        mMainNav.setItemBackgroundResource(R.color.colorAccent);
+                        mMainNav.setItemBackgroundResource(R.color.colorPrimary);
                         setFragment(homeFragment);
                         return true;
                     case R.id.navigation_start_run:
-                        mMainNav.setItemBackgroundResource(R.color.colorGray);
+                        //mMainNav.setItemBackgroundResource(R.color.colorGray);
                         setFragment(runFragment);
                         //Intent startRunIntent = new Intent(this, TrackRun.class);
                         //startActivity(startRunIntent);
                         return true;
                     case R.id.navigation_settings:
                         setFragment(settingsFragment);
-                        mMainNav.setItemBackgroundResource(R.color.colorPrimaryDark);
+                        //mMainNav.setItemBackgroundResource(R.color.colorPrimaryDark);
                         return true;
 
                     default:

@@ -7,33 +7,71 @@
     android:layout_height="match_parent"
     tools:context=".TrackRunActivity">
 
-    <TextView
-        android:id="@+id/timeTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Time: "
-        android:textSize="15sp"
-        android:layout_above="@id/run_timer"/>
+    <RelativeLayout
+        android:id="@+id/run_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
 
-    <Chronometer
-        android:id="@+id/run_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
-        android:textSize="20sp"
-        android:layout_above="@id/distanceTv"/>
+        <Button
+            android:id="@+id/runBackBtn"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:fontFamily="sans-serif-condensed"
+            android:text="BACK"
+            android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/distanceTv"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:text="RUN"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/map"
+        android:layout_below="@+id/run_top_bar"
         android:layout_centerHorizontal="true"
-        android:text="Distance"
-        android:layout_marginBottom="20dp"
-        android:textSize="20sp"/>
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/timeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/run_timer"
+            android:layout_centerHorizontal="true"
+            android:text="Time: "
+            android:textSize="15sp" />
+
+        <Chronometer
+            android:id="@+id/run_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/distanceTv"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/distanceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/map"
+            android:layout_centerHorizontal="true"
+            android:text="Distance"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 
     <fragment
         android:id="@+id/map"
