@@ -104,12 +104,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
             android:layout_above="@id/progressBar"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="5dp"
-            android:text="Progress"
             android:fontFamily="sans-serif-condensed"
+            android:text="PROGRESS"
+            android:textColor="@color/colorBlack"
             android:textSize="17sp" />
 
         <ProgressBar
