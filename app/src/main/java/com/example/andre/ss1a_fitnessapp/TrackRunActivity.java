@@ -59,7 +59,6 @@ public class TrackRunActivity extends FragmentActivity
     private Button stopBtn;
     private TextView distanceTv;
     private ArrayList<LatLng> routePoints;
-    private float distance = 0;
     Polyline line;
     private Chronometer runTimerCm;
 
@@ -72,7 +71,8 @@ public class TrackRunActivity extends FragmentActivity
     private CameraPosition mCameraPosition;
     private Location mLastKnownLocation;
     private Location mCurrentLocation;
-    private String mLastUpdateTime;
+    private LatLng currentLatLng;
+    private LatLng lastLatLng;
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
     private static final String KEY_CAMERA_POSITION = "camera_position";
@@ -94,6 +94,7 @@ public class TrackRunActivity extends FragmentActivity
         findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
         runTimerCm = (Chronometer)findViewById(R.id.run_timer);
+        findViewById(R.id.runBackBtn).setOnClickListener(this);
 
         if (savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
@@ -133,6 +134,7 @@ public class TrackRunActivity extends FragmentActivity
                 runTimerCm.stop();
                 pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
                 stopLocationUpdates();
+                line.setColor(Color.GRAY);
                 break;
             case R.id.trackRunStartBtn:
                 isDraw = true;
@@ -142,7 +144,10 @@ public class TrackRunActivity extends FragmentActivity
                 break;
             case R.id.trackRunStopBtn:
                 isDraw = false;
+                line.setColor(Color.RED);
                 break;
+            case R.id.runBackBtn:
+                finish();
         }
     }
 
@@ -196,6 +201,8 @@ public class TrackRunActivity extends FragmentActivity
                         if (task.isSuccessful()) {
                             // Set the map's camera position to the current location of the device.
                             mLastKnownLocation = task.getResult();
+                            currentLatLng = new LatLng(mLastKnownLocation.getLatitude(),
+                                    mLastKnownLocation.getLongitude());
                             mCurrentLocation = mLastKnownLocation;
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(mLastKnownLocation.getLatitude(),
@@ -321,11 +328,17 @@ public class TrackRunActivity extends FragmentActivity
 
     @Override
     public void onLocationChanged(Location location) {
+        lastLatLng = currentLatLng;
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
         LatLng latLng = new LatLng(latitude, longitude); //you already have this
-
-        routePoints.add(latLng); //added
+        currentLatLng = latLng;
+        PolylineOptions line = new PolylineOptions().width(15).color(Color.GREEN).geodesic(true).add(
+                lastLatLng, currentLatLng);
+        mMap.addPolyline(line);
+        if(isDraw) {
+            routePoints.add(latLng); //added
+        }
 
         redrawLine();
     }
@@ -334,7 +347,8 @@ public class TrackRunActivity extends FragmentActivity
 
         mMap.clear();  //clears all Markers and Polylines
         if(isDraw) {
-            PolylineOptions options = new PolylineOptions().width(15).color(Color.BLUE).geodesic(true);
+            float distance = 0;
+            PolylineOptions options = new PolylineOptions().width(15).color(Color.GREEN).geodesic(true);
             for (int i = 0; i < routePoints.size(); i++) {
                 if(i > 0) {
                     LatLng prev = routePoints.get(i-1);

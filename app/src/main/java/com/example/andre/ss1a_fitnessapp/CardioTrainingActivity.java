@@ -1,6 +1,9 @@
 package com.example.andre.ss1a_fitnessapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -21,11 +24,18 @@ public class CardioTrainingActivity extends YouTubeBaseActivity implements YouTu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardio_training);
 
+        Button cardioTrainingBackBtn = findViewById(R.id.cardioTrainingBackBtn);
+
         /** Initializing YouTube Player View **/
         YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);
         youTubePlayerView.initialize(API_KEY, this);
 
-
+        cardioTrainingBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override

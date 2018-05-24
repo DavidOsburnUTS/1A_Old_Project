@@ -21,19 +21,19 @@
 
             <Button
                 android:id="@+id/profileBackBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerInParent="true"
-                android:text="BACK" />
+                android:background="?attr/actionModeCloseDrawable" />
 
             <Button
                 android:id="@+id/profileEditBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="54dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
-                android:text="EDIT PROFILE" />
+                android:text="EDIT" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -70,8 +70,10 @@
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_below="@+id/profile_header_layout"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp">
 
         <TableRow android:layout_marginTop="10dp">
 
@@ -79,13 +81,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Age: "
-                android:textSize="25sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="getUserAge()"
-                android:textSize="25sp" />
+                android:textSize="18sp" />
 
         </TableRow>
 
@@ -95,13 +97,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gender: "
-                android:textSize="25sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="getUserGender()"
-                android:textSize="25sp" />
+                android:textSize="18sp" />
 
         </TableRow>
 
@@ -111,13 +113,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Height: "
-                android:textSize="25sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="getUserHeight()"
-                android:textSize="25sp" />
+                android:textSize="18sp" />
 
         </TableRow>
 
@@ -127,13 +129,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Weight: "
-                android:textSize="25sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="getUserWeight()"
-                android:textSize="25sp" />
+                android:textSize="18sp" />
 
         </TableRow>
 
