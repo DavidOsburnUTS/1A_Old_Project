@@ -40,6 +40,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         FirebaseAuth.getInstance().signOut();
         //startActivity(new Intent(getActivity(), LoginActivity.class));
         getActivity().finish();
+        startActivity(new Intent(getActivity(), LoginActivity.class));
     }
 
     @Override
