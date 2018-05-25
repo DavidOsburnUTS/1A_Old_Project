@@ -52,8 +52,8 @@ public class RunFragment extends Fragment implements View.OnClickListener {
         addDotsIndicator(0);
         mSlideViewPager.addOnPageChangeListener(viewListener);
 
-        java.util.Timer timer = new java.util.Timer();
-        timer.scheduleAtFixedRate(new MyTimerTask(), 2000,4000);
+        //java.util.Timer timer = new java.util.Timer();
+        //timer.scheduleAtFixedRate(new MyTimerTask(), 2000,4000);
         return view;
 
     }
