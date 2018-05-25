@@ -29,7 +29,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         editText2 = (EditText) findViewById(R.id.editText2);
         editText3 = (EditText) findViewById(R.id.editText3);
         editText4 = (EditText) findViewById(R.id.editText4);
-        editText6 = (EditText) findViewById(R.id.editText6);
+        //editText6 = (EditText) findViewById(R.id.editText6);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -42,7 +42,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         String email = editText2.getText().toString().trim();
         String password = editText3.getText().toString().trim();
         String check = editText4.getText().toString().trim();
-        String name = editText6.getText().toString().trim();
+        //String name = editText6.getText().toString().trim();
 
         if(email.isEmpty()){
             editText2.setError("Email is required");
@@ -77,14 +77,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 if(task.isSuccessful()){
                     Toast.makeText(getApplicationContext(),"You've Successfully Registered", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Register.this, GettingStartedActivity.class));
-                }else{
-                    if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                } else if(task.getException() instanceof FirebaseAuthUserCollisionException){
                     Toast.makeText(getApplicationContext(), "You've already registered mate", Toast.LENGTH_SHORT).show();
                     }
                 }
-            }
         });
-
     }
 
     @Override

@@ -70,17 +70,6 @@
             android:textColor="@color/colorAccent"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editText6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:fontFamily="sans-serif-condensed"
-            android:hint="Name (Optional)"
-            android:inputType="textPersonName"
-            android:padding="10dp"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold" />
     </LinearLayout>
 
     <Button
@@ -99,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:fontFamily="sans"
+        android:fontFamily="sans-serif-condensed"
         android:text="@string/termsconditionTxt"
         android:textAlignment="center" />
 

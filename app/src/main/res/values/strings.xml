@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SS1A_FitnessApp_Demo</string>
+    <string name="app_name">1Up</string>
     <string name="editText_email">EMAIL</string>
     <string name="editText_password">PASSWORD</string>
     <string name="btn_login">LOGIN</string>
