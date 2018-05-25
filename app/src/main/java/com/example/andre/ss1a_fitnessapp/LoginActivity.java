@@ -1,7 +1,10 @@
 package com.example.andre.ss1a_fitnessapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
@@ -26,6 +29,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private boolean isFirstRun;
     private CheckBox rememberMe;
     private boolean isRemembered;
+    private String rememberEmail;
+    private String rememberPw;
+    private String mEmail;
+    private String mPw;
     //private TextView result;
     //private Button login;
 
@@ -54,11 +61,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if(isChecked) {
-                    getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                    isRemembered = getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
                             .putBoolean("isRemembered", true).commit();
+
                 }
                 else {
-                    getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                    isRemembered = getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
                             .putBoolean("isRemembered", false).commit();
                 }
             }
@@ -118,9 +126,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
                     if(isFirstRun) {
                         getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
                                 .putBoolean("isFirstRun", false).commit();
@@ -143,12 +148,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
+    private void checkRemember() {
+        if(isRemembered) {
+            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                    .putString("rememberEmail", mEmail).commit();
+
+            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                    .putString("rememberPw", mPw).commit();
+
+        }
+    }
 
     @Override
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.login_btn:
                 userLogin();
+                checkRemember();
                 break;
         }
     }
