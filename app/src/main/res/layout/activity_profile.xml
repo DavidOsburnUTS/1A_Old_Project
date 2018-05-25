@@ -60,7 +60,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="10dp"
-            android:text="getUserFullName()"
+            android:text="getUserFullName("
             android:textColor="@color/place_autocomplete_search_text"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -84,9 +84,10 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/ageTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="getUserAge()"
+
                 android:textSize="18sp" />
 
         </TableRow>
@@ -100,9 +101,10 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/genderTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="getUserGender()"
+
                 android:textSize="18sp" />
 
         </TableRow>
@@ -116,9 +118,10 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/heightTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="getUserHeight()"
+
                 android:textSize="18sp" />
 
         </TableRow>
@@ -132,9 +135,10 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/weightTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="getUserWeight()"
+
                 android:textSize="18sp" />
 
         </TableRow>

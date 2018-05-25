@@ -11,13 +11,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.security.acl.Group;
 import java.util.HashMap;
@@ -31,6 +36,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
     FirebaseAuth mAuth;
     DatabaseReference UserRef;
+
 
     String currentUserID;
 
@@ -59,16 +65,15 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 SaveAccountInfo();
             }
         });
+
     }
 
     private void SaveAccountInfo() {
-        String age = Age.getText().toString();
+        final String age = Age.getText().toString();
         String height = Height.getText().toString();
         String weight = Weight.getText().toString();
         int genderID = Gender.getCheckedRadioButtonId();
         Male_Female = (RadioButton) findViewById(genderID);
-
-
 
 
         if(TextUtils.isEmpty(age)){
