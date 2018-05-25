@@ -54,9 +54,6 @@ public class TrackRunActivity extends FragmentActivity
         GoogleMap.OnPolygonClickListener {
 
     private GoogleMap mMap;
-    private Button startBtn;
-    private Button pauseBtn;
-    private Button stopBtn;
     private TextView distanceTv;
     private ArrayList<LatLng> routePoints;
     private float distance = 0;
@@ -106,7 +103,6 @@ public class TrackRunActivity extends FragmentActivity
         mapFragment.getMapAsync(this);
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
         mLocationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
@@ -114,15 +110,14 @@ public class TrackRunActivity extends FragmentActivity
                     return;
                 }
                 for (Location location : locationResult.getLocations()) {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(
                             new LatLng(location.getLatitude(),
-                                    location.getLongitude()), DEFAULT_ZOOM));
-                    onLocationChanged(location);
+                                    location.getLongitude())));
+                        onLocationChanged(location);
+
                 }
             }
-
         };
-
     }
 
     @Override
@@ -132,17 +127,20 @@ public class TrackRunActivity extends FragmentActivity
                 isDraw = false;
                 runTimerCm.stop();
                 pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
-                stopLocationUpdates();
                 line.setColor(Color.GRAY);
+                stopLocationUpdates();
                 break;
             case R.id.trackRunStartBtn:
                 isDraw = true;
+                startLocationUpdates();
                 runTimerCm.setBase(SystemClock.elapsedRealtime() - pauseOffset);
                 runTimerCm.start();
-                startLocationUpdates();
                 break;
             case R.id.trackRunStopBtn:
                 isDraw = false;
+                stopLocationUpdates();
+                runTimerCm.stop();
+                pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
                 line.setColor(Color.RED);
                 break;
         }
@@ -159,15 +157,8 @@ public class TrackRunActivity extends FragmentActivity
             super.onSaveInstanceState(outState);
         }
     }
-
     /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
      * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -273,19 +264,6 @@ public class TrackRunActivity extends FragmentActivity
         updateLocationUI();
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        if (mRequestingLocationUpdates) {
-//            startLocationUpdates();
-//        }
-//    }
-
-//    private void startLocationUpdates() {
-//        mFusedLocationClient.requestLocationUpdates(mLocationRequest,
-//                mLocationCallback,
-//                null /* Looper */);
-//    }
     private void startLocationUpdates() {
         createLocationRequest();
         //drop marker with coordinate
@@ -323,18 +301,12 @@ public class TrackRunActivity extends FragmentActivity
 
     @Override
     public void onLocationChanged(Location location) {
-        double latitude = location.getLatitude();
-        double longitude = location.getLongitude();
-        LatLng latLng = new LatLng(latitude, longitude); //you already have this
-
+        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         routePoints.add(latLng); //added
-
-        redrawLine();
+        drawLine();
     }
 
-    private void redrawLine(){
-
-        mMap.clear();  //clears all Markers and Polylines
+    private void drawLine(){
         if(isDraw) {
             PolylineOptions options = new PolylineOptions().width(15).color(Color.GREEN).geodesic(true);
             for (int i = 0; i < routePoints.size(); i++) {
@@ -362,9 +334,7 @@ public class TrackRunActivity extends FragmentActivity
             }
             line = mMap.addPolyline(options); //add Polyline
         }
-
         mMap.addMarker(new MarkerOptions().position(routePoints.get(0))); //add Marker in current position
-
     }
 
     private void createLocationRequest() {
