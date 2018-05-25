@@ -6,14 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".RunFragment">
 
-    <Button
-        android:id="@+id/startRunFragmentBtn"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/slideViewPagerRun"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+    </android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/dotRunLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_above="@+id/startRunFragmentBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/startRunFragmentBtn"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_above="@+id/progressRunLayout"
+        android:layout_alignParentStart="true"
+        android:background="@color/transparent_button_100"
         android:gravity="center"
         android:text="START RUN"
+        android:textColor="@color/colorWhite"
+        android:textSize="36sp"
+        android:textStyle="bold|italic"
+        android:typeface="sans"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="165dp" />
+
+    <LinearLayout
+        android:id="@+id/progressRunLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/frameLayoutNav"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/progressBar"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="PROGRESS"
+            android:textColor="@color/colorBlack"
+            android:textSize="18dp" />
+
+        <ProgressBar
+            android:id="@+id/progressRunBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayoutNav"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+    </FrameLayout>
+
 </RelativeLayout>

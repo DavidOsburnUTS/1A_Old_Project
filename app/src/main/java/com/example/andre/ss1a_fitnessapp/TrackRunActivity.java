@@ -56,7 +56,6 @@ public class TrackRunActivity extends FragmentActivity
     private GoogleMap mMap;
     private TextView distanceTv;
     private ArrayList<LatLng> routePoints;
-    private float distance = 0;
     Polyline line;
     private Chronometer runTimerCm;
 
@@ -69,7 +68,8 @@ public class TrackRunActivity extends FragmentActivity
     private CameraPosition mCameraPosition;
     private Location mLastKnownLocation;
     private Location mCurrentLocation;
-    private String mLastUpdateTime;
+    private LatLng currentLatLng;
+    private LatLng lastLatLng;
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
     private static final String KEY_CAMERA_POSITION = "camera_position";
@@ -91,6 +91,7 @@ public class TrackRunActivity extends FragmentActivity
         findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
         runTimerCm = (Chronometer)findViewById(R.id.run_timer);
+        findViewById(R.id.runBackBtn).setOnClickListener(this);
 
         if (savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
@@ -143,6 +144,8 @@ public class TrackRunActivity extends FragmentActivity
                 pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
                 line.setColor(Color.RED);
                 break;
+            case R.id.runBackBtn:
+                finish();
         }
     }
 
@@ -189,6 +192,8 @@ public class TrackRunActivity extends FragmentActivity
                         if (task.isSuccessful()) {
                             // Set the map's camera position to the current location of the device.
                             mLastKnownLocation = task.getResult();
+                            currentLatLng = new LatLng(mLastKnownLocation.getLatitude(),
+                                    mLastKnownLocation.getLongitude());
                             mCurrentLocation = mLastKnownLocation;
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(mLastKnownLocation.getLatitude(),
@@ -304,10 +309,20 @@ public class TrackRunActivity extends FragmentActivity
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         routePoints.add(latLng); //added
         drawLine();
+        lastLatLng = currentLatLng;
+
+        currentLatLng = latLng;
+        PolylineOptions line = new PolylineOptions().width(15).color(Color.GREEN).geodesic(true).add(
+                lastLatLng, currentLatLng);
+        mMap.addPolyline(line);
+        if(isDraw) {
+            routePoints.add(latLng); //added
+        }
     }
 
     private void drawLine(){
         if(isDraw) {
+            float distance = 0;
             PolylineOptions options = new PolylineOptions().width(15).color(Color.GREEN).geodesic(true);
             for (int i = 0; i < routePoints.size(); i++) {
                 if(i > 0) {

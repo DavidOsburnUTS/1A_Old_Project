@@ -5,6 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundinvert"
     android:orientation="vertical"
     tools:context="com.example.andre.ss1a_fitnessapp.HomepageActivity"
     tools:layout_editor_absoluteY="81dp">

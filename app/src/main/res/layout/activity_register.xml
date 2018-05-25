@@ -95,10 +95,12 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/termsconditionTxt"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:fontFamily="sans"
+        android:text="@string/termsconditionTxt"
         android:textAlignment="center" />
 
 </LinearLayout>

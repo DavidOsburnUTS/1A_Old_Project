@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.webkit.WebView;
 
 public class CalorieCalculatorActivity extends AppCompatActivity {
 
@@ -20,6 +22,8 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
     private EditText heightEt;
     private EditText weightEt;
     private TextView calcResult;
+    private TextView calcResultTxt;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +38,11 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
         heightEt = findViewById(R.id.heightEditText);
         weightEt = findViewById(R.id.weightEditText);
         calcResult = findViewById(R.id.calcResultTv);
+        calcResultTxt = findViewById(R.id.calcResultTxtTv);
 
         Button calculateBtn = findViewById(R.id.calculateBtn);
         Button backBtn = findViewById(R.id.calorieCalcBackBtn);
+        Button foodBtn = findViewById(R.id.foodBtn);
 
         final String[] Level = new String[]{
                 "Sedentary (Little to no exercise)", "Light (1-3 days)", "Moderate (3-5 days)",
@@ -54,13 +60,29 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         goal.setAdapter(adapter1);
 
+        RadioButton maleBtn = (RadioButton) findViewById(R.id.maleBtn);
+        maleBtn.setChecked(true);
+
         calculateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(ageEt.equals("") || heightEt.equals("") || weightEt.equals("") || radioGroup.getCheckedRadioButtonId() == -1) {
-                    Toast.makeText(getApplication().getBaseContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                if(ageEt.getText().toString().trim().length() <= 0) {
+                    ageEt.setError("Age is missing");
+                    //Toast.makeText(getApplication().getBaseContext(), "Age is missing", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+                if(heightEt.getText().toString().trim().length() <= 0) {
+                    heightEt.setError("Height is missing");
+                    return;
+                }
+                if(weightEt.getText().toString().trim().length() <= 0) {
+                    weightEt.setError("Weight is missing");
+                    return;
+                }
+                //if(ageEt.equals("") || heightEt.equals("") || weightEt.equals("") || !(radioGroup.getCheckedRadioButtonId() == -1)) {
+                /*if(ageEt.equals("") || heightEt.equals("") || weightEt.equals("")) {
+                    Toast.makeText(getApplication().getBaseContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                }*/
                 else {
                     int age = Integer.parseInt(ageEt.getText().toString());
                     double height = Double.parseDouble(heightEt.getText().toString());
@@ -71,9 +93,20 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
                     int activityId = activity.getSelectedItemPosition();
                     int goalId = goal.getSelectedItemPosition();
                     calculate(age, height, weight, gender, activityId, goalId);
+                    Toast.makeText(getApplication().getBaseContext(), "Successfully calculated", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+        //DAVID's attempt at switching activities
+        foodBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (CalorieCalculatorActivity.this, FoodRecommendationActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,11 +129,14 @@ public class CalorieCalculatorActivity extends AppCompatActivity {
 
         if(result > 0) {
             if (goalId == 0) {
-                calcResult.setText(String.format("%.0f", result) + " calories/day to maintain weight");
+                calcResult.setText(String.format("%.0f", result));
+                calcResultTxt.setText(" calories/day to maintain weight");
             } else if (goalId == 1) {
-                calcResult.setText(String.format("%.0f", result - 500) + " calories/day to lose 0.5kg/week");
+                calcResult.setText(String.format("%.0f", result - 500));
+                calcResultTxt.setText( " calories/day to lose 0.5kg/week");
             } else if (goalId == 2) {
-                calcResult.setText(String.format("%.0f", result + 500) + " calories/day to gain 0.5kg/week");
+                calcResult.setText(String.format("%.0f", result + 500));
+                calcResultTxt.setText(" calories/day to gain 0.5kg/week");
             }
         } else {
             calcResult.setText("Invalid details");

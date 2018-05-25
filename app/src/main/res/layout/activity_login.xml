@@ -60,7 +60,7 @@
                 android:inputType="textPersonName"
                 android:singleLine="true"
                 android:textAlignment="center"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
             <EditText
@@ -76,7 +76,7 @@
                 android:inputType="textPassword"
                 android:singleLine="true"
                 android:textAlignment="center"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -90,6 +90,15 @@
             android:text="@string/btn_login"
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/rememberMe_checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="REMEMBER ME"
+            android:fontFamily="sans-serif-condensed"
             android:textStyle="bold" />
 
         <Button
@@ -118,8 +127,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="20dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView"

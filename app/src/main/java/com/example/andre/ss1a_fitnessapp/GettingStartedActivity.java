@@ -52,6 +52,7 @@ public class GettingStartedActivity extends AppCompatActivity {
                     finish();
                     Intent startIntent = new Intent(GettingStartedActivity.this, HomepageActivity.class);
                     startActivity(startIntent);
+                    finish();
                 }
 
                 mSlideViewPager.setCurrentItem(mCurrentPage + 1);
@@ -126,8 +127,7 @@ public class GettingStartedActivity extends AppCompatActivity {
 
                 mNextBtn.setText("Next");
                 mBackBtn.setText("Back");
-        }
-
+            }
         }
 
         @Override

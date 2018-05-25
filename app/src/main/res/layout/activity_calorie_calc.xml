@@ -11,33 +11,38 @@
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_alignParentTop="true"
-        android:background="@color/colorAccent">
+        android:background="@color/colorPrimary">
 
         <Button
             android:id="@+id/calorieCalcBackBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
-            android:text="BACK" />
+            android:background="?attr/actionModeCloseDrawable"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/title_heading_calorie_calc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-condensed"
             android:gravity="center"
-            android:text="CALCORIE COUNTER"
+            android:text="CALORIE COUNTER"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/calorie_calc_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@+id/headbar_calorie_counter"
-        android:background="@drawable/calorie_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/cookies"
         android:gravity="center">
 
         <TextView
@@ -46,116 +51,168 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/colorWhite"
-            android:textStyle="bold"
-            android:textSize="20sp" />
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
     <TableLayout
         android:id="@+id/calorie_table_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/calorie_calc_relative_layout"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_border"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:padding="20dp">
 
-        <TableRow android:layout_marginVertical="10dp">
+        <TableRow
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:longClickable="false">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Age: " />
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="right"
+                android:text="Age: "
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/ageEditText"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
+                android:fontFamily="sans-serif-condensed"
                 android:hint="Enter age"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="@color/colorPrimary" />
         </TableRow>
 
-        <TableRow android:layout_marginVertical="10dp">
+        <TableRow android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="Gender: " />
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="right"
+                android:text="Gender: "
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/genderRadioBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/maleBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Male" />
+                    android:fontFamily="sans-serif-condensed"
+                    android:padding="10dp"
+                    android:text="Male"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/femaleBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Female" />
+                    android:fontFamily="sans-serif-condensed"
+                    android:padding="10dp"
+                    android:text="Female"
+                    android:textStyle="bold" />
             </RadioGroup>
         </TableRow>
 
-        <TableRow android:layout_marginVertical="10dp">
+        <TableRow android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Height (cm): " />
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="right"
+                android:text="Height (cm): "
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/heightEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
+                android:fontFamily="sans-serif-condensed"
                 android:hint="Enter height"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:textColor="@color/colorPrimary" />
         </TableRow>
 
-        <TableRow android:layout_marginVertical="10dp">
+        <TableRow android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weight (kg): " />
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="right"
+                android:text="Weight (kg): "
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/weightEditText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
+                android:fontFamily="sans-serif-condensed"
                 android:hint="Enter weight"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:textColor="@color/colorPrimary" />
         </TableRow>
 
-        <TableRow android:layout_marginVertical="10dp">
+        <TableRow android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Goal: " />
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="right"
+                android:text="Goal: "
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/goal_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.5" />
         </TableRow>
 
-        <TableRow android:layout_marginVertical="10dp">
+        <TableRow android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Activity Level: " />
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="right"
+                android:text="Activity Level: "
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/activity_level_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.5"
+                android:fontFamily="sans-serif-condensed" />
         </TableRow>
     </TableLayout>
 
@@ -165,6 +222,30 @@
         android:layout_height="54dp"
         android:layout_below="@+id/calorie_table_layout"
         android:layout_centerHorizontal="true"
-        android:text="Calculate" />
+        android:text="Calculate"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/foodBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
+        android:layout_below="@+id/calculateBtn"
+        android:layout_centerHorizontal="true"
+        android:text="Food Recommendations" />
+
+    <TextView
+        android:id="@+id/calcResultTxtTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calorie_calc_relative_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/colorBlack" />
+
 
 </RelativeLayout>

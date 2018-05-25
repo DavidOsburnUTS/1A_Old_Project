@@ -20,13 +20,13 @@
     <string name="title_home">Home</string>
     <string name="title_start_run">Start Run</string>
     <string name="title_settings">Settings</string>
-    <string name="welcomeTxt">Welcome!</string>gitgit
-    <string name="title_calorieBtn">CALORIE COUNT</string>
+    <string name="welcomeTxt">Welcome!</string>
+    <string name="calorieCalcBtn">CALORIE COUNT</string>
     <string name="cardioBtn">CARDIO\nTRAINING</string>
     <string name="weightBtn">WEIGHT\nTRAINING</string>
     <string name="profileBtn">PROFILE</string>
-    <string name="termsconditionTxt">By signing up, you agree to our Terms and that you\n
-        have read our 'Privacy Policy' and 'Content Policy'</string>
+    <string name="termsconditionTxt">By signing up, you agree to our Terms and that you
+        have read our Privacy Policy and Content Policy</string>
     <string name="oldaccountBtn">Already have an account? Log in!</string>
     <string name="title_activity_side_tab">SideTab</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -50,5 +50,6 @@
     <string name="permission_denied_explanation">Permission was denied, but is needed for core
         functionality.</string>
     <string name="settings">Settings</string>
+    <string name="disclaimer">© Made by Group 7 Studio</string>
 
 </resources>

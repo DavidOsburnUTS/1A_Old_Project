@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-tools:context=".CardioTrainingActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".FoodRecommendationActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,7 +12,7 @@ tools:context=".CardioTrainingActivity">
         android:background="@color/colorPrimary">
 
         <Button
-            android:id="@+id/cardioTrainingBackBtn"
+            android:id="@+id/weightTrainingBackBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
@@ -28,16 +27,29 @@ tools:context=".CardioTrainingActivity">
             android:layout_centerInParent="true"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
-            android:text="CARDIOVASCULAR TRAINING"
+            android:text="FOOD RECOMMENDATION"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
 
     </RelativeLayout>
 
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="54dp"></WebView>
 
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/youtube_player"
+    <RelativeLayout
+        android:id="@+id/loadingPanel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="54dp"
+        android:gravity="center">
 
-</LinearLayout>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+    </RelativeLayout>
+
+</RelativeLayout>

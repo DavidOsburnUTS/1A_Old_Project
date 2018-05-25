@@ -7,23 +7,30 @@
     tools:context=".WeightTrainingActivity">
 
     <RelativeLayout
-        android:id="@+id/profile_header_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="54dp"
+        android:layout_alignParentTop="true"
         android:background="@color/colorPrimary">
 
+        <Button
+            android:id="@+id/weightTrainingBackBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="?attr/actionModeCloseDrawable"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="12sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imageView3"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:layout_centerHorizontal="true"
-            android:text="Weight Training"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorWhite"/>
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:text="WEIGHT TRAINING"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -37,11 +44,13 @@
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/profile_header_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         android:layout_margin="20dp">
 
         <TableRow android:layout_marginVertical="10dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,9 +60,25 @@
                 android:id="@+id/bodyPart_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/playBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="54dp"
+                android:text="Play" />
         </TableRow>
 
 
     </TableLayout>
+
+    <Button
+        android:id="@+id/moreVideosBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
+        android:layout_below="@id/playBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="More workouts" />
 
 </LinearLayout>
