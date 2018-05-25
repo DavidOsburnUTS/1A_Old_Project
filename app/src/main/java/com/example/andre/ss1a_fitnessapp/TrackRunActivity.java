@@ -1,26 +1,24 @@
 package com.example.andre.ss1a_fitnessapp;
 
 import android.Manifest;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Criteria;
 import android.location.Location;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
-import android.view.View;
+import 	android.location.LocationManager;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -30,8 +28,6 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -115,7 +111,6 @@ public class TrackRunActivity extends FragmentActivity
                             new LatLng(location.getLatitude(),
                                     location.getLongitude())));
                         onLocationChanged(location);
-
                 }
             }
         };
@@ -169,10 +164,8 @@ public class TrackRunActivity extends FragmentActivity
 
         // Prompt the user for permission.
         getLocationPermission();
-
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
-
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
 
@@ -232,6 +225,23 @@ public class TrackRunActivity extends FragmentActivity
         }
     }
 
+//    private void getLocationPermission() {
+//        /*
+//         * Request location permission, so that we can get the location of th
+//         * device. The result of the permission request is handled by a callback,
+//         * onRequestPermissionsResult.
+//         */
+//        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+//                android.Manifest.permission.ACCESS_FINE_LOCATION)
+//                == PackageManager.PERMISSION_GRANTED) {
+//            mLocationPermission = true;
+//        } else {
+//            ActivityCompat.requestPermissions(this,
+//                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+//                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+//        }
+//    }
+
     private void getLocationPermission() {
         /*
          * Request location permission, so that we can get the location of th
@@ -243,30 +253,95 @@ public class TrackRunActivity extends FragmentActivity
                 == PackageManager.PERMISSION_GRANTED) {
             mLocationPermission = true;
         } else {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+            //permission rationale triggered
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+                new AlertDialog.Builder(this)
+                        .setTitle(R.string.title_location_permission)
+                        .setMessage(R.string.permission_rationale)
+                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            //requests permission again
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                ActivityCompat.requestPermissions(TrackRunActivity.this,
+                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                        PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                            }
+                        })
+                        .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                finish();
+                            }
+                        })
+                        .create()
+                        .show();
+
+
+            } else {
+//                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+            }
         }
     }
 
     /**
      * Handles the result of the request for location permissions.
      */
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode,
+//                                           @NonNull String permissions[],
+//                                           @NonNull int[] grantResults) {
+//        mLocationPermission = false;
+//        switch (requestCode) {
+//            case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
+//                // If request is cancelled, the result arrays are empty.
+//                if (grantResults.length > 0
+//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    mLocationPermission = true;
+//                }
+//            }
+//        }
+//        updateLocationUI();
+//    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[],
                                            @NonNull int[] grantResults) {
-        mLocationPermission = false;
         switch (requestCode) {
             case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mLocationPermission = true;
+
+                    // permission was granted, yay! Do the
+                    // location-related task you need to do.
+                    if (ContextCompat.checkSelfPermission(this,
+                            Manifest.permission.ACCESS_FINE_LOCATION)
+                            == PackageManager.PERMISSION_GRANTED) {
+
+                        //Request location updates:
+                        mFusedLocationProviderClient.requestLocationUpdates(mLocationRequest,
+                                mLocationCallback,
+                                null /* Looper */);
+//                    mLocationPermission = true;
+
+                    } else {
+                        // permission denied, boo! Disable the
+                        // functionality that depends on this permission.
+                        finish();
+                    }
                 }
+                updateLocationUI();
             }
         }
-        updateLocationUI();
     }
 
     private void startLocationUpdates() {
