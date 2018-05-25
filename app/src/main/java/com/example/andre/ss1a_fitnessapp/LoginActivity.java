@@ -99,7 +99,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 // If user is registered, user can login to the app using appropriate text
     private void userLogin(){
         String email = emailEditText.getText().toString().trim();
+        mEmail = email;
         String password = passwordEditText.getText().toString().trim();
+        mPw = password;
 
         if(email.isEmpty()){
             emailEditText.setError("Email is required");
@@ -156,6 +158,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
                     .putString("rememberPw", mPw).commit();
 
+        }
+        else {
+            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                    .putString("rememberEmail", "").commit();
+
+            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                    .putString("rememberPw", "").commit();
         }
     }
 

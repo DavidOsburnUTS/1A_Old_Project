@@ -1,11 +1,11 @@
 package com.example.andre.ss1a_fitnessapp;
 
+
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Patterns;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,15 +30,16 @@ public class checkActivity extends AppCompatActivity {
 
         if(isRemembered) {
             userLogin();
-            Intent homePageIntent = new Intent(checkActivity.this, HomepageActivity.class);
-            startActivity(homePageIntent);
-            finish();
         }
         else {
-            Intent intent = new Intent(checkActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
+            startLogin();
         }
+    }
+
+    private void startLogin() {
+        Intent intent = new Intent(checkActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void userLogin(){
@@ -51,7 +52,9 @@ public class checkActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Logged in!",Toast.LENGTH_SHORT).show();
+                    Intent homePageIntent = new Intent(checkActivity.this, HomepageActivity.class);
+                    startActivity(homePageIntent);
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                 }
