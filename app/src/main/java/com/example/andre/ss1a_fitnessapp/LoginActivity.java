@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,6 +24,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText emailEditText;
     private EditText passwordEditText;
     private boolean isFirstRun;
+    private CheckBox rememberMe;
+    private boolean isRemembered;
     //private TextView result;
     //private Button login;
 
@@ -33,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         emailEditText = (EditText) findViewById(R.id.emailEditText);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
+        rememberMe = (CheckBox) findViewById(R.id.rememberMe_checkBox);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -41,6 +46,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("isFirstRun", true);
+
+        isRemembered = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .getBoolean("isRemembered", false);
+
+        rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked) {
+                    getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                            .putBoolean("isRemembered", true).commit();
+                }
+                else {
+                    getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                            .putBoolean("isRemembered", false).commit();
+                }
+            }
+        });
 
 //=================================================================================================
 // Attempt to launch the register activity within the app
@@ -100,16 +122,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     if(isFirstRun) {
-                        getSharedPreferences("PREF", MODE_PRIVATE).edit()
+                        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
                                 .putBoolean("isFirstRun", false).commit();
 
                         Intent gettingStartedIntent = new Intent(LoginActivity.this, GettingStartedActivity.class);
                         gettingStartedIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(gettingStartedIntent);
+                        finish();
                     }
                     else {
                         Intent homePageIntent = new Intent(LoginActivity.this, HomepageActivity.class);
                         startActivity(homePageIntent);
+                        finish();
                     }
 
                 } else {

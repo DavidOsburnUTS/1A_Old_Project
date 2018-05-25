@@ -1,7 +1,9 @@
 package com.example.andre.ss1a_fitnessapp;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -47,6 +49,12 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         switch(view.getId()){
             case R.id.logoutSettingFragmentBtn:
                 logoutUser();
+                SharedPreferences pref = getActivity().getSharedPreferences("PREFERENCE",
+                        Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putBoolean("isRemembered", false);
+                editor.commit();
+                startActivity(new Intent(getActivity(), LoginActivity.class));
                 getActivity().finish();
                 break;
         }
