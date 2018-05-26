@@ -24,7 +24,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     DatabaseReference databaseReference;
     FirebaseUser user;
     String uid;
-    TextView Age,Height,Weight,Gender;
+    TextView Age,Height,Weight,Gender, Name;
 
 
     @Override
@@ -41,16 +41,19 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         Height = (TextView) findViewById(R.id.heightTextView);
         Weight = (TextView) findViewById(R.id.weightTextView);
         Gender = (TextView) findViewById(R.id.genderTextView);
+        Name = (TextView) findViewById(R.id.nameTextView);
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
 
     databaseReference.addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
+            String name = dataSnapshot.child("Users").child(uid).child("name").getValue(String.class);
             String age = dataSnapshot.child("Users").child(uid).child("age").getValue(String.class);
             String height = dataSnapshot.child("Users").child(uid).child("height").getValue(String.class);
             String weight = dataSnapshot.child("Users").child(uid).child("weight").getValue(String.class);
             String gender = dataSnapshot.child("Users").child(uid).child("gender").getValue(String.class);
+            Name.setText(name);
             Age.setText(age);
             Height.setText(height);
             Weight.setText(weight);
