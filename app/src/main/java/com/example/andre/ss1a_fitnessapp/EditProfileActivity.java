@@ -25,7 +25,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.security.acl.Group;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Random;
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
     EditText Age,Height,Weight, Name, goalWeight;
@@ -33,9 +36,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     RadioButton Male_Female;
     Button editProfileDoneBtn;
 
-
     FirebaseAuth mAuth;
-    DatabaseReference UserRef;
+    DatabaseReference UserRef,UserReff;
 
 
     String currentUserID;
@@ -46,9 +48,12 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+
+
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
         UserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
+        UserReff = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID).child("weightHistory");
 
         findViewById(R.id.editProfileDoneBtn).setOnClickListener(this);
         findViewById(R.id.editProfileExitBtn).setOnClickListener(this);
@@ -76,6 +81,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         String weight = Weight.getText().toString();
         int genderID = Gender.getCheckedRadioButtonId();
         Male_Female = (RadioButton) findViewById(genderID);
+        HashMap weightMap = new HashMap();
 
 
         if(TextUtils.isEmpty(age)){
@@ -97,6 +103,25 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             userMap.put("kgGoal", "?");
             userMap.put("kgSoFar", "?");
             userMap.put("points", "?");
+
+
+            Calendar calForDate = Calendar.getInstance();
+            SimpleDateFormat currentDate = new SimpleDateFormat("dd-MMMM-yyyy");
+            final String saveCurrentDate = currentDate.format(calForDate.getTime());
+
+            Calendar calForTime = Calendar.getInstance();
+            SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
+            final String saveCurrentTime = currentTime.format(calForTime.getTime());
+
+            final String RandomKey = currentUserID + saveCurrentDate + saveCurrentTime;
+
+            weightMap.put("weight", weight);
+            weightMap.put("date", saveCurrentDate +  " at " + saveCurrentTime);
+            UserReff.child(RandomKey).updateChildren(weightMap).addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+                }
+            });
             UserRef.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener() {
                 @Override
                 public void onComplete(@NonNull Task task) {
