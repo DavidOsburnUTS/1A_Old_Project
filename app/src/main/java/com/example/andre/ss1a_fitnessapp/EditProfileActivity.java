@@ -28,7 +28,7 @@ import java.security.acl.Group;
 import java.util.HashMap;
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText Age,Height,Weight;
+    EditText Age,Height,Weight, Name, goalWeight;
     RadioGroup Gender;
     RadioButton Male_Female;
     Button editProfileDoneBtn;
@@ -58,6 +58,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         Weight = (EditText) findViewById(R.id.weightEditText);
         Gender = (RadioGroup) findViewById(R.id.genderRadioBtn);
         editProfileDoneBtn = (Button) findViewById(R.id.editProfileDoneBtn);
+        Name = (EditText) findViewById(R.id.nameEditText);
+        goalWeight = (EditText) findViewById(R.id.goalWeightEditText);
 
         editProfileDoneBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -196,14 +196,12 @@ public class TrackRunActivity extends FragmentActivity
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         // Prompt the user for permission.
         getLocationPermission();
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
-
     }
 
     private void getDeviceLocation() {
@@ -475,9 +473,6 @@ public class TrackRunActivity extends FragmentActivity
     @Override
     public void onPolylineClick(Polyline polyline) {
     }
-
-
-
 
 
     /*

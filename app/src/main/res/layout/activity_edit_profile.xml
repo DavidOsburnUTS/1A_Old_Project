@@ -52,7 +52,22 @@
         android:padding="20dp">
 
         <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: " />
 
+            <EditText
+                android:id="@+id/nameEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
+                android:hint="Enter name"
+                android:inputType="number" />
+        </TableRow>
+
+        <TableRow>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,6 +139,47 @@
 
             <EditText
                 android:id="@+id/weightEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
+                android:hint="Enter weight"
+                android:inputType="numberDecimal" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/goal_weight_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Edit/Set goal weight"
+        android:textSize="20sp"
+        android:layout_below="@id/calorie_table_layout"/>
+
+    <TableLayout
+        android:id="@+id/enter_goal_table_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/goal_weight_title"
+        android:background="@drawable/register_background"
+        android:gravity="center"
+        android:padding="20dp">
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Goal weight: " />
+
+            <EditText
+                android:id="@+id/goalWeightEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
