@@ -4,6 +4,10 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.os.SystemClock;
@@ -47,10 +51,10 @@ public class TrackRunActivity extends FragmentActivity
         implements OnMapReadyCallback, LocationListener, View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnPolylineClickListener,
-        GoogleMap.OnPolygonClickListener {
+        GoogleMap.OnPolygonClickListener, SensorEventListener, StepListener {
 
     private GoogleMap mMap;
-    private TextView distanceTv;
+    private TextView distanceTv, avgSpeed;
     private ArrayList<LatLng> routePoints;
     Polyline line;
     private Chronometer runTimerCm;
@@ -76,6 +80,19 @@ public class TrackRunActivity extends FragmentActivity
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private long pauseOffset;
 
+
+
+    /*
+    THESE FIELDS FOR STEP COUNTER
+     */
+
+    private TextView TvSteps;
+    private StepDetector simpleStepDetector;
+    private SensorManager sensorManager;
+    private Sensor accel;
+    private static final String TEXT_NUM_STEPS = "Number of Steps: ";
+    private int numSteps;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +105,18 @@ public class TrackRunActivity extends FragmentActivity
         findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
         runTimerCm = (Chronometer)findViewById(R.id.run_timer);
         findViewById(R.id.runBackBtn).setOnClickListener(this);
+        avgSpeed = findViewById(R.id.avgSpeedTv);
+
+
+
+        TvSteps = (TextView) findViewById(R.id.stepsTv);
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        simpleStepDetector = new StepDetector();
+        simpleStepDetector.registerListener(this);
+
+        numSteps = 0;
+
 
         if (savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
@@ -125,12 +154,17 @@ public class TrackRunActivity extends FragmentActivity
                 pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
                 line.setColor(Color.GRAY);
                 stopLocationUpdates();
+
+                sensorManager.unregisterListener(TrackRunActivity.this);
                 break;
             case R.id.trackRunStartBtn:
                 isDraw = true;
                 startLocationUpdates();
                 runTimerCm.setBase(SystemClock.elapsedRealtime() - pauseOffset);
                 runTimerCm.start();
+
+                //Step code
+                sensorManager.registerListener(TrackRunActivity.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
                 break;
             case R.id.trackRunStopBtn:
                 isDraw = false;
@@ -138,6 +172,7 @@ public class TrackRunActivity extends FragmentActivity
                 runTimerCm.stop();
                 pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
                 line.setColor(Color.RED);
+                sensorManager.unregisterListener(TrackRunActivity.this);
                 break;
             case R.id.runBackBtn:
                 finish();
@@ -417,7 +452,13 @@ public class TrackRunActivity extends FragmentActivity
                     distance += dis;
                     float dist = distance/1000;
                     String s = String.format("%.02f", dist);
+
+
+                    float speed = dist/(SystemClock.elapsedRealtime() - pauseOffset);
+                    String spd = String.format("%.02f", speed);
+
                     distanceTv.setText("Distance: " + s + " km");
+                    avgSpeed.setText("Avg Speed: " + spd + "/hr");
                 }
                 LatLng point = routePoints.get(i);
                 options.add(point);
@@ -441,4 +482,50 @@ public class TrackRunActivity extends FragmentActivity
     @Override
     public void onPolylineClick(Polyline polyline) {
     }
+
+
+
+
+
+    /*
+
+    BELOW IS FOR STEP COUNTER
+
+     */
+
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            simpleStepDetector.updateAccel(
+                    event.timestamp, event.values[0], event.values[1], event.values[2]);
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
+
+    @Override
+    public void step(long timeNs) {
+        numSteps++;
+        TvSteps.setText(TEXT_NUM_STEPS + numSteps);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
