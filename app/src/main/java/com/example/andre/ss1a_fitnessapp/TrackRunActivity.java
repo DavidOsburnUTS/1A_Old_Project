@@ -109,6 +109,8 @@ public class TrackRunActivity extends FragmentActivity
         findViewById(R.id.trackRunPauseBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStartBtn).setOnClickListener(this);
         findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
+        findViewById(R.id.trackRunPauseBtn).setEnabled(false);
+        findViewById(R.id.trackRunStopBtn).setEnabled(false);
         runTimerCm = (Chronometer)findViewById(R.id.run_timer);
         findViewById(R.id.runBackBtn).setOnClickListener(this);
         avgSpeed = findViewById(R.id.avgSpeedTv);
@@ -168,15 +170,16 @@ public class TrackRunActivity extends FragmentActivity
                 startLocationUpdates();
                 runTimerCm.setBase(SystemClock.elapsedRealtime() - pauseOffset);
                 runTimerCm.start();
-
+                findViewById(R.id.trackRunPauseBtn).setEnabled(true);
+                findViewById(R.id.trackRunStopBtn).setEnabled(true);
                 //Step code
                 sensorManager.registerListener(TrackRunActivity.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
                 break;
 
             case R.id.trackRunStopBtn:
-                mMap.addMarker(new MarkerOptions().position(routePoints.get(routePoints.size() - 1)).
-                        icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))); //add Marker in finished position
                 isDraw = false;
+                mMap.addMarker(new MarkerOptions().position(routePoints.get(routePoints.size() - 1)).
+                    icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))); //add Marker in finished position
                 stopLocationUpdates();
                 runTimerCm.stop();
                 pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
@@ -315,12 +318,15 @@ public class TrackRunActivity extends FragmentActivity
                                 ActivityCompat.requestPermissions(TrackRunActivity.this,
                                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                                         PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                                TrackRunActivity.this.onBackPressed();
+
                             }
                         })
+                        //permission denied. exits page
                         .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                finish();
+                                TrackRunActivity.this.onBackPressed();
                             }
                         })
                         .create()
@@ -328,7 +334,7 @@ public class TrackRunActivity extends FragmentActivity
 
 
             } else {
-//                // No explanation needed, we can request the permission.
+                // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
@@ -376,12 +382,12 @@ public class TrackRunActivity extends FragmentActivity
                         mFusedLocationProviderClient.requestLocationUpdates(mLocationRequest,
                                 mLocationCallback,
                                 null /* Looper */);
-//                    mLocationPermission = true;
+                        mLocationPermission = true;
 
                     } else {
                         // permission denied, boo! Disable the
                         // functionality that depends on this permission.
-                        finish();
+                        TrackRunActivity.this.onBackPressed();
                     }
                 }
                 updateLocationUI();
