@@ -417,17 +417,10 @@ public class TrackRunActivity extends FragmentActivity
     @Override
     public void onLocationChanged(Location location) {
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        routePoints.add(latLng); //added
-        drawLine();
-        lastLatLng = currentLatLng;
-
-        currentLatLng = latLng;
-        PolylineOptions line = new PolylineOptions().width(15).color(Color.GREEN).geodesic(true).add(
-                lastLatLng, currentLatLng);
-        mMap.addPolyline(line);
         if(isDraw) {
             routePoints.add(latLng); //added
         }
+        drawLine();
     }
 
     private void drawLine(){
@@ -452,9 +445,9 @@ public class TrackRunActivity extends FragmentActivity
                     distance += dis;
                     float dist = distance/1000;
                     String s = String.format("%.02f", dist);
-
-
-                    float speed = dist/(SystemClock.elapsedRealtime() - pauseOffset);
+                    long timeElapsed = SystemClock.elapsedRealtime() - pauseOffset;
+                    float hours = (float) (timeElapsed / 3600000);
+                    float speed = dist/hours;
                     String spd = String.format("%.02f", speed);
 
                     distanceTv.setText("Distance: " + s + " km");
