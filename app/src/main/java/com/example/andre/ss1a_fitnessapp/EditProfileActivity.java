@@ -37,10 +37,13 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     Button editProfileDoneBtn;
 
     FirebaseAuth mAuth;
-    DatabaseReference UserRef,UserReff;
+    DatabaseReference UserRef,UserReff,databaseReference;
+    FirebaseUser user;
 
 
-    String currentUserID;
+    String currentUserID,uid;
+
+    int WWeight;
 
 
     @Override
@@ -48,7 +51,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        uid = user.getUid();
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
@@ -70,6 +74,20 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 SaveAccountInfo();
             }
         });
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+    databaseReference.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            WWeight =Integer.parseInt(dataSnapshot.child("Users").child(uid).child("weight").getValue(String.class));
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    });
 
     }
 
@@ -99,7 +117,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             userMap.put("name", "?");
             userMap.put("gender", Male_Female.getText());
             userMap.put("kgGoal", "?");
-            userMap.put("kgSoFar", "?");
+            userMap.put("kgSoFar", WWeight - Integer.parseInt(weight));
             userMap.put("points", "?");
 
 
