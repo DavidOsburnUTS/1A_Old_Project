@@ -15,8 +15,8 @@
 
         <Button
             android:id="@+id/calorieCalcBackBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
             android:background="?attr/actionModeCloseDrawable"
@@ -223,7 +223,7 @@
         android:layout_height="54dp"
         android:layout_below="@+id/calorie_table_layout"
         android:layout_centerHorizontal="true"
-        android:text="Calculate"
+        android:text="CALCULATE"
         android:fontFamily="sans-serif-condensed"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -234,7 +234,11 @@
         android:layout_height="54dp"
         android:layout_below="@+id/calculateBtn"
         android:layout_centerHorizontal="true"
-        android:text="Food Recommendations" />
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        android:text="FOOD RECOMMENDATION"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/calcResultTxtTv"

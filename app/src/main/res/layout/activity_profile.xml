@@ -4,146 +4,250 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundinvert"
     tools:context=".ProfileActivity">
+
+    <RelativeLayout
+        android:id="@+id/profile_header"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <Button
+            android:id="@+id/profileBackBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:background="?attr/actionModeCloseDrawable" />
+
+        <Button
+            android:id="@+id/profileEditBtn"
+            android:layout_width="80dp"
+            android:layout_height="54dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:text="EDIT"
+            android:fontFamily="sans-serif-condensed"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="MY PROFILE"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/profile_header_layout"
         android:layout_width="match_parent"
-        android:layout_height="266dp"
-        android:layout_alignParentTop="true"
-        android:background="@color/colorGray">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_alignParentTop="true"
-            android:background="@color/colorAccent">
-
-            <Button
-                android:id="@+id/profileBackBtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerInParent="true"
-                android:background="?attr/actionModeCloseDrawable" />
-
-            <Button
-                android:id="@+id/profileEditBtn"
-                android:layout_width="80dp"
-                android:layout_height="54dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
-                android:text="EDIT" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:text="MY PROFILE"
-                android:textColor="@color/colorWhite"
-                android:textStyle="bold" />
-        </RelativeLayout>
+        android:layout_height="250dp"
+        android:layout_below="@+id/profile_header"
+        android:background="@color/colorGray"
+        android:padding="20dp">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/display_photo_imageview"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_centerInParent="true"
+            android:layout_below="@+id/cookies_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
             app:srcCompat="@mipmap/ic_launcher_round" />
 
         <TextView
             android:id="@+id/nameTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imageView3"
+            android:layout_below="@+id/display_photo_imageview"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp"
+            android:gravity="center"
             android:textColor="@color/place_autocomplete_search_text"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:textAllCaps="true" />
 
-    </RelativeLayout>
-
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/profile_header_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp">
-
-        <TableRow android:layout_marginTop="10dp">
+        <LinearLayout
+            android:id="@+id/cookies_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Age: "
-                android:textSize="18sp" />
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
+                android:text="COOKIES: "
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
+                android:text="0"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TableLayout
+        android:id="@+id/profileTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_header_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/register_background"
+        android:gravity="center"
+        android:padding="20dp">
+
+        <TableRow
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:padding="5dp"
+                android:text="AGE: "
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/ageTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:textSize="18sp" />
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </TableRow>
 
-        <TableRow android:layout_marginTop="10dp">
+        <TableRow
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gender: "
-                android:textSize="18sp" />
+                android:fontFamily="sans-serif-condensed"
+                android:padding="5dp"
+                android:text="GENDER: "
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/genderTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:textSize="18sp" />
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </TableRow>
 
-        <TableRow android:layout_marginTop="10dp">
+        <TableRow
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Height: "
-                android:textSize="18sp" />
+                android:fontFamily="sans-serif-condensed"
+                android:padding="5dp"
+                android:text="HEIGHT: "
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/heightTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:textSize="18sp" />
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </TableRow>
 
-        <TableRow android:layout_marginTop="10dp">
+        <TableRow
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weight: "
-                android:textSize="18sp" />
+                android:fontFamily="sans-serif-condensed"
+                android:padding="5dp"
+                android:text="WEIGHT: "
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/weightTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:textSize="18sp" />
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </TableRow>
 
-
     </TableLayout>
+
+    <LinearLayout
+        android:id="@+id/progresslayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/register_background"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/progressBar"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="PROGRESS"
+            android:textColor="@color/colorBlack"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>

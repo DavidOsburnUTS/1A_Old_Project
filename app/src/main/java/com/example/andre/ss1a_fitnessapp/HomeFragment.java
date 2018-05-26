@@ -18,10 +18,6 @@ import android.widget.ProgressBar;
 public class HomeFragment extends Fragment implements View.OnClickListener
 {
 
-    private ViewPager mSlideViewPager;
-
-    private HomeSliderAdapter sliderAdapter;
-
     private Button button1;
     private Button button2;
     private Button button3;
@@ -44,19 +40,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener
         view.findViewById(R.id.profileBtn).setOnClickListener(this);
         view.findViewById(R.id.cardioBtn).setOnClickListener(this);
         view.findViewById(R.id.weightTrainingBtn).setOnClickListener(this);
-        view.findViewById(R.id.progresslayout).setOnClickListener(this);
+        //view.findViewById(R.id.progresslayout).setOnClickListener(this);
 
         //Progress Bar
-        progressBar = view.findViewById(R.id.progressBar);
-
-        progressBar.setProgress(75);
-
-        //ViewPager Facts
-        mSlideViewPager = (ViewPager) view.findViewById(R.id.slideViewPagerHome);
-
-        sliderAdapter = new HomeSliderAdapter(getActivity());
-
-        mSlideViewPager.setAdapter(sliderAdapter);
+        //progressBar = view.findViewById(R.id.progressBar);
+        //progressBar.setProgress(75);
 
         //ViewPager Auto Sweep
         //java.util.Timer timer = new java.util.Timer();
@@ -64,7 +52,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener
 
         return view;
     }
-
+    /*
         public class MyTimerTask extends java.util.TimerTask {
         @Override
         public void run() {
@@ -86,7 +74,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener
                 }
             });
          }
-     }
+     }*/
 
     @Override
     public void onClick(View view) {

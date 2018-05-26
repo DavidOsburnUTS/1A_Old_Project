@@ -158,7 +158,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         finish();
                     }
                     else {
-                        Intent homePageIntent = new Intent(LoginActivity.this, HomepageActivity.class);
+                        Intent homePageIntent = new Intent(LoginActivity.this, SplashActivity.class);
                         startActivity(homePageIntent);
                         finish();
                     }

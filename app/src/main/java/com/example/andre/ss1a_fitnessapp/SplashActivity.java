@@ -11,29 +11,26 @@ import android.widget.ImageView;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        imageView = (ImageView) findViewById(R.id.splash_iv);
-        //Animation animation = AnimationUtils.loadAnimation(this, R.anim.mytransition);
-        //imageView.startAnimation(animation);
-        Intent intent = new Intent(this, LoginActivity.class);
-        Thread timer = new Thread() {
+        final Intent intent = new Intent(this, HomepageActivity.class);
+        final Thread timer = new Thread() {
             public void run() {
                 try {
-                    sleep(5000);
+                    sleep(2500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 finally {
-                    //startActivity(intent);
+                    startActivity(intent);
                     finish();
                 }
             }
-                //timer.start();
+
         };
+        timer.start();
     }
 }

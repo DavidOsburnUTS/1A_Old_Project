@@ -6,6 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".Progress">
 
+    <RelativeLayout
+        android:id="@+id/headbar_calorie_counter"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <Button
+            android:id="@+id/calorieCalcBackBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:background="?attr/actionModeCloseDrawable"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/title_heading_calorie_calc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:text="WEIGHT PROGRESS"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"

@@ -10,6 +10,34 @@
     tools:context="com.example.andre.ss1a_fitnessapp.HomepageActivity"
     tools:layout_editor_absoluteY="81dp">
 
+    <LinearLayout
+        android:id="@+id/headbar_calorie_counter"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/calorieCalcBackBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/oneup_logo_500dp_v2" />
+
+        <TextView
+            android:id="@+id/title_heading_calorie_calc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:text="1UP"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <FrameLayout
         android:id="@+id/homepage_main_frame"
         android:layout_width="match_parent"

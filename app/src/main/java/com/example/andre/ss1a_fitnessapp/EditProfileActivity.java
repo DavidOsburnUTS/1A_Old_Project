@@ -80,6 +80,9 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
+        RadioButton maleBtn = (RadioButton) findViewById(R.id.editProfileMaleBtn);
+        maleBtn.setChecked(true);
+
     databaseReference.addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -105,15 +108,25 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         HashMap weightMap = new HashMap();
         HashMap leaderboard = new HashMap();
 
-
-        if(TextUtils.isEmpty(age)){
-            Toast.makeText(this, "Please enter an age",Toast.LENGTH_SHORT).show();
+        if(TextUtils.isEmpty(name)){
+            //Toast.makeText(this, "Please enter an age",Toast.LENGTH_SHORT).show();
+            Name.setError("Please enter a name");
+            return;
         }
         if(TextUtils.isEmpty(age)){
-            Toast.makeText(this, "Please enter a height",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Please enter an age",Toast.LENGTH_SHORT).show();
+            Age.setError("Please enter an age");
+            return;
         }
-        if(TextUtils.isEmpty(age)){
-            Toast.makeText(this, "Please enter a weight",Toast.LENGTH_SHORT).show();
+        if(TextUtils.isEmpty(height)) {
+            //Toast.makeText(this, "Please enter a weight", Toast.LENGTH_SHORT).show();
+            Height.setError("Please enter a height");
+            return;
+        }
+        if(TextUtils.isEmpty(weight)){
+            //Toast.makeText(this, "Please enter a weight",Toast.LENGTH_SHORT).show();
+            Weight.setError("Please enter a weight");
+            return;
         }else{
             HashMap userMap = new HashMap();
             userMap.put("age", age);
@@ -157,10 +170,11 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 public void onComplete(@NonNull Task task) {
                     if(task.isSuccessful()){
                         Toast.makeText(EditProfileActivity.this, "Profile edit successful", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(EditProfileActivity.this, ProfileActivity.class));
+                        //startActivity(new Intent(EditProfileActivity.this, ProfileActivity.class));
+                        finish();
                     }else{
                         String message = task.getException().getMessage();
-                        Toast.makeText(EditProfileActivity.this, "Oh no somthing went wrong " + message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditProfileActivity.this, "Oh no something went wrong OWO" + message, Toast.LENGTH_SHORT).show();
                     }
                 }
             });

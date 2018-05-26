@@ -6,132 +6,95 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="@string/welcomeTxt"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimary"
-        android:textSize="30sp"
-        android:textStyle="bold" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/slideViewPagerHome"
+    <FrameLayout
+        android:id="@+id/mHeader"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true">
+
+    </FrameLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@android:color/transparent" />
+        android:layout_below="@id/mHeader"
+        android:layout_above="@id/mNav"
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/first_row_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/second_row_layout"
-        android:layout_alignParentStart="true"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <Button
-            android:id="@+id/weightTrainingBtn"
+        <LinearLayout
+            android:id="@+id/first_row_layout"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:layout_weight="0.5"
-            android:background="@drawable/weight_80"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/weightBtn"
-            android:textColor="@android:color/background_light"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:layout_above="@+id/second_row_layout"
+             android:layout_weight="0.5"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/cardioBtn"
+            <Button
+                android:id="@+id/weightTrainingBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@drawable/weight_80"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/weightBtn"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/cardioBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@drawable/cardio_80"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/cardioBtn"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/second_row_layout"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:layout_margin="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:background="@drawable/cardio_80"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/cardioBtn"
-            android:textColor="@android:color/background_light"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/calorieBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@drawable/calorie_80"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/calorieCalcBtn"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/second_row_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="54dp"
-        android:orientation="horizontal"
-        android:weightSum="1">
+            <Button
+                android:id="@+id/profileBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@drawable/profile_80"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/profileBtn"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/calorieBtn"
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:layout_weight="0.5"
-            android:background="@drawable/calorie_80"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/calorieCalcBtn"
-            android:textColor="@android:color/background_light"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/profileBtn"
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:layout_weight="0.5"
-            android:background="@drawable/profile_80"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/profileBtn"
-            android:textColor="@android:color/background_light"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/progresslayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/first_row_layout"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:background="@drawable/register_background"
-        android:clickable="true"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/progressBar"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="sans-serif-condensed"
-            android:text="PROGRESS"
-            android:textColor="@color/colorBlack"
-            android:textSize="17sp" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" />
+        </LinearLayout>
 
     </LinearLayout>
 
     <FrameLayout
+        android:id="@+id/mNav"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_alignParentBottom="true"
