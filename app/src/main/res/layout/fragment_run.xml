@@ -19,9 +19,8 @@
         android:id="@+id/dotRunLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/startRunFragmentBtn"
+        android:layout_above="@+id/progressRunLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
         android:background="@android:color/transparent"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -32,8 +31,11 @@
         android:id="@+id/startRunFragmentBtn"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_above="@+id/progressRunLayout"
+        android:layout_above="@+id/frameLayoutNav"
         android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@color/transparent_button_100"
         android:gravity="center"
         android:text="START RUN"
@@ -49,11 +51,13 @@
         android:id="@+id/progressRunLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/frameLayoutNav"
+        android:layout_above="@+id/startRunFragmentBtn"
         android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/register_background"
         android:clickable="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
