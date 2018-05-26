@@ -83,7 +83,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     databaseReference.addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            WWeight =Integer.parseInt(dataSnapshot.child("Users").child(uid).child("weight").getValue(String.class));
+        //    WWeight =Integer.parseInt(dataSnapshot.child("Users").child(uid).child("weight").getValue(String.class));
         }
 
         @Override
@@ -123,7 +123,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             userMap.put("name", name);
             userMap.put("gender", Male_Female.getText());
             userMap.put("kgGoal", goalweight);
-            userMap.put("kgSoFar", WWeight - Integer.parseInt(weight));
+            //userMap.put("kgSoFar", WWeight - Integer.parseInt(weight));
             userMap.put("points", "?");
 
 
