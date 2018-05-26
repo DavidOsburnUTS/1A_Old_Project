@@ -67,9 +67,9 @@
         android:id="@+id/second_row_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/progresslayout"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="54dp"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -103,11 +103,13 @@
         android:id="@+id/progresslayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/first_row_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="75dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/register_background"
         android:clickable="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"

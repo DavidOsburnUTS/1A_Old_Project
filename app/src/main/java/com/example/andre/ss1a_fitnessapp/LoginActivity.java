@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,11 +38,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //private TextView result;
     //private Button login;
 
+    /*
+    RelativeLayout login, splash;
+
+    Handler handler = new Handler();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            splash.setVisibility(View.VISIBLE);
+            login.setVisibility(View.VISIBLE);
+
+        }
+    };
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //splash = (RelativeLayout) findViewById(R.id.splash_relative_layout);
+        //login = (RelativeLayout) findViewById(R.id.login_relative_layout);
+
+        //handler.postDelayed(runnable, 2000);
 
         emailEditText = (EditText) findViewById(R.id.emailEditText);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);

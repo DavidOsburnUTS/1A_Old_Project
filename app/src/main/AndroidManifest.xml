@@ -20,9 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
-        </activity>
-        <activity android:name=".Register"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".Register" />
         <activity
             android:name=".HomepageActivity"
             android:exported="true"
@@ -40,7 +39,7 @@
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".FoodRecommendationActivity" />
         <activity android:name=".FitnessBlenderActivity" />
-        <activity android:name=".StepCounterActivity"/>
+        <activity android:name=".StepCounterActivity" />
         <activity android:name=".GettingStartedActivity" />
         <activity
             android:name=".TrackRunActivity"
@@ -52,7 +51,8 @@
 
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".Progress" />
-        <activity android:name=".HomeSliderAdapter"></activity>
+        <activity android:name=".HomeSliderAdapter" />
+        <activity android:name=".SplashActivity"></activity>
     </application>
 
 </manifest>
