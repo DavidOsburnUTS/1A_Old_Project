@@ -37,7 +37,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     Button editProfileDoneBtn;
 
     FirebaseAuth mAuth;
-    DatabaseReference UserRef,UserReff,databaseReference;
+    DatabaseReference UserRef,UserReff,databaseReference,UserReference;
     FirebaseUser user;
 
 
@@ -58,6 +58,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         currentUserID = mAuth.getCurrentUser().getUid();
         UserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
         UserReff = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID).child("weightHistory");
+        UserReference = FirebaseDatabase.getInstance().getReference().child("Leaderboard").child(currentUserID);
 
         findViewById(R.id.editProfileDoneBtn).setOnClickListener(this);
         findViewById(R.id.editProfileExitBtn).setOnClickListener(this);
@@ -102,6 +103,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         String goalweight = goalWeight.getText().toString();
         Male_Female = (RadioButton) findViewById(genderID);
         HashMap weightMap = new HashMap();
+        HashMap leaderboard = new HashMap();
 
 
         if(TextUtils.isEmpty(age)){
@@ -134,6 +136,14 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             final String saveCurrentTime = currentTime.format(calForTime.getTime());
 
             final String RandomKey = currentUserID + saveCurrentDate + saveCurrentTime;
+
+            leaderboard.put(name , "points : ");
+            UserReference.updateChildren(leaderboard).addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+
+                }
+            });
 
             weightMap.put("weight", weight);
             weightMap.put("date", saveCurrentDate +  " at " + saveCurrentTime);
