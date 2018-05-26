@@ -183,8 +183,22 @@ public class TrackRunActivity extends FragmentActivity
                 stopLocationUpdates();
                 runTimerCm.stop();
                 pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
-
                 sensorManager.unregisterListener(TrackRunActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        builder.setTitle(R.string.title_trackrun_finished)
+                                .setMessage(distanceTv.getText().toString() + "\n"
+                                        + "Time: " + runTimerCm.getText().toString() + "\n"
+                                + avgSpeed.getText().toString() + "\n"
+                                + "Steps: " + Integer.toString(numSteps))
+                                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            //requests permission again
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                TrackRunActivity.this.onBackPressed();
+                            }
+                        })
+                        .create()
+                        .show();
                 break;
 
             case R.id.runBackBtn:
