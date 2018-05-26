@@ -98,6 +98,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         String height = Height.getText().toString();
         String weight = Weight.getText().toString();
         int genderID = Gender.getCheckedRadioButtonId();
+        String name = Name.getText().toString();
+        String goalweight = goalWeight.getText().toString();
         Male_Female = (RadioButton) findViewById(genderID);
         HashMap weightMap = new HashMap();
 
@@ -116,9 +118,9 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             userMap.put("height", height);
             userMap.put("weight", weight);
 
-            userMap.put("name", "?");
+            userMap.put("name", name);
             userMap.put("gender", Male_Female.getText());
-            userMap.put("kgGoal", "?");
+            userMap.put("kgGoal", goalweight);
             userMap.put("kgSoFar", WWeight - Integer.parseInt(weight));
             userMap.put("points", "?");
 

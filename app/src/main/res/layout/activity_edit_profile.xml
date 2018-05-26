@@ -64,7 +64,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="0.5"
                 android:hint="Enter name"
-                android:inputType="number" />
+                android:inputType="text" />
         </TableRow>
 
         <TableRow>
