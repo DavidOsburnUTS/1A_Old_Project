@@ -19,7 +19,7 @@ public class RunSliderAdapter extends PagerAdapter{
     }
 
     public int[] slide_images = {
-            R.drawable.oneup_main,
+            R.drawable.oneup_logo_500dp_v2,
             R.drawable.track,
             R.drawable.eat,
             R.drawable.profile

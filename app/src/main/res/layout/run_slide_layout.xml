@@ -8,14 +8,13 @@ tools:context=".RunFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="380dp"
+        android:layout_height="350dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="false"
         android:layout_centerInParent="false"
         android:layout_centerVertical="false"
         android:layout_margin="20dp"
-        android:background="@drawable/register_background"
         android:gravity="center"
         android:orientation="vertical">
 
