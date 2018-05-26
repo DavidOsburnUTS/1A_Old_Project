@@ -1,26 +1,28 @@
 package com.example.andre.ss1a_fitnessapp;
 
 import android.Manifest;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.location.Criteria;
 import android.location.Location;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
-import android.view.View;
+import 	android.location.LocationManager;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -30,8 +32,6 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -51,13 +51,10 @@ public class TrackRunActivity extends FragmentActivity
         implements OnMapReadyCallback, LocationListener, View.OnClickListener,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnPolylineClickListener,
-        GoogleMap.OnPolygonClickListener {
+        GoogleMap.OnPolygonClickListener, SensorEventListener, StepListener {
 
     private GoogleMap mMap;
-    private Button startBtn;
-    private Button pauseBtn;
-    private Button stopBtn;
-    private TextView distanceTv;
+    private TextView distanceTv, avgSpeed;
     private ArrayList<LatLng> routePoints;
     Polyline line;
     private Chronometer runTimerCm;
@@ -83,6 +80,19 @@ public class TrackRunActivity extends FragmentActivity
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private long pauseOffset;
 
+
+
+    /*
+    THESE FIELDS FOR STEP COUNTER
+     */
+
+    private TextView TvSteps;
+    private StepDetector simpleStepDetector;
+    private SensorManager sensorManager;
+    private Sensor accel;
+    private static final String TEXT_NUM_STEPS = "Number of Steps: ";
+    private int numSteps;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +105,18 @@ public class TrackRunActivity extends FragmentActivity
         findViewById(R.id.trackRunStopBtn).setOnClickListener(this);
         runTimerCm = (Chronometer)findViewById(R.id.run_timer);
         findViewById(R.id.runBackBtn).setOnClickListener(this);
+        avgSpeed = findViewById(R.id.avgSpeedTv);
+
+
+
+        TvSteps = (TextView) findViewById(R.id.stepsTv);
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        simpleStepDetector = new StepDetector();
+        simpleStepDetector.registerListener(this);
+
+        numSteps = 0;
+
 
         if (savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
@@ -107,7 +129,6 @@ public class TrackRunActivity extends FragmentActivity
         mapFragment.getMapAsync(this);
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
         mLocationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
@@ -115,15 +136,13 @@ public class TrackRunActivity extends FragmentActivity
                     return;
                 }
                 for (Location location : locationResult.getLocations()) {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(
                             new LatLng(location.getLatitude(),
-                                    location.getLongitude()), DEFAULT_ZOOM));
-                    onLocationChanged(location);
+                                    location.getLongitude())));
+                        onLocationChanged(location);
                 }
             }
-
         };
-
     }
 
     @Override
@@ -133,18 +152,27 @@ public class TrackRunActivity extends FragmentActivity
                 isDraw = false;
                 runTimerCm.stop();
                 pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
-                stopLocationUpdates();
                 line.setColor(Color.GRAY);
+                stopLocationUpdates();
+
+                sensorManager.unregisterListener(TrackRunActivity.this);
                 break;
             case R.id.trackRunStartBtn:
                 isDraw = true;
+                startLocationUpdates();
                 runTimerCm.setBase(SystemClock.elapsedRealtime() - pauseOffset);
                 runTimerCm.start();
-                startLocationUpdates();
+
+                //Step code
+                sensorManager.registerListener(TrackRunActivity.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
                 break;
             case R.id.trackRunStopBtn:
                 isDraw = false;
+                stopLocationUpdates();
+                runTimerCm.stop();
+                pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
                 line.setColor(Color.RED);
+                sensorManager.unregisterListener(TrackRunActivity.this);
                 break;
             case R.id.runBackBtn:
                 finish();
@@ -162,15 +190,8 @@ public class TrackRunActivity extends FragmentActivity
             super.onSaveInstanceState(outState);
         }
     }
-
     /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
      * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -178,10 +199,8 @@ public class TrackRunActivity extends FragmentActivity
 
         // Prompt the user for permission.
         getLocationPermission();
-
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
-
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
 
@@ -241,6 +260,23 @@ public class TrackRunActivity extends FragmentActivity
         }
     }
 
+//    private void getLocationPermission() {
+//        /*
+//         * Request location permission, so that we can get the location of th
+//         * device. The result of the permission request is handled by a callback,
+//         * onRequestPermissionsResult.
+//         */
+//        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
+//                android.Manifest.permission.ACCESS_FINE_LOCATION)
+//                == PackageManager.PERMISSION_GRANTED) {
+//            mLocationPermission = true;
+//        } else {
+//            ActivityCompat.requestPermissions(this,
+//                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+//                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+//        }
+//    }
+
     private void getLocationPermission() {
         /*
          * Request location permission, so that we can get the location of th
@@ -252,45 +288,97 @@ public class TrackRunActivity extends FragmentActivity
                 == PackageManager.PERMISSION_GRANTED) {
             mLocationPermission = true;
         } else {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+            //permission rationale triggered
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+                new AlertDialog.Builder(this)
+                        .setTitle(R.string.title_location_permission)
+                        .setMessage(R.string.permission_rationale)
+                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            //requests permission again
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                ActivityCompat.requestPermissions(TrackRunActivity.this,
+                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                        PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                            }
+                        })
+                        .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                finish();
+                            }
+                        })
+                        .create()
+                        .show();
+
+
+            } else {
+//                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+            }
         }
     }
 
     /**
      * Handles the result of the request for location permissions.
      */
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode,
+//                                           @NonNull String permissions[],
+//                                           @NonNull int[] grantResults) {
+//        mLocationPermission = false;
+//        switch (requestCode) {
+//            case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
+//                // If request is cancelled, the result arrays are empty.
+//                if (grantResults.length > 0
+//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    mLocationPermission = true;
+//                }
+//            }
+//        }
+//        updateLocationUI();
+//    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[],
                                            @NonNull int[] grantResults) {
-        mLocationPermission = false;
         switch (requestCode) {
             case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mLocationPermission = true;
+
+                    // permission was granted, yay! Do the
+                    // location-related task you need to do.
+                    if (ContextCompat.checkSelfPermission(this,
+                            Manifest.permission.ACCESS_FINE_LOCATION)
+                            == PackageManager.PERMISSION_GRANTED) {
+
+                        //Request location updates:
+                        mFusedLocationProviderClient.requestLocationUpdates(mLocationRequest,
+                                mLocationCallback,
+                                null /* Looper */);
+//                    mLocationPermission = true;
+
+                    } else {
+                        // permission denied, boo! Disable the
+                        // functionality that depends on this permission.
+                        finish();
+                    }
                 }
+                updateLocationUI();
             }
         }
-        updateLocationUI();
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        if (mRequestingLocationUpdates) {
-//            startLocationUpdates();
-//        }
-//    }
-
-//    private void startLocationUpdates() {
-//        mFusedLocationClient.requestLocationUpdates(mLocationRequest,
-//                mLocationCallback,
-//                null /* Looper */);
-//    }
     private void startLocationUpdates() {
         createLocationRequest();
         //drop marker with coordinate
@@ -328,10 +416,11 @@ public class TrackRunActivity extends FragmentActivity
 
     @Override
     public void onLocationChanged(Location location) {
+        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+        routePoints.add(latLng); //added
+        drawLine();
         lastLatLng = currentLatLng;
-        double latitude = location.getLatitude();
-        double longitude = location.getLongitude();
-        LatLng latLng = new LatLng(latitude, longitude); //you already have this
+
         currentLatLng = latLng;
         PolylineOptions line = new PolylineOptions().width(15).color(Color.GREEN).geodesic(true).add(
                 lastLatLng, currentLatLng);
@@ -339,13 +428,9 @@ public class TrackRunActivity extends FragmentActivity
         if(isDraw) {
             routePoints.add(latLng); //added
         }
-
-        redrawLine();
     }
 
-    private void redrawLine(){
-
-        mMap.clear();  //clears all Markers and Polylines
+    private void drawLine(){
         if(isDraw) {
             float distance = 0;
             PolylineOptions options = new PolylineOptions().width(15).color(Color.GREEN).geodesic(true);
@@ -367,16 +452,20 @@ public class TrackRunActivity extends FragmentActivity
                     distance += dis;
                     float dist = distance/1000;
                     String s = String.format("%.02f", dist);
+
+
+                    float speed = dist/(SystemClock.elapsedRealtime() - pauseOffset);
+                    String spd = String.format("%.02f", speed);
+
                     distanceTv.setText("Distance: " + s + " km");
+                    avgSpeed.setText("Avg Speed: " + spd + "/hr");
                 }
                 LatLng point = routePoints.get(i);
                 options.add(point);
             }
             line = mMap.addPolyline(options); //add Polyline
         }
-
         mMap.addMarker(new MarkerOptions().position(routePoints.get(0))); //add Marker in current position
-
     }
 
     private void createLocationRequest() {
@@ -393,4 +482,50 @@ public class TrackRunActivity extends FragmentActivity
     @Override
     public void onPolylineClick(Polyline polyline) {
     }
+
+
+
+
+
+    /*
+
+    BELOW IS FOR STEP COUNTER
+
+     */
+
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            simpleStepDetector.updateAccel(
+                    event.timestamp, event.values[0], event.values[1], event.values[2]);
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
+
+    @Override
+    public void step(long timeNs) {
+        numSteps++;
+        TvSteps.setText(TEXT_NUM_STEPS + numSteps);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
