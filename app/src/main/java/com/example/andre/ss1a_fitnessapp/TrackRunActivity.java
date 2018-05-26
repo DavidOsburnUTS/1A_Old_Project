@@ -2,13 +2,18 @@ package com.example.andre.ss1a_fitnessapp;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
+import android.net.Uri;
+import android.os.Build;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -32,8 +37,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.Polyline;
@@ -52,12 +59,11 @@ public class TrackRunActivity extends FragmentActivity
     private GoogleMap mMap;
     private TextView distanceTv;
     private ArrayList<LatLng> routePoints;
-    Polyline line;
+    private Polyline line;
     private Chronometer runTimerCm;
 
     private boolean isDraw;
     private boolean mLocationPermission;
-    private boolean mRequestingLocationUpdates;
     private LocationRequest mLocationRequest;
     private LocationCallback mLocationCallback;
 
@@ -126,19 +132,32 @@ public class TrackRunActivity extends FragmentActivity
                 line.setColor(Color.GRAY);
                 stopLocationUpdates();
                 break;
+
             case R.id.trackRunStartBtn:
                 isDraw = true;
                 startLocationUpdates();
                 runTimerCm.setBase(SystemClock.elapsedRealtime() - pauseOffset);
                 runTimerCm.start();
                 break;
+
             case R.id.trackRunStopBtn:
+                mMap.addMarker(new MarkerOptions().position(routePoints.get(routePoints.size() - 1)).
+                        icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))); //add Marker in finished position
                 isDraw = false;
                 stopLocationUpdates();
                 runTimerCm.stop();
                 pauseOffset = SystemClock.elapsedRealtime() - runTimerCm.getBase();
-                line.setColor(Color.RED);
+                new AlertDialog.Builder(this)
+                        .setTitle(R.string.title_run_finished)
+                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            //requests permission again
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                finish();
+                            }
+                        });
                 break;
+
             case R.id.runBackBtn:
                 finish();
         }
@@ -384,12 +403,10 @@ public class TrackRunActivity extends FragmentActivity
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         routePoints.add(latLng); //added
         drawLine();
-        lastLatLng = currentLatLng;
 
+        lastLatLng = currentLatLng;
         currentLatLng = latLng;
-        PolylineOptions line = new PolylineOptions().width(15).color(Color.GREEN).geodesic(true).add(
-                lastLatLng, currentLatLng);
-        mMap.addPolyline(line);
+
         if(isDraw) {
             routePoints.add(latLng); //added
         }
@@ -423,8 +440,9 @@ public class TrackRunActivity extends FragmentActivity
                 options.add(point);
             }
             line = mMap.addPolyline(options); //add Polyline
+            mMap.addMarker(new MarkerOptions().position(routePoints.get(0))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))); //add Marker in starting position
         }
-        mMap.addMarker(new MarkerOptions().position(routePoints.get(0))); //add Marker in current position
     }
 
     private void createLocationRequest() {
