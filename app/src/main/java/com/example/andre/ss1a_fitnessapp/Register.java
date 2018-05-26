@@ -29,7 +29,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         editText2 = (EditText) findViewById(R.id.editText2);
         editText3 = (EditText) findViewById(R.id.editText3);
         editText4 = (EditText) findViewById(R.id.editText4);
-        //editText6 = (EditText) findViewById(R.id.editText6);
 
         mAuth = FirebaseAuth.getInstance();
 
