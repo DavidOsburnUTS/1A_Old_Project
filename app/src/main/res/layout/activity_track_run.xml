@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/run_top_bar"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -52,8 +53,10 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/run_timer"
             android:layout_centerHorizontal="true"
-            android:text="Time: "
-            android:textSize="15sp" />
+            android:fontFamily="sans-serif-condensed"
+            android:text="TIME: "
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Chronometer
             android:id="@+id/run_timer"
@@ -61,7 +64,9 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/distanceTv"
             android:layout_centerHorizontal="true"
-            android:textSize="20sp" />
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/distanceTv"
@@ -69,22 +74,28 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/map"
             android:layout_centerHorizontal="true"
-            android:text="Distance"
-            android:textSize="20sp" />
+            android:fontFamily="sans-serif-condensed"
+            android:text="DISTANCE"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/avgSpeedTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Avg Speed"
-            android:textSize="20sp"/>
+            android:fontFamily="sans-serif-condensed"
+            android:text="SPEED"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/stepsTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Steps"
-            android:textSize="20sp"/>
+            android:fontFamily="sans-serif-condensed"
+            android:text="STEPS:"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -111,19 +122,27 @@
             android:id="@+id/trackRunPauseBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pause" />
+            android:fontFamily="sans-serif-condensed"
+            android:text="PAUSE"
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/trackRunStartBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Start" />
+            android:text="START"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-condensed"/>
+
 
         <Button
             android:id="@+id/trackRunStopBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stop" />
+            android:text="STOP"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"/>
     </LinearLayout>
 
 </RelativeLayout>

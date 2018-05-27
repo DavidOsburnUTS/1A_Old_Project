@@ -187,9 +187,9 @@ public class TrackRunActivity extends FragmentActivity
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                         builder.setTitle(R.string.title_trackrun_finished)
                                 .setMessage(distanceTv.getText().toString() + "\n"
-                                        + "Time: " + runTimerCm.getText().toString() + "\n"
+                                        + "TIME: " + runTimerCm.getText().toString() + "\n"
                                 + avgSpeed.getText().toString() + "\n"
-                                + "Steps: " + Integer.toString(numSteps))
+                                + "STEPS: " + Integer.toString(numSteps))
                                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                             //requests permission again
                             @Override
@@ -478,8 +478,8 @@ public class TrackRunActivity extends FragmentActivity
                     float speed = dist/hours;
                     String spd = String.format("%.02f", speed);
 
-                    distanceTv.setText("Distance: " + s + " km");
-                    avgSpeed.setText("Avg Speed: " + spd + "/hr");
+                    distanceTv.setText("DISTANCE: " + s + " KM");
+                    avgSpeed.setText("AVG SPEED: " + spd + "/HR");
                 }
                 LatLng point = routePoints.get(i);
                 options.add(point);
