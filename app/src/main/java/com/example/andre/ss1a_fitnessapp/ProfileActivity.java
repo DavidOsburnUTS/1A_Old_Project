@@ -4,10 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-<<<<<<< HEAD
-=======
 import android.widget.LinearLayout;
->>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,9 +44,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         Gender = (TextView) findViewById(R.id.genderTextView);
         Name = (TextView) findViewById(R.id.nameTextView);
         databaseReference = FirebaseDatabase.getInstance().getReference();
-<<<<<<< HEAD
-
-=======
         LinearLayout progressBtn = (LinearLayout) findViewById(R.id.progresslayout);
 
         progressBtn.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +55,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
             }
         });
->>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
 
     databaseReference.addValueEventListener(new ValueEventListener() {
         @Override
@@ -95,12 +88,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.profileEditBtn:
                 startActivity(new Intent(this, EditProfileActivity.class));
                 break;
-<<<<<<< HEAD
             case R.id.progresslayout:
                 startActivity(new Intent(this, Progress.class));
                 break;
-=======
->>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
         }
     }
 
