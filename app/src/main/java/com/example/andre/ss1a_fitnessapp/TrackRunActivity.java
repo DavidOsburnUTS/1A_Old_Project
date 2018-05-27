@@ -111,6 +111,7 @@ public class TrackRunActivity extends FragmentActivity
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
+        //LEADERBOARD STUFF - REMOVE IF CRASHING
         apiClient = new GoogleApiClient.Builder(this)
                 .addApi(Games.API)
                 .addScope(Games.SCOPE_GAMES)
@@ -217,6 +218,7 @@ public class TrackRunActivity extends FragmentActivity
                         .create()
                         .show();
 
+                //Getting SCORE
                 Games.Leaderboards.submitScore(apiClient,
                         getString(R.string.leaderboard_points_leaderboard),
                         numSteps);
@@ -325,6 +327,7 @@ public class TrackRunActivity extends FragmentActivity
 //        }
 //    }
 
+    //Showing the Leaderboard
     public void showLeaderboard(View v) {
         startActivityForResult(
                 Games.Leaderboards.getLeaderboardIntent(apiClient,
