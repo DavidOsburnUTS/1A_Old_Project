@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Progress">
+
+    <RelativeLayout
+        android:id="@+id/headbar_calorie_counter"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <Button
+            android:id="@+id/calorieCalcBackBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:background="?attr/actionModeCloseDrawable"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/title_heading_calorie_calc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:text="WEIGHT PROGRESS"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/goal_weight_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/headbar_calorie_counter"
+        android:layout_centerHorizontal="true"
+        android:text="SET GOAL WEIGHT"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+
+    <TableLayout
+        android:id="@+id/progress_table_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/goal_weight_title"
+        android:layout_margin="20dp"
+        android:background="@drawable/register_background"
+        android:gravity="center"
+        android:padding="20dp">
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GOAL AMOUNT (KG):"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/goalEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
+                android:hint="Enter amount"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-condensed"
+                android:inputType="numberDecimal" />
+        </TableRow>
+
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STARTING WEIGHT (KG):"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/startWeightEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
+                android:hint="Enter weight"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-condensed"
+                android:inputType="numberDecimal" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CURRENT WEIGHT (KG):"
+                android:fontFamily="sans-serif-condensed"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/currentWeightEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="0.5"
+                android:hint="Enter weight"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="sans-serif-condensed"
+                android:inputType="numberDecimal" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="ENTER"
+        android:layout_below="@id/progress_table_layout"/>
+
+
+
+</RelativeLayout>

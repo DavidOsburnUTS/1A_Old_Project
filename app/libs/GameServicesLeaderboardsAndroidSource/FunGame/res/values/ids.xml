@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_id">1234567890</string>
+    <string name="achievement_first_game">abcdefg1234567</string>
+    <string name="correct_guess_achievement">abcdefg1234567</string>
+    <string name="number_guesses_leaderboard">abcdefg1234567</string>
+
+</resources>
