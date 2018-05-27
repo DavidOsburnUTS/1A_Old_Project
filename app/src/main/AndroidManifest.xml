@@ -54,5 +54,11 @@
         <activity android:name=".HomeSliderAdapter" />
         <activity android:name=".SplashActivity"></activity>
     </application>
+    <meta-data
+        android:name="com.google.android.gms.games.APP_ID"
+        android:value="@string/app_id" />
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
 
 </manifest>
