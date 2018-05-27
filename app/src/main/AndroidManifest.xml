@@ -55,10 +55,10 @@
         <activity android:name=".SplashActivity"></activity>
     </application>
     <meta-data
-        android:name="com.google.android.gms.games.APP_ID"
-        android:value="@string/app_id" />
+        android:name="com.google.android.gms.games.309089124187"
+        android:value="@string/309089124187" />
     <meta-data
         android:name="com.google.android.gms.version"
-        android:value="@integer/google_play_services_version" />
+        android:value="@integer/9.8.0" />
 
 </manifest>
