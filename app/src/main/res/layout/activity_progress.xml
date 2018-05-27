@@ -14,13 +14,14 @@
         android:background="@color/colorPrimary">
 
         <Button
-            android:id="@+id/calorieCalcBackBtn"
+            android:id="@+id/progressBackBtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
             android:background="?attr/actionModeCloseDrawable"
             android:fontFamily="sans-serif-condensed"
+            android:onClick="progressOnClick"
             android:textSize="12sp" />
 
         <TextView
@@ -124,10 +125,11 @@
     </TableLayout>
 
     <Button
+        android:id="@+id/progressSubmitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="ENTER"
+        android:text="SUBMIT"
         android:layout_below="@id/progress_table_layout"/>
 
 
