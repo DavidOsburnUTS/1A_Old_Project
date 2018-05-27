@@ -77,6 +77,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.profileEditBtn:
                 startActivity(new Intent(this, EditProfileActivity.class));
                 break;
+            case R.id.progresslayout:
+                startActivity(new Intent(this, Progress.class));
+                break;
         }
     }
 

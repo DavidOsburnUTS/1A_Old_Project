@@ -19,7 +19,7 @@ public class Progress extends AppCompatActivity {
         setContentView(R.layout.activity_progress);
 
 
-
+        /*
         GraphView graph = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
                 new DataPoint(0, 1),
@@ -28,6 +28,6 @@ public class Progress extends AppCompatActivity {
                 new DataPoint(3, 2),
                 new DataPoint(4, 6)
         });
-        graph.addSeries(series);
+        graph.addSeries(series);*/
     }
 }
