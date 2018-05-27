@@ -10,10 +10,10 @@
     <FrameLayout
         android:id="@+id/mHeader"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_alignParentStart="true"
+        android:layout_height="44dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true">
 
     </FrameLayout>
 
@@ -25,30 +25,17 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/first_row_layout"
+            android:id="@+id/second_row_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/second_row_layout"
-             android:layout_weight="0.5"
+            android:layout_weight="0.5"
             android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/weightTrainingBtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:background="@drawable/weight_80"
-                android:fontFamily="sans-serif-condensed"
-                android:text="@string/weightBtn"
-                android:textColor="@android:color/background_light"
-                android:textSize="30sp"
-                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/cardioBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
+                android:layout_weight="1"
                 android:background="@drawable/cardio_80"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/cardioBtn"
@@ -56,6 +43,17 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/weightTrainingBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/weight_80"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/weightBtn"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -69,7 +67,7 @@
                 android:id="@+id/calorieBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
+                android:layout_weight="1"
                 android:background="@drawable/calorie_80"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/calorieCalcBtn"
@@ -78,13 +76,46 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/stepTrackerBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/steptracker500px"
+                android:fontFamily="sans-serif-condensed"
+                android:text="STEP\nTRACKER"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/first_row_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/second_row_layout"
+             android:layout_weight="0.5"
+            android:orientation="horizontal">
+
+            <Button
                 android:id="@+id/profileBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
+                android:layout_weight="1"
                 android:background="@drawable/profile_80"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/profileBtn"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/leaderboardBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/leaderboard500px"
+                android:fontFamily="sans-serif-condensed"
+                android:text="LEADERBOARD"
                 android:textColor="@android:color/background_light"
                 android:textSize="30sp"
                 android:textStyle="bold" />

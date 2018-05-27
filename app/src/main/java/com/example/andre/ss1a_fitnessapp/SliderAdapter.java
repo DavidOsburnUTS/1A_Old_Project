@@ -21,28 +21,31 @@ public class SliderAdapter extends PagerAdapter{
     }
 
     public int[] slide_images = {
-            R.drawable.oneup_main,
-            R.drawable.track,
-            R.drawable.eat,
-            R.drawable.profile
+            R.drawable.gsfragmentslide1,
+            R.drawable.gsfragmentslide2,
+            R.drawable.gsfragmentslide3,
+            R.drawable.gsfragmentslide4,
+            R.drawable.gsfragmentslide5
     };
 
     public String [] slide_headings = {
-            "WELCOME",
+            "WELCOME TO 1UP AT UTS!",
             "TRAIN",
-            "EAT",
-            "SOCIAL"
+            "CALCULATE",
+            "SOCIAL",
+            "RUN"
     };
 
     public String[] slide_descs = {
 
-            "Thank you for downloading 1UP Fitness App.\n\n" +
-                    "This short guide will help you how to use our user friendly fitness app",
-            "By selecting Weight or Cardio on the homepage, you can browse through our wide array of exercise videos.",
-            "Our calorie calculator can you help you achieve the dream weight you always wanted.\n\n" +
-                    "We can show you the amount calorie you need daily.",
+            "Thank you for signing up at" + "\n1UP Fitness App at UTS.\n\n" +
+                    "This short guide will help navigate through our fitness app.",
+            "Using 1UP, you can view our extensive list of exercise videos by clicking on Weight or Cardio Training.",
+            "Our innovative calorie calculator can you help you achieve the dream weight you always wanted.\n\n" +
+                    "1UP calculates the precise amount of calories you need daily/weekly on the fly.",
             "Edit your profile so friends can see you.\n\n" +
-                    "You can show off your fitness goals and achievement with friends."
+                    "You can show off your fitness goals and ranked against friends using our leaderboard system.",
+            "Run with 1UP Smart Feature.\n\n Using the phones in-built sensors, we can see how far, fast and quick you run."
     };
 
     @Override

@@ -9,7 +9,7 @@
     <color name="colorGray">#CCCCCC</color>
     <color name="transparent_button_200">#c8000000</color>
     <color name="transparent_button_100">#64000000</color>
-    <color name="colorBlack">#000000</color>
+    <color name="colorBlack">#323232</color>
     <color name="colorSecondary">#9f4720</color>
     <color name="colorSecondaryLight">#c59179</color>
     <color name="colorSecondaryDark">#502511</color>

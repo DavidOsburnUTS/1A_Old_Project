@@ -48,7 +48,7 @@ public class GettingStartedActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (mCurrentPage == 3) {
+                if (mCurrentPage == 4) {
                     finish();
                     Intent startIntent = new Intent(GettingStartedActivity.this, HomepageActivity.class);
                     startActivity(startIntent);
@@ -72,7 +72,7 @@ public class GettingStartedActivity extends AppCompatActivity {
     }
 
     public void addDotsIndicator(int position) {
-        mDots = new TextView[4];
+        mDots = new TextView[5];
         mDotLayout.removeAllViews();
 
         for (int i = 0; i < mDots.length; i++) {
@@ -85,7 +85,7 @@ public class GettingStartedActivity extends AppCompatActivity {
         }
 
         if(mDots.length > 0) {
-                mDots[position].setTextColor(getResources().getColor(R.color.colorWhite));
+                mDots[position].setTextColor(getResources().getColor(R.color.colorPrimary));
         }
     }
 

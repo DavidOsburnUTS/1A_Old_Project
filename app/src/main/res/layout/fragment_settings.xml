@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="80dp"
@@ -110,10 +110,10 @@
         android:id="@+id/settingFragmentDisclaimerTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/setting_frame_layout"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="64dp"
         android:gravity="center"
+        android:padding="3dp"
         android:text="@string/disclaimer" />
 
     <FrameLayout

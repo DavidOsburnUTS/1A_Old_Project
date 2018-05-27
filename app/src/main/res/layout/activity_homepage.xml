@@ -13,9 +13,9 @@
     <LinearLayout
         android:id="@+id/headbar_calorie_counter"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="44dp"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary"
+        android:background="#ebebeb"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -24,7 +24,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerInParent="true"
-            android:background="@drawable/oneup_logo_500dp_v2" />
+            android:background="@drawable/oneup_logo_inverted_200dp" />
 
         <TextView
             android:id="@+id/title_heading_calorie_calc"
@@ -34,7 +34,7 @@
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
             android:text="1UP"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
     </LinearLayout>
 

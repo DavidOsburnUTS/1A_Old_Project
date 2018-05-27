@@ -19,10 +19,10 @@ public class RunSliderAdapter extends PagerAdapter{
     }
 
     public int[] slide_images = {
-            R.drawable.oneup_logo_500dp_v2,
-            R.drawable.track,
-            R.drawable.eat,
-            R.drawable.profile
+            R.drawable.runfragmentslide1,
+            R.drawable.runfragmentslide2,
+            R.drawable.runfragmentslide3,
+            R.drawable.runfragmentslide4
     };
 
     public String [] slide_headings = {
@@ -34,9 +34,9 @@ public class RunSliderAdapter extends PagerAdapter{
 
     public String[] slide_descs = {
 
-            "With 1UP, you can track your run every time",
-            "Records how far you run",
-            "Records how long you run",
+            "Precise GPS tracks you running",
+            "Measures how far you run",
+            "Tracks how fast you are",
             "Earn points by running further and longer"
     };
 
