@@ -28,7 +28,6 @@ public class SplashActivity extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        Name = (TextView) findViewById(R.id.insertNameTextView);
 
         final Intent intent = new Intent(this, HomepageActivity.class);
         final Thread timer = new Thread() {

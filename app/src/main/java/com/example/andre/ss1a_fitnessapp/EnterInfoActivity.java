@@ -1,7 +1,6 @@
 package com.example.andre.ss1a_fitnessapp;
 
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,21 +22,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.security.acl.Group;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Random;
 
-public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
+public class EnterInfoActivity extends AppCompatActivity {
 
     EditText Age,Height,Weight, Name;
-
-    //EditText Age,Height,Weight, Name;
-    //EditText Age,Height,Weight, Name;
     RadioGroup Gender;
     RadioButton Male_Female;
-    Button editProfileDoneBtn;
+    Button doneBtn;
 
     FirebaseAuth mAuth;
     DatabaseReference UserRef,UserReff,databaseReference,UserReference;
@@ -47,13 +40,11 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
     String currentUserID,uid;
 
-    int WWeight;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.activity_enter_info);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
@@ -64,18 +55,14 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         UserReff = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID).child("weightHistory");
         UserReference = FirebaseDatabase.getInstance().getReference().child("Leaderboard").child(currentUserID);
 
-        findViewById(R.id.editProfileDoneBtn).setOnClickListener(this);
-        findViewById(R.id.editProfileExitBtn).setOnClickListener(this);
-
         Age = (EditText) findViewById(R.id.ageEditText);
         Height = (EditText) findViewById(R.id.heightEditText);
         Weight = (EditText) findViewById(R.id.weightEditText);
         Gender = (RadioGroup) findViewById(R.id.genderRadioBtn);
-        editProfileDoneBtn = (Button) findViewById(R.id.editProfileDoneBtn);
+        doneBtn = (Button) findViewById(R.id.doneBtn);
         Name = (EditText) findViewById(R.id.nameEditText);
-        Gender = (RadioGroup) findViewById(R.id.genderRadioGrp);
 
-        editProfileDoneBtn.setOnClickListener(new View.OnClickListener() {
+        doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SaveAccountInfo();
@@ -90,22 +77,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String nname =dataSnapshot.child("Users").child(uid).child("name").getValue(String.class);
-                String wweight =dataSnapshot.child("Users").child(uid).child("weight").getValue(String.class);
-                String aage =dataSnapshot.child("Users").child(uid).child("age").getValue(String.class);
-                String hheight =dataSnapshot.child("Users").child(uid).child("height").getValue(String.class);
-                String ggender =dataSnapshot.child("Users").child(uid).child("gender").getValue(String.class);
-
-                if(ggender.equals("MALE")) {
-                    ((RadioButton)Gender.getChildAt(0)).setChecked(true);
-                } else {
-                    ((RadioButton)Gender.getChildAt(1)).setChecked(true);
-                }
-
-                Name.setText(nname);
-                Height.setText(hheight);
-                Age.setText(aage);
-                Weight.setText(wweight);
+                //    WWeight =Integer.parseInt(dataSnapshot.child("Users").child(uid).child("weight").getValue(String.class));
             }
 
             @Override
@@ -122,7 +94,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         String weight = Weight.getText().toString();
         int genderID = Gender.getCheckedRadioButtonId();
         String name = Name.getText().toString();
-
         Male_Female = (RadioButton) findViewById(genderID);
         HashMap weightMap = new HashMap();
         HashMap leaderboard = new HashMap();
@@ -187,29 +158,16 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 @Override
                 public void onComplete(@NonNull Task task) {
                     if(task.isSuccessful()){
-                        Toast.makeText(EditProfileActivity.this, "Profile edit successful", Toast.LENGTH_LONG).show();
-                        //startActivity(new Intent(EditProfileActivity.this, ProfileActivity.class));
+                        Toast.makeText(getApplicationContext(), "Entered user info successfully!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(EnterInfoActivity.this, GettingStartedActivity.class));
                         finish();
                     }else{
                         String message = task.getException().getMessage();
-                        Toast.makeText(EditProfileActivity.this, "Oh no something went wrong OWO" + message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Oh no something went wrong OWO" + message, Toast.LENGTH_SHORT).show();
                     }
                 }
             });
 
-        }
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch(view.getId()){
-            case R.id.editProfileDoneBtn:
-                //Add method with FireBase that grabs info from table and uses setMethod()
-                finish();
-                break;
-            case R.id.editProfileExitBtn:
-                finish();
-                break;
         }
     }
 }

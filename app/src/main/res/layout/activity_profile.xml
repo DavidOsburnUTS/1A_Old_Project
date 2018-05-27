@@ -122,8 +122,8 @@
 
         <TableRow
 
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp">
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -146,8 +146,8 @@
         </TableRow>
 
         <TableRow
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp">
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp">
 
 
             <TextView
@@ -171,8 +171,8 @@
         </TableRow>
 
         <TableRow
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp">
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -195,8 +195,8 @@
         </TableRow>
 
         <TableRow
-            android:layout_marginLeft="80dp"
-            android:layout_marginRight="80dp">
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -220,40 +220,6 @@
 
     </TableLayout>
 
-    <LinearLayout
-        android:id="@+id/progresslayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/profileTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/register_background"
-        android:clickable="true"
-        android:orientation="vertical"
-        android:padding="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/progressBar"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="sans-serif-condensed"
-            android:text="PROGRESS"
-            android:textColor="@color/colorBlack"
-            android:textSize="17sp"
-            android:textStyle="bold" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
-
-    </LinearLayout>
 
 </RelativeLayout>

@@ -111,16 +111,6 @@ public class TrackRunActivity extends FragmentActivity
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        //LEADERBOARD STUFF - REMOVE IF CRASHING
-        apiClient = new GoogleApiClient.Builder(this)
-                .addApi(Games.API)
-                .addScope(Games.SCOPE_GAMES)
-                .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
-                    @Override
-                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                        finish();
-                    }
-                }).build();
 
         routePoints = new ArrayList<LatLng>();
         distanceTv = findViewById(R.id.distanceTv);
@@ -131,7 +121,6 @@ public class TrackRunActivity extends FragmentActivity
         findViewById(R.id.trackRunStopBtn).setEnabled(false);
         runTimerCm = (Chronometer)findViewById(R.id.run_timer);
         findViewById(R.id.runBackBtn).setOnClickListener(this);
-        avgSpeed = findViewById(R.id.avgSpeedTv);
 
 
         TvSteps = (TextView) findViewById(R.id.stepsTv);
@@ -217,11 +206,6 @@ public class TrackRunActivity extends FragmentActivity
                         })
                         .create()
                         .show();
-
-                //Getting SCORE
-                Games.Leaderboards.submitScore(apiClient,
-                        getString(R.string.leaderboard_points_leaderboard),
-                        numSteps);
 
 
                 break;
@@ -506,13 +490,8 @@ public class TrackRunActivity extends FragmentActivity
                     distance += dis;
                     float dist = distance/1000;
                     String s = String.format("%.02f", dist);
-                    long timeElapsed = SystemClock.elapsedRealtime() - pauseOffset;
-                    float hours = (float) (timeElapsed / 3600000);
-                    float speed = dist/hours;
-                    String spd = String.format("%.02f", speed);
 
                     distanceTv.setText("DISTANCE: " + s + " KM");
-                    avgSpeed.setText("AVG SPEED: " + spd + "/HR");
                 }
                 LatLng point = routePoints.get(i);
                 options.add(point);

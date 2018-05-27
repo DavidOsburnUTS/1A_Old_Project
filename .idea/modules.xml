@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/studio-group7-9bc80c3cdc44b36fdcb92e363ecc2bcc6ffce41b.iml" filepath="$PROJECT_DIR$/studio-group7-9bc80c3cdc44b36fdcb92e363ecc2bcc6ffce41b.iml" />
+      <module fileurl="file://$PROJECT_DIR$/studio-group7-33f065ed469f3c06dde19a94251ab4946df64912.iml" filepath="$PROJECT_DIR$/studio-group7-33f065ed469f3c06dde19a94251ab4946df64912.iml" />
+      <module fileurl="file://E:\Android Studio Projects\studio-group7-33f065ed469f3c06dde19a94251ab4946df64912\studio-group7-9bc80c3cdc44b36fdcb92e363ecc2bcc6ffce41b.iml" filepath="E:\Android Studio Projects\studio-group7-33f065ed469f3c06dde19a94251ab4946df64912\studio-group7-9bc80c3cdc44b36fdcb92e363ecc2bcc6ffce41b.iml" />
     </modules>
   </component>
 </project>

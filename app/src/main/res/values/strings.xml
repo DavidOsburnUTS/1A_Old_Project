@@ -37,8 +37,8 @@
     <string name="action_settings">Settings</string>
     <string name="todo">TODO</string>
     <string name="title_run">Run</string>
-    <string name ="title_trackrun_finished">Run Details</string>
-    <string name ="distance">Distance: </string>
+    <string name="title_trackrun_finished">Run Details</string>
+    <string name="distance">Distance: </string>
 
     <string name="activitylevel_prompt">Choose activity level</string>
     <string name="reset_password_btn">Reset Password</string>

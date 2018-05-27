@@ -115,7 +115,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/leaderboard500px"
                 android:fontFamily="sans-serif-condensed"
-                android:text="LEADERBOARD"
+                android:text="Coming Soon"
                 android:textColor="@android:color/background_light"
                 android:textSize="30sp"
                 android:textStyle="bold" />

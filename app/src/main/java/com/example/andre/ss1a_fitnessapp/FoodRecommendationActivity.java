@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.Toast;
 import android.webkit.WebView;
 
@@ -18,6 +19,8 @@ public class FoodRecommendationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_recommendation);
+
+        Button backBtn = (Button) findViewById(R.id.foodRecBackBtn);
 
 
         //Webview for Nutritionix
@@ -33,6 +36,13 @@ public class FoodRecommendationActivity extends AppCompatActivity {
         });
         wv.getSettings().setJavaScriptEnabled(true);
         wv.loadUrl(URL);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }

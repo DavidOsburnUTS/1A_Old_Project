@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditProfileActivity">
+    tools:context="com.example.andre.ss1a_fitnessapp.EnterInfoActivity">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,31 +13,13 @@
         android:layout_alignParentTop="true"
         android:background="@color/colorPrimary">
 
-        <Button
-            android:id="@+id/editProfileExitBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerInParent="true"
-            android:background="?attr/actionModeCloseDrawable" />
-
-        <Button
-            android:id="@+id/editProfileDoneBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:text="DONE"
-            android:fontFamily="sans-serif-condensed"
-            android:textStyle="bold"/>
-
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="EDIT PROFILE"
+            android:text="EDIT DETAILS"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
@@ -105,7 +88,7 @@
                 android:textStyle="bold" />
 
             <RadioGroup
-                android:id="@+id/genderRadioGrp"
+                android:id="@+id/genderRadioBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -173,5 +156,16 @@
         </TableRow>
 
     </TableLayout>
+
+    <Button
+        android:id="@+id/doneBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/calorie_table_layout"
+        android:text="DONE"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"/>
+
 
 </RelativeLayout>

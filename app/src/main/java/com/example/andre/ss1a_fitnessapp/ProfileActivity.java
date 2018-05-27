@@ -44,17 +44,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         Gender = (TextView) findViewById(R.id.genderTextView);
         Name = (TextView) findViewById(R.id.nameTextView);
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        LinearLayout progressBtn = (LinearLayout) findViewById(R.id.progresslayout);
-
-        progressBtn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Progress.class);
-                startActivity(intent);
-
-            }
-        });
 
     databaseReference.addValueEventListener(new ValueEventListener() {
         @Override
@@ -87,9 +76,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.profileEditBtn:
                 startActivity(new Intent(this, EditProfileActivity.class));
-                break;
-            case R.id.progresslayout:
-                startActivity(new Intent(this, Progress.class));
                 break;
         }
     }

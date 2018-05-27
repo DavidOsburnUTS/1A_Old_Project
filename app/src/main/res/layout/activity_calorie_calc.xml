@@ -250,7 +250,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="TextView"
         android:textColor="@color/colorBlack" />
 
 
