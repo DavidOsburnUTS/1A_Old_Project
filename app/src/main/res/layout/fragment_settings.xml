@@ -76,6 +76,8 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
+
+
         <Button
             android:id="@+id/logoutSettingFragmentBtn"
             android:layout_width="match_parent"
