@@ -37,6 +37,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
         view.findViewById(R.id.logoutSettingFragmentBtn).setOnClickListener(this);
+        view.findViewById(R.id.settingFragmentEditProfileBtn).setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -66,6 +67,9 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 editor.commit();
                 startActivity(new Intent(getActivity(), LoginActivity.class));
                 getActivity().finish();
+                break;
+            case R.id.settingFragmentEditProfileBtn:
+                startActivity(new Intent(getActivity(), EditProfileActivity.class));
                 break;
         }
     }
