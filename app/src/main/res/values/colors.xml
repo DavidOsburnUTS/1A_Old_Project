@@ -13,4 +13,5 @@
     <color name="colorSecondary">#9f4720</color>
     <color name="colorSecondaryLight">#c59179</color>
     <color name="colorSecondaryDark">#502511</color>
+    <color name="colorDarkGray">#9a9a9b</color>
 </resources>

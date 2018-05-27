@@ -40,6 +40,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener
         view.findViewById(R.id.profileBtn).setOnClickListener(this);
         view.findViewById(R.id.cardioBtn).setOnClickListener(this);
         view.findViewById(R.id.weightTrainingBtn).setOnClickListener(this);
+        view.findViewById(R.id.stepTrackerBtn).setOnClickListener(this);
         //view.findViewById(R.id.progresslayout).setOnClickListener(this);
 
         //Progress Bar
@@ -95,10 +96,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener
                 Intent weightTrainingIntent = new Intent(getActivity(), WeightTrainingActivity.class);
                 startActivity(weightTrainingIntent);
                 break;
-            case R.id.progresslayout:
-                Intent progressIntent = new Intent(getActivity(), Progress.class);
+            case R.id.stepTrackerBtn:
+                Intent progressIntent = new Intent(getActivity(), StepCounterActivity.class);
                 startActivity(progressIntent);
                 break;
+                /*
+            case R.id.leaderboardBtnd:
+                Intent progressIntent = new Intent(getActivity(), Progress.class);
+                startActivity(progressIntent);
+                break;*/
         }
     }
 

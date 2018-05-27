@@ -30,12 +30,15 @@ public class StepCounterActivity extends AppCompatActivity implements SensorEven
         simpleStepDetector = new StepDetector();
         simpleStepDetector.registerListener(this);
 
-        TvSteps = (TextView) findViewById(R.id.tv_steps);
+        //Button
+        Button backBtn = (Button) findViewById(R.id.stepCounterBackBtn);
         Button BtnStart = (Button) findViewById(R.id.btn_start);
         Button BtnStop = (Button) findViewById(R.id.btn_stop);
 
+        //TextView
+        TvSteps = (TextView) findViewById(R.id.tv_steps);
 
-
+        //Start Button OnClickListener
         BtnStart.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -47,7 +50,7 @@ public class StepCounterActivity extends AppCompatActivity implements SensorEven
             }
         });
 
-
+        //Stop Button OnClickListener
         BtnStop.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -58,6 +61,13 @@ public class StepCounterActivity extends AppCompatActivity implements SensorEven
             }
         });
 
+        //Back Button OnClickListener
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }
