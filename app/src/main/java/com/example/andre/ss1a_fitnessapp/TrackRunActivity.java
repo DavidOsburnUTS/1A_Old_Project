@@ -31,6 +31,7 @@ import 	android.location.LocationManager;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.games.Games;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationListener;
@@ -101,6 +102,7 @@ public class TrackRunActivity extends FragmentActivity
     private Sensor accel;
     private static final String TEXT_NUM_STEPS = "Number of Steps: ";
     private int numSteps;
+    public GoogleApiClient apiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +110,16 @@ public class TrackRunActivity extends FragmentActivity
         setContentView(R.layout.activity_track_run);
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        apiClient = new GoogleApiClient.Builder(this)
+                .addApi(Games.API)
+                .addScope(Games.SCOPE_GAMES)
+                .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                        finish();
+                    }
+                }).build();
 
         routePoints = new ArrayList<LatLng>();
         distanceTv = findViewById(R.id.distanceTv);
@@ -204,6 +216,10 @@ public class TrackRunActivity extends FragmentActivity
                         })
                         .create()
                         .show();
+
+                Games.Leaderboards.submitScore(apiClient,
+                        getString(R.string.leaderboard_points_leaderboard),
+                        numSteps);
 
 
                 break;
@@ -308,6 +324,13 @@ public class TrackRunActivity extends FragmentActivity
 //                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
 //        }
 //    }
+
+    public void showLeaderboard(View v) {
+        startActivityForResult(
+                Games.Leaderboards.getLeaderboardIntent(apiClient,
+                        getString(R.string.leaderboard_points_leaderboard)), 0);
+    }
+
 
     private void getLocationPermission() {
         /*
