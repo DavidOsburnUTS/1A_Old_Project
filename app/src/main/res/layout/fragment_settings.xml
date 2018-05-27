@@ -73,7 +73,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="VIEW FRIENDS (AVAILABLE NEXT UPDATE"
+            android:text="VIEW FRIENDS (AVAILABLE NEXT UPDATE)"
             android:textColor="@color/colorDarkGray"
             android:textSize="18sp"
             android:textStyle="bold" />
