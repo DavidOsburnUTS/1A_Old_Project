@@ -5,6 +5,7 @@
     android:id="@+id/track_run_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundinvert"
     tools:context=".TrackRunActivity">
 
     <RelativeLayout
@@ -93,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
-            android:text="STEPS:"
+            android:text="STEPS"
             android:textSize="16sp"
             android:textStyle="bold" />
 
