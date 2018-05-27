@@ -31,7 +31,11 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
+<<<<<<< HEAD
     EditText Age,Height,Weight, Name, goalWeight;
+=======
+    EditText Age,Height,Weight, Name;
+>>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
     RadioGroup Gender;
     RadioButton Male_Female;
     Button editProfileDoneBtn;
@@ -69,7 +73,10 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         Gender = (RadioGroup) findViewById(R.id.genderRadioBtn);
         editProfileDoneBtn = (Button) findViewById(R.id.editProfileDoneBtn);
         Name = (EditText) findViewById(R.id.nameEditText);
+<<<<<<< HEAD
         goalWeight = (EditText) findViewById(R.id.goalWeightEditText);
+=======
+>>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
 
         editProfileDoneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +110,10 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         String weight = Weight.getText().toString();
         int genderID = Gender.getCheckedRadioButtonId();
         String name = Name.getText().toString();
+<<<<<<< HEAD
         String goalweight = goalWeight.getText().toString();
+=======
+>>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
         Male_Female = (RadioButton) findViewById(genderID);
         HashMap weightMap = new HashMap();
         HashMap leaderboard = new HashMap();
@@ -135,7 +145,10 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
             userMap.put("name", name);
             userMap.put("gender", Male_Female.getText());
+<<<<<<< HEAD
             userMap.put("kgGoal", goalweight);
+=======
+>>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
             //userMap.put("kgSoFar", WWeight - Integer.parseInt(weight));
             userMap.put("points", "?");
 

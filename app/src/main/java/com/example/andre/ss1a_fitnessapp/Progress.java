@@ -1,5 +1,6 @@
 package com.example.andre.ss1a_fitnessapp;
 
+<<<<<<< HEAD
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,11 +14,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+=======
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+
+>>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.Series;
 
+<<<<<<< HEAD
 import java.util.HashMap;
 
 
@@ -27,18 +36,27 @@ public class Progress extends AppCompatActivity {
     DatabaseReference UserRef;
 
     String currentUserID;
+=======
+
+
+
+public class Progress extends AppCompatActivity {
+>>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
 
+<<<<<<< HEAD
         UserRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
 
         Goal = (EditText) findViewById(R.id.goalEditText);
         Start = (EditText) findViewById(R.id.startWeightEditText);
         Current = (EditText) findViewById(R.id.currentWeightEditText);
 
+=======
+>>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
 
         /*
         GraphView graph = (GraphView) findViewById(R.id.graph);
@@ -52,6 +70,7 @@ public class Progress extends AppCompatActivity {
         graph.addSeries(series);*/
     }
 
+<<<<<<< HEAD
     private void SaveAccountInfo() {
         String goal = Goal.getText().toString();
         String start = Start.getText().toString();
@@ -90,6 +109,15 @@ public class Progress extends AppCompatActivity {
                 }
             });
 
+=======
+    public void progressOnClick(View view) {
+        switch(view.getId()){
+            case R.id.progressBackBtn:
+                finish();
+                break;
+            case R.id.progressSubmitBtn:
+                break;
+>>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
         }
     }
 }

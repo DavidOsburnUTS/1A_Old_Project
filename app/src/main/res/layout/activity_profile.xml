@@ -121,8 +121,13 @@
         android:padding="20dp">
 
         <TableRow
+<<<<<<< HEAD
             android:layout_marginLeft="80dp"
             android:layout_marginRight="80dp">
+=======
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp">
+>>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
 
             <TextView
                 android:layout_width="wrap_content"
@@ -145,8 +150,13 @@
         </TableRow>
 
         <TableRow
+<<<<<<< HEAD
             android:layout_marginLeft="80dp"
             android:layout_marginRight="80dp">
+=======
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp">
+>>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
 
             <TextView
                 android:layout_width="wrap_content"
@@ -169,8 +179,13 @@
         </TableRow>
 
         <TableRow
+<<<<<<< HEAD
             android:layout_marginLeft="80dp"
             android:layout_marginRight="80dp">
+=======
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp">
+>>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
 
             <TextView
                 android:layout_width="wrap_content"
@@ -193,8 +208,13 @@
         </TableRow>
 
         <TableRow
+<<<<<<< HEAD
             android:layout_marginLeft="80dp"
             android:layout_marginRight="80dp">
+=======
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp">
+>>>>>>> f8fc1e502aa93e679d686f53ee12e390c16ffc0a
 
             <TextView
                 android:layout_width="wrap_content"
