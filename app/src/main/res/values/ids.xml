@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_id">ss1a_fitnessapp</string>
-    <string name="Points_Leaderboard">CgkI2_6Wuf8IEAIQAA</string>
+    <!-- app_id -->
+    <string name="app_id" translatable="false">309089124187</string>
+    <!-- package_name -->
+    <string name="package_name" translatable="false">com.example.andre.ss1a_fitnessapp</string>
+    <!-- achievement 50 steps -->
+    <string name="achievement_50_steps" translatable="false">CgkI2_6Wuf8IEAIQAQ</string>
+    <!-- achievement 100 steps -->
+    <string name="achievement_100_steps" translatable="false">CgkI2_6Wuf8IEAIQAg</string>
+    <!-- leaderboard Points Leaderboard -->
+    <string name="leaderboard_points_leaderboard" translatable="false">CgkI2_6Wuf8IEAIQAA</string>
 </resources>
