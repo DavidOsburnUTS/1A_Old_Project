@@ -51,6 +51,7 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
 
@@ -65,6 +66,8 @@ public class TrackRunActivity extends FragmentActivity
     private ArrayList<LatLng> routePoints;
     private Polyline line;
     private Chronometer runTimerCm;
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     private boolean isDraw;
     private boolean mLocationPermission;
@@ -103,6 +106,8 @@ public class TrackRunActivity extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track_run);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         routePoints = new ArrayList<LatLng>();
         distanceTv = findViewById(R.id.distanceTv);
@@ -199,6 +204,8 @@ public class TrackRunActivity extends FragmentActivity
                         })
                         .create()
                         .show();
+
+
                 break;
 
             case R.id.runBackBtn:
